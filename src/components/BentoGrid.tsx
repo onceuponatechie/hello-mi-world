@@ -65,7 +65,7 @@ export function BentoGrid() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, margin: "-80px" }}
-        className="mx-auto grid max-w-6xl gap-4 md:grid-cols-2 md:grid-rows-[235px_235px_auto] lg:grid-cols-12 lg:grid-rows-[235px_235px]"
+        className="mx-auto grid max-w-[360px] gap-4 md:max-w-6xl md:grid-cols-2 md:grid-rows-[235px_235px_auto] lg:grid-cols-12 lg:grid-rows-[235px_235px]"
       >
         {/* ---------- Why Not Build? — dark anchor, tall left ---------- */}
         <motion.div variants={cardReveal} className="order-1 flex md:row-span-2 lg:col-span-4">
