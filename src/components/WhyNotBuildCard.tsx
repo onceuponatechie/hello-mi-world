@@ -237,7 +237,7 @@ export function WhyNotBuildCard() {
   const toggle = () => setPlaying((value) => !value);
 
   return (
-    <div ref={hostRef} className="mx-auto w-full max-w-[360px] font-[Arial,Helvetica,sans-serif]">
+    <div ref={hostRef} className="mx-auto w-full lg:max-w-[360px] font-[Arial,Helvetica,sans-serif]">
       <div className="relative aspect-[360/486] w-full overflow-hidden rounded-[27px] bg-[#121311] shadow-[0_17px_26px_-20px_rgba(43,57,40,.31),0_2px_3px_rgba(21,29,21,.08)] ring-1 ring-inset ring-white/[0.13]" onKeyDown={(event) => { if (event.key === " ") { event.preventDefault(); toggle(); } if (event.key === "ArrowLeft") select((current + 5) % 6); if (event.key === "ArrowRight") select((current + 1) % 6); }}>
         <canvas ref={canvasRef} className="h-full w-full" aria-hidden="true" />
         <a href={site.stories} aria-label="Read Why Not Build" className="absolute right-[5.8%] top-[3.3%] h-[8%] w-[8%] rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e7efd9]" />

@@ -69,3 +69,118 @@
     mix-blend-mode: soft-light;
   }
 }
+
+.bento-section {
+  container-type: inline-size;
+}
+
+/* Keep the tablet composition proportional to the available section width.
+   The canvas still draws its original 360 × 486 composition. */
+@media (600px <= width < 1024px) {
+  .bento-grid {
+    --bento-column: calc((100cqw - 16px) / 2);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows:
+      repeat(2, calc((var(--bento-column) * 1.35 - 16px) / 2))
+      calc(var(--bento-column) * 0.7);
+  }
+
+  .bento-anchor {
+    grid-row: span 2;
+  }
+
+  .bento-anchor-frame {
+    padding-block: 0;
+  }
+
+  .bento-card {
+    min-height: 0;
+    border-radius: clamp(20px, 3.6cqw, 28px);
+  }
+
+  #tools-and-templates,
+  #research-vault,
+  #classroom {
+    padding: clamp(12px, 2.5cqw, 28px);
+  }
+
+  .bento-kicker {
+    display: block;
+    font-size: clamp(8px, 1.3cqw, 10px);
+    line-height: 1.2;
+  }
+
+  .bento-card h3 {
+    margin-top: 6px;
+    font-size: clamp(18px, 3.2cqw, 26px);
+    line-height: 1.15;
+  }
+
+  #classroom h3 {
+    font-size: clamp(26px, 4.2cqw, 34px);
+  }
+
+  .bento-card p {
+    margin-top: 6px;
+    font-size: clamp(10px, 1.65cqw, 13px);
+    line-height: 1.4;
+  }
+
+  .bento-action {
+    flex-shrink: 0;
+    margin-top: 8px;
+    padding: 6px 12px;
+    font-size: clamp(10px, 1.65cqw, 13px);
+    line-height: 1.2;
+  }
+
+  .bento-tools-content {
+    gap: 10px;
+    min-height: 0;
+  }
+
+  .bento-tools-media {
+    width: 38%;
+  }
+
+  .bento-research-spacer {
+    min-height: 8px;
+  }
+
+  .bento-portrait-size {
+    height: 100%;
+  }
+
+  .bento-portrait-copy {
+    padding-inline: clamp(14px, 3.1cqw, 24px);
+    padding-bottom: clamp(12px, 2.6cqw, 20px);
+  }
+}
+
+@media (width >= 1024px) {
+  #tools-and-templates,
+  #classroom {
+    padding: 20px;
+  }
+
+  #tools-and-templates h3,
+  #classroom h3 {
+    margin-top: 8px;
+  }
+
+  #tools-and-templates p,
+  #classroom p {
+    margin-top: 8px;
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  #tools-and-templates .bento-action,
+  #classroom .bento-action {
+    flex-shrink: 0;
+    margin-top: 12px;
+    padding: 8px 16px;
+    font-size: 12px;
+    line-height: 1.2;
+  }
+}
