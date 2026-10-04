@@ -104,7 +104,7 @@ function MediaChip({ offset, delay }: { offset: number; delay: number }) {
       initial={{ opacity: 0, scale: 0.6 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.45, ease: EASE, delay }}
-      className="relative mx-[6px] inline-block h-[41px] w-[68px] overflow-hidden rounded-2xl border border-white/20 align-middle shadow-[0_20px_40px_-18px_rgba(0,0,0,0.45)] md:h-11 md:w-[72px]"
+      className="relative mx-[6px] inline-block h-[41px] w-[68px] overflow-hidden rounded-2xl border border-white/20 align-middle shadow-[0_20px_40px_-18px_rgba(0,0,0,0.45)] min-[600px]:h-11 min-[600px]:w-[72px]"
       style={{ backgroundColor: "hsl(0 0% 12%)" }}
     >
       {heroImages.map((src, idx) => (
@@ -136,7 +136,7 @@ function Word({ children, delay }: { children: React.ReactNode; delay: number })
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden px-4 py-16 md:pb-36 md:pt-6">
+    <section className="relative overflow-hidden px-4 py-16 min-[600px]:pb-36 min-[600px]:pt-6">
       <div className="relative mx-auto max-w-5xl text-center">
         <motion.div {...rise(0.5)}>
           <SmileyReel />
@@ -152,20 +152,20 @@ export function Hero() {
           </span>
         </motion.div>
 
-        <h1 className="mt-8 text-[clamp(32px,6vw,68px)] font-normal leading-[1.12] tracking-tight text-ink md:tracking-[-2.5px]">
+        <h1 className="mt-8 text-[clamp(32px,6vw,68px)] font-normal leading-[1.12] tracking-tight text-ink min-[600px]:tracking-[-2.5px]">
           <Word delay={0.9}>
-            <span className="inline-block mb-[0.14em] md:mb-0">Products, people,</span>
+            <span className="inline-block mb-[0.14em] min-[600px]:mb-0">Products, people,</span>
           </Word>
-          <br className="md:hidden" />{" "}
+          <br className="min-[600px]:hidden" />{" "}
           <Word delay={1.02}>and the</Word>
-          <br className="hidden md:block" />
+          <br className="hidden min-[600px]:block" />
           <MediaChip offset={0} delay={0.12} />
           <Word delay={1.14}>stories</Word>
-          <br className="md:hidden" />{" "}
+          <br className="min-[600px]:hidden" />{" "}
           <Word delay={1.26}>worth</Word>
-          <br className="hidden md:block" />
+          <br className="hidden min-[600px]:block" />
           <MediaChip offset={2} delay={0.28} />
-          <br className="md:hidden" />
+          <br className="min-[600px]:hidden" />
           <Word delay={1.38}>building.</Word>
         </h1>
 
@@ -174,7 +174,7 @@ export function Hero() {
           <TypeWords text="Researcher · Builder · Storyteller" delay={1.75} step={0.09} inView={false} />
         </motion.p>
 
-        <motion.div {...rise(2.1)} className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
+        <motion.div {...rise(2.1)} className="mt-9 flex flex-col items-center justify-center gap-3 min-[600px]:flex-row">
           <a
             href="#projects"
             className="group inline-flex items-center gap-2 rounded-full bg-sage px-6 py-3 text-[13px] font-medium text-ink transition-all hover:bg-ink hover:text-white hover:shadow-[0_18px_40px_-18px_rgba(0,0,0,0.6)]"

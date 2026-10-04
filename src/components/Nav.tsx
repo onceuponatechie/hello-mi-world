@@ -15,7 +15,7 @@ const resourceLinks = [
 export function Nav() {
   const [open, setOpen] = useState(false);
   return (
-    <header id="top" className="relative z-40 px-5 pt-6 sm:px-10 sm:pt-8">
+    <header id="top" className="relative z-40 px-5 pt-6 min-[600px]:px-10 min-[600px]:pt-8">
       <div className="flex items-center justify-between gap-4">
         <Link
           href="/"
@@ -24,7 +24,7 @@ export function Nav() {
           Essy
         </Link>
 
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden items-center gap-8 min-[600px]:flex">
           <a
             href={site.stories}
             className="text-[13px] font-medium text-ink/70 transition-colors hover:text-ink"
@@ -73,7 +73,7 @@ export function Nav() {
             aria-label="Menu"
             aria-expanded={open}
             aria-controls="mobile-navigation"
-            className="grid h-10 w-10 place-items-center rounded-full border border-ink/10 bg-card md:hidden"
+            className="grid h-10 w-10 place-items-center rounded-full border border-ink/10 bg-card min-[600px]:hidden"
           >
             {open ? <X size={16} /> : <Menu size={16} />}
           </Button>
@@ -81,7 +81,7 @@ export function Nav() {
       </div>
 
       {open && (
-        <nav id="mobile-navigation" className="mt-4 grid gap-1 rounded-3xl border border-ink/10 bg-card p-3 md:hidden">
+        <nav id="mobile-navigation" className="mt-4 grid gap-1 rounded-3xl border border-ink/10 bg-card p-3 min-[600px]:hidden">
           <a
             href={site.stories}
             onClick={() => setOpen(false)}
