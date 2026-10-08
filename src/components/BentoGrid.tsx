@@ -23,16 +23,6 @@ const cardReveal = {
 
 /* Shared card anatomy ------------------------------------------------ */
 
-function Kicker({ children, className = "" }: { children: React.ReactNode; className?: string }) {
-  return (
-    <span
-      className={`bento-kicker text-[10px] font-semibold uppercase tracking-[0.16em] ${className}`}
-    >
-      {children}
-    </span>
-  );
-}
-
 function CornerArrow({ tone = "light" }: { tone?: "light" | "dark" | "glass" }) {
   const tones = {
     light: "bg-ink/[0.05] text-ink group-hover:bg-ink group-hover:text-white",
@@ -81,8 +71,7 @@ export function BentoGrid() {
               {/* copy + the site's own pill button */}
               <div className="flex min-w-0 flex-1 flex-col justify-between self-stretch">
                 <div>
-                  <Kicker className="text-muted-ink">Free kits & files</Kicker>
-                  <h3 className="mt-3 text-[24px] font-medium leading-tight tracking-[-0.8px] text-ink lg:text-[26px]">
+                  <h3 className="text-[24px] font-normal leading-tight tracking-[-0.8px] text-ink lg:text-[26px]">
                     Tools & Templates
                   </h3>
                   <p className="mt-2.5 text-[13px] leading-relaxed text-muted-ink">
@@ -91,7 +80,7 @@ export function BentoGrid() {
                   </p>
                 </div>
 
-                <a href="#tools-and-templates" className="bento-action mt-6 inline-flex w-fit items-center gap-2 rounded-full border border-ink/25 px-5 py-2.5 text-[13px] font-medium text-ink transition-colors duration-300 group-hover:border-ink group-hover:bg-ink group-hover:text-white">
+                <a href="#tools-and-templates" className="bento-action mt-6 inline-flex w-fit items-center gap-2 rounded-full border border-ink/25 px-5 py-2.5 text-[13px] font-normal text-ink transition-colors duration-300 group-hover:border-ink group-hover:bg-ink group-hover:text-white">
                   Browse the kits
                 </a>
               </div>
@@ -149,10 +138,9 @@ export function BentoGrid() {
               className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 [transition-timing-function:cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]"
             />
             <div className="bento-portrait-copy absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent px-6 pb-5 pt-14">
-              <Kicker className="text-white/60">The human behind it</Kicker>
-              <div className="mt-1 text-[17px] font-medium tracking-tight text-white">
+              <h3 className="mt-1 text-[17px] tracking-tight text-white">
                 Meet Essy
-              </div>
+              </h3>
             </div>
             {/* keeps the card at a sensible height when the grid rows collapse on mobile */}
             <div className="bento-portrait-size h-64 lg:h-full" />
@@ -163,16 +151,15 @@ export function BentoGrid() {
         <motion.div variants={cardReveal} className="order-4 flex lg:col-span-3">
           <article id="classroom" className={`${cardBase} w-full scroll-mt-24 justify-between bg-sage-soft p-7`}>
             <div>
-              <Kicker className="text-ink/45">Courses & certifications</Kicker>
-              <h3 className="mt-3 font-serif text-[34px] italic leading-none tracking-tight text-ink">
+              <h3 className="text-[30px] leading-none tracking-tight text-ink">
                 the classroom
               </h3>
-              <p className="mt-3 text-[13px] leading-relaxed text-ink/70 lg:max-w-[26ch]">
+              <p className="mt-3 text-[13px] leading-relaxed text-muted-ink lg:max-w-[26ch]">
                 Courses I&apos;m building, the ones I&apos;ve curated, and the certifications
                 earned along the way.
               </p>
             </div>
-            <a href="#classroom" className="bento-action mt-6 inline-flex w-fit items-center gap-2 rounded-full border border-ink/25 px-5 py-2.5 text-[13px] font-medium text-ink transition-colors duration-300 group-hover:border-ink group-hover:bg-ink group-hover:text-white">
+            <a href="#classroom" className="bento-action mt-6 inline-flex w-fit items-center gap-2 rounded-full border border-ink/25 px-5 py-2.5 text-[13px] font-normal text-ink transition-colors duration-300 group-hover:border-ink group-hover:bg-ink group-hover:text-white">
                   Enter the classroom
                 </a>
           </article>
@@ -182,17 +169,16 @@ export function BentoGrid() {
         <motion.div variants={cardReveal} className="order-3 flex lg:order-5 lg:col-span-5">
           <article id="research-vault" className={`${cardBase} min-h-[235px] w-full scroll-mt-24 bg-stone p-7 ring-1 ring-black/5 lg:min-h-0`}>
             <div className="relative z-10 max-w-[62%]">
-              <Kicker className="text-ink/45">Teardowns & case studies</Kicker>
-              <h3 className="mt-3 text-[26px] font-medium leading-tight tracking-[-0.8px] text-ink">
+              <h3 className="text-[26px] font-normal leading-tight tracking-[-0.8px] text-ink">
                 Research Vault
               </h3>
-              <p className="mt-2.5 text-[13px] leading-relaxed text-ink/60">
+              <p className="mt-2.5 text-[13px] leading-relaxed text-muted-ink">
                 Research, teardowns, and evidence worth keeping — across products, markets, and culture.
               </p>
             </div>
             {/* spacer keeps a minimum gap while pushing the button to the bottom */}
             <div className="bento-research-spacer min-h-6 flex-1" />
-            <a href="#research-vault" className="bento-action relative z-10 inline-flex w-fit items-center gap-2 rounded-full border border-ink/25 px-5 py-2.5 text-[13px] font-medium text-ink transition-colors duration-300 group-hover:border-ink group-hover:bg-ink group-hover:text-white">
+            <a href="#research-vault" className="bento-action relative z-10 inline-flex w-fit items-center gap-2 rounded-full border border-ink/25 px-5 py-2.5 text-[13px] font-normal text-ink transition-colors duration-300 group-hover:border-ink group-hover:bg-ink group-hover:text-white">
                   Open the Vault
                 </a>
             <img

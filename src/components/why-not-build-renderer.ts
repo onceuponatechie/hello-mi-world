@@ -42,11 +42,6 @@ function imageCover(c: CanvasRenderingContext2D, img: HTMLImageElement, x: numbe
     const f = Math.max(w / img.width, h / img.height) * scale, iw = img.width * f, ih = img.height * f;
     c.drawImage(img, x + (w - iw) * ox, y + (h - ih) * oy, iw, ih);
 }
-function text(c: CanvasRenderingContext2D, str: string, x: number, y: number, size = 12, color = '#f2f1eb', weight = 400) {
-    c.fillStyle = color;
-    c.font = `${weight} ${size}px Arial, Helvetica, sans-serif`;
-    c.fillText(str, x, y);
-}
 function arrow(c: CanvasRenderingContext2D, x: number, y: number, size = 9, alpha = .5) {
     c.save();
     c.globalAlpha *= alpha;
@@ -62,7 +57,7 @@ function arrow(c: CanvasRenderingContext2D, x: number, y: number, size = 9, alph
     c.restore();
 }
 function abstract(c: CanvasRenderingContext2D, t: number, variant: number) {
-    c.fillStyle = '#121311';
+    c.fillStyle = '#20251D';
     c.fillRect(0, 0, W, H);
     const phase = t / 1000;
     const x = 66 + Math.sin(phase * .52 + variant) * 50, y = 34 + Math.cos(phase * .43) * 23;
@@ -71,7 +66,7 @@ function abstract(c: CanvasRenderingContext2D, t: number, variant: number) {
     g.addColorStop(.16, '#789565');
     g.addColorStop(.42, '#3a5234');
     g.addColorStop(.72, '#20271c');
-    g.addColorStop(1, '#121311');
+    g.addColorStop(1, '#20251D');
     c.fillStyle = g;
     c.fillRect(0, 0, W, H);
     c.save();
@@ -90,8 +85,8 @@ function abstract(c: CanvasRenderingContext2D, t: number, variant: number) {
     c.restore();
     const fade = c.createLinearGradient(0, 70, 0, H);
     fade.addColorStop(0, '#11120f00');
-    fade.addColorStop(.6, '#121311ce');
-    fade.addColorStop(1, '#121311');
+    fade.addColorStop(.6, '#20251Dce');
+    fade.addColorStop(1, '#20251D');
     c.fillStyle = fade;
     c.fillRect(0, 0, W, H);
 }
@@ -99,7 +94,12 @@ export class WhyNotBuildRenderer {
     constructor(private readonly ctx: CanvasRenderingContext2D, private readonly canvas: HTMLCanvasElement, private readonly images: {
         sage: HTMLImageElement;
         ribbon: HTMLImageElement;
-    }) { }
+    }, private readonly fonts: { heading: string; body: string }) { }
+    private text(c: CanvasRenderingContext2D, str: string, x: number, y: number, size: number, color: string, heading = false) {
+        c.fillStyle = color;
+        c.font = `${heading ? 500 : 400} ${size}px ${heading ? this.fonts.heading : this.fonts.body}`;
+        c.fillText(str, x, y);
+    }
     draw(t: number, ctx = this.ctx, width = this.canvas.width, height = this.canvas.height) {
         const c = ctx;
         c.save();
@@ -137,7 +137,7 @@ export class WhyNotBuildRenderer {
         if (s.mode === 'abstract')
             abstract(c, t, idx);
         else {
-            c.fillStyle = '#111310';
+            c.fillStyle = '#20251D';
             c.fillRect(0, 0, W, H);
             const im = s.mode === 'blur' ? this.images.ribbon : this.images.sage;
             c.save();
@@ -181,7 +181,7 @@ export class WhyNotBuildRenderer {
                 metric = String(Math.round(6 * out((local - 160) / 1420))).padStart(2, '0');
             if (idx === 2)
                 metric = String(Math.round(out((local - 160) / 1200))).padStart(2, '0');
-            text(c, metric, 30, 184, idx === 4 ? 49 : 68, '#f2f1e9', 400);
+            this.text(c, metric, 30, 184, idx === 4 ? 49 : 68, '#FFFFFF', true);
             if (idx !== 4)
                 arrow(c, idx === 0 ? 121 : 119, 134, 12, .6);
             else {
@@ -190,8 +190,8 @@ export class WhyNotBuildRenderer {
                 c.arc(222, 171, 3.2, 0, Math.PI * 2);
                 c.fill();
             }
-            s.title.forEach((line, i) => text(c, line, 30, 268 + i * 16, 12.8, '#f3f3e9', 600));
-            s.body.forEach((line, i) => text(c, line, 30, 285 + i * 16, 12.2, '#adb1a6'));
+            s.title.forEach((line, i) => this.text(c, line, 30, 268 + i * 16, 12.8, '#FFFFFF', true));
+            s.body.forEach((line, i) => this.text(c, line, 30, 285 + i * 16, 12.2, '#BEC5B7'));
             if (s.media) {
                 const mediaEnter = out((local - 250) / 700);
                 c.save();
@@ -203,8 +203,8 @@ export class WhyNotBuildRenderer {
             }
         }
         else {
-            s.title.forEach((line, i) => text(c, line, 30, 377 + i * 17, 12.6, '#fbf9f0', 600));
-            s.body.forEach((line, i) => text(c, line, 30, 395 + i * 16, 12, '#d2d7c7'));
+            s.title.forEach((line, i) => this.text(c, line, 30, 377 + i * 17, 12.6, '#FFFFFF', true));
+            s.body.forEach((line, i) => this.text(c, line, 30, 395 + i * 16, 12, '#BEC5B7'));
         }
         c.restore();
         c.restore();
@@ -231,13 +231,13 @@ export class WhyNotBuildRenderer {
             c.stroke();
         }
         c.restore();
-        text(c, 'Why Not Build', 49, 33, 10.5, '#e2e8d7');
-        c.font = '9.5px Arial';
+        this.text(c, 'Why Not Build', 49, 33, 10.5, '#FFFFFF', true);
+        c.font = `400 9.5px ${this.fonts.body}`;
         const pw = c.measureText(s.category).width + 26;
         round(c, 307 - pw, 16, pw, 28, 14);
         c.strokeStyle = '#f5f7e23d';
         c.stroke();
-        text(c, s.category, 319 - pw, 33, 9.5, '#e2e8d2');
+        this.text(c, s.category, 319 - pw, 33, 9.5, '#BEC5B7');
         c.beginPath();
         c.arc(325, 30, 14, 0, Math.PI * 2);
         c.stroke();

@@ -65,8 +65,8 @@ export function PromiseSection() {
     <section id="projects" className="relative px-4 py-16 sm:px-8 sm:py-24">
       <div className="mx-auto max-w-5xl text-center">
         <Reveal dir="down" blur>
-          <h2 className="font-serif text-[clamp(28px,3.6vw,44px)] italic leading-none tracking-tight text-ink">
-            projects
+          <h2 className="text-[clamp(28px,3.6vw,44px)] leading-none tracking-tight text-ink">
+            The Builds
           </h2>
         </Reveal>
         <p className="mx-auto mt-4 max-w-md text-[13px] leading-relaxed text-muted-ink">
@@ -93,7 +93,7 @@ export function PromiseSection() {
       >
         <a
           href="#projects"
-          className="group inline-flex items-center gap-2 rounded-full border border-ink/15 px-5 py-2.5 text-[13px] font-medium text-ink transition-colors hover:bg-ink hover:text-white"
+          className="group inline-flex items-center gap-2 rounded-full border border-ink/15 px-5 py-2.5 text-[13px] font-normal text-ink transition-colors hover:bg-ink hover:text-white"
         >
           Explore all projects
         </a>
@@ -155,14 +155,14 @@ function ProjectCard({
               viewport={{ once: true, margin: "-10%" }}
               transition={{ type: "spring", stiffness: 260, damping: 20, delay: 0.25 }}
               className={`absolute left-4 top-4 z-20 flex max-w-[60%] items-end gap-3 rounded-2xl px-3 py-2 shadow-[0_18px_40px_-16px_rgba(0,0,0,0.35)] md:left-6 md:top-6 ${
-                dark ? "bg-ink text-white" : "bg-card text-ink"
+                dark ? "dark-surface bg-ink text-white" : "bg-card text-ink"
               }`}
             >
               <div className="min-w-0">
-                <div className="text-[20px] font-semibold leading-none tracking-tight md:text-[24px]">
+                <div className="heading text-[20px] leading-none tracking-tight md:text-[24px]">
                   {stat}
                 </div>
-                <div className="mt-1 max-w-[14ch] text-[10px] leading-snug opacity-60 md:text-[11px]">
+                <div className={`mt-1 max-w-[14ch] text-[10px] leading-snug md:text-[11px] ${dark ? "text-muted-dark" : "text-muted-ink"}`}>
                   {statLabel}
                 </div>
               </div>
@@ -182,7 +182,7 @@ function ProjectCard({
               <span className="grid h-9 w-9 place-items-center rounded-full bg-card/85 text-ink opacity-80 backdrop-blur transition-opacity duration-300 group-hover:opacity-100">
                 <ArrowUpRight size={14} />
               </span>
-              <span className="grid h-9 w-9 place-items-center rounded-full bg-ink text-[11px] font-medium text-white">
+              <span className="grid h-9 w-9 place-items-center rounded-full bg-ink text-[11px] font-normal text-white">
                 {String(index + 1).padStart(2, "0")}
               </span>
             </div>
@@ -190,29 +190,29 @@ function ProjectCard({
 
           {/* text */}
           <div className="order-2 flex flex-col justify-center gap-4 p-3 pb-0 pt-1 md:order-1 md:gap-5 md:p-7">
-            <span className="inline-flex w-fit items-center gap-2 rounded-full border border-ink/15 px-3 py-1 text-[12px] text-ink/70">
+            <span className="inline-flex w-fit items-center gap-2 rounded-full border border-ink/15 px-3 py-1 text-[12px] text-muted-ink">
               <span className="h-1.5 w-1.5 rounded-full bg-sage" /> {tag}
             </span>
-            <h3 className="text-[clamp(1.7rem,3vw,2.6rem)] font-medium leading-[1.1] tracking-tight text-ink">
+            <h3 className="text-[clamp(1.7rem,3vw,2.6rem)] font-normal leading-[1.1] tracking-tight text-ink">
               {name}
             </h3>
-            <div className="flex items-center gap-2 text-[12px] uppercase tracking-[0.18em] text-ink/45">
+            <div className="flex items-center gap-2 text-[12px] uppercase tracking-[0.18em] text-muted-ink">
               {year}
               <span className="h-1 w-1 rounded-full bg-ink/30" />
               {role}
             </div>
-            <p className="line-clamp-3 max-w-[44ch] text-[14px] leading-[1.6] text-ink/65 md:line-clamp-none md:text-[15px]">
+            <p className="line-clamp-3 max-w-[44ch] text-[14px] leading-[1.6] text-muted-ink md:line-clamp-none md:text-[15px]">
               {body}
             </p>
             <div className="relative z-20 mt-1 flex flex-wrap items-center gap-4">
-              <a href="#projects" className="inline-flex items-center rounded-full bg-ink px-6 py-2.5 text-[12px] font-medium text-white transition-opacity hover:opacity-90">
+              <a href="#projects" className="inline-flex items-center rounded-full bg-ink px-6 py-2.5 text-[12px] font-normal text-white transition-opacity hover:opacity-90">
                 View Case Study
               </a>
               <a
                 href="#projects"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-1 text-[12px] font-medium text-ink hover:underline"
+                className="inline-flex items-center gap-1 text-[12px] font-normal text-ink hover:underline"
               >
                 Go live <ArrowUpRight size={13} />
               </a>

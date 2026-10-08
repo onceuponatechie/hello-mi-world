@@ -2,27 +2,29 @@
 @source "../";
 
 @theme inline {
-  --color-backdrop: #fcfcfc;
+  --color-backdrop: #ffffff;
+  --color-surround: #E9EAE7;
   --color-paper: #ffffff;
   --color-butter: #fcffe1;
-  --color-ink: #111111;
-  --color-muted-ink: #8a8a8a;
+  --color-ink: #20251D;
+  --color-muted-ink: #71756E;
+  --color-muted-dark: #BEC5B7;
   --color-sage: #a8cf8e;
   --color-butter-soft: #f7f2cf;
   --color-sage-soft: #e3f0da;
   --color-stone: #f1f1f0;
   --color-lavender-soft: #efe7f5;
   --color-background: #ffffff;
-  --color-foreground: oklch(0.129 0.042 264.695);
+  --color-foreground: #20251D;
   --color-card: #ffffff;
-  --color-card-foreground: oklch(0.129 0.042 264.695);
+  --color-card-foreground: #20251D;
   --color-accent: oklch(0.968 0.007 247.896);
-  --color-accent-foreground: oklch(0.208 0.042 265.755);
+  --color-accent-foreground: #20251D;
   --color-border: oklch(0.929 0.013 255.508);
   --color-input: oklch(0.929 0.013 255.508);
   --color-ring: oklch(0.704 0.04 256.788);
-  --font-sans: var(--font-hanken), "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-serif: var(--font-instrument), ui-serif, Georgia, serif;
+  --font-sans: var(--font-jakarta), sans-serif;
+  --font-heading: var(--font-syne), sans-serif;
 }
 @layer base {
   * {
@@ -34,9 +36,10 @@
   }
 
   body {
-    background-color: #fcfcfc;
-    color: #111111;
-    font-family: var(--font-hanken), "Inter", ui-sans-serif, system-ui, sans-serif;
+    background-color: #E9EAE7;
+    color: #20251D;
+    font-family: var(--font-jakarta), sans-serif;
+    font-weight: 400;
     -webkit-font-smoothing: antialiased;
   }
 }
@@ -104,20 +107,15 @@
     padding: clamp(12px, 2.5cqw, 28px);
   }
 
-  .bento-kicker {
-    display: block;
-    font-size: clamp(8px, 1.3cqw, 10px);
-    line-height: 1.2;
-  }
 
   .bento-card h3 {
-    margin-top: 6px;
-    font-size: clamp(18px, 3.2cqw, 26px);
+    margin-top: 0;
+    font-size: clamp(16px, 3.2cqw, 26px);
     line-height: 1.15;
   }
 
   #classroom h3 {
-    font-size: clamp(26px, 4.2cqw, 34px);
+    font-size: clamp(22px, 4.2cqw, 30px);
   }
 
   .bento-card p {
@@ -165,7 +163,7 @@
 
   #tools-and-templates h3,
   #classroom h3 {
-    margin-top: 8px;
+    margin-top: 0;
   }
 
   #tools-and-templates p,
@@ -182,5 +180,54 @@
     padding: 8px 16px;
     font-size: 12px;
     line-height: 1.2;
+  }
+}
+
+/* Type roles are shared by headings, DOM captions, and the motion card. */
+h1, h2, h3, h4, h5, h6, .heading {
+  font-family: var(--font-syne), sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  color: #20251D;
+}
+
+.dark-surface :is(h1, h2, h3, h4, h5, h6, .heading),
+.dark-surface.heading,
+.bento-portrait h3 {
+  color: #FFFFFF;
+}
+
+.dark-surface {
+  color: #BEC5B7;
+}
+
+.site-surround {
+  --page-gutter: 10px;
+  --page-radius: 20px;
+  padding: var(--page-gutter);
+  background: #E9EAE7;
+}
+
+.site-panel {
+  width: 100%;
+  max-width: 1440px;
+  min-height: calc(100svh - var(--page-gutter) * 2);
+  margin-inline: auto;
+  overflow: clip;
+  border-radius: var(--page-radius);
+  background: #FFFFFF;
+}
+
+@media (600px <= width < 1024px) {
+  .site-surround {
+    --page-gutter: 20px;
+    --page-radius: 24px;
+  }
+}
+
+@media (width >= 1024px) {
+  .site-surround {
+    --page-gutter: 32px;
+    --page-radius: 28px;
   }
 }
