@@ -60,7 +60,7 @@ export function Preloader() {
                   filter: "blur(10px)",
                 }}
               />
-              <div className="relative z-10 flex text-[52px] font-medium tracking-tight text-neutral-500">
+              <div className="heading relative z-10 flex text-[52px] tracking-tight text-ink">
                 {brand.split("").map((ch, i) => (
                   <motion.span
                     key={i}
@@ -73,7 +73,7 @@ export function Preloader() {
                 ))}
               </div>
             </div>
-            <div className="mt-6 text-[15px] tabular-nums text-neutral-500">
+            <div className="mt-6 text-[15px] tabular-nums text-muted-ink">
               {pct}%
             </div>
           </div>

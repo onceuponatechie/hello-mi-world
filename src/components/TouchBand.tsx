@@ -7,18 +7,15 @@ import { site } from "@/config/site";
 export function TouchBand() {
   return (
     <section id="newsletter" className="scroll-mt-10 px-4 py-10 sm:px-8 sm:py-16">
-      <Reveal dir="up" className="mx-auto max-w-5xl overflow-hidden rounded-[28px] bg-ink p-6 text-white sm:p-10">
+      <Reveal dir="up" className="mx-auto max-w-5xl overflow-hidden dark-surface rounded-[28px] bg-ink p-6 text-white sm:p-10">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:items-center">
           <Reveal dir="left" delay={0.12} className="min-w-0">
-            <span className="inline-flex items-center gap-1 rounded-full bg-white/10 px-3 py-1 text-[10px] font-semibold tracking-wider">
-              ✦ THE LETTER
-            </span>
-            <h2 className="mt-5 text-[clamp(28px,3.4vw,44px)] font-medium leading-tight tracking-tight">
+            <h2 className=" text-[clamp(28px,3.4vw,44px)] font-normal leading-tight tracking-tight">
               Good things, straight
               <br />
-              <span className="font-serif italic">to your inbox</span>
+              <span className="">to your inbox</span>
             </h2>
-            <p className="mt-4 max-w-md text-[13px] leading-relaxed text-white/70">
+            <p className="mt-4 max-w-md text-[13px] leading-relaxed text-muted-dark">
               One idea, one artifact, every Tuesday. No filler, no funnels.
               Unsubscribe with one gentle click.
             </p>
@@ -26,7 +23,7 @@ export function TouchBand() {
               {"★★★★★".split("").map((s, i) => (
                 <span key={i} className="text-butter">{s}</span>
               ))}
-              <span className="ml-2 text-[11px] text-white/60">Loved by 3,400+ readers</span>
+              <span className="ml-2 text-[11px] text-muted-dark">Loved by 3,400+ readers</span>
             </div>
           </Reveal>
           <Reveal dir="right" delay={0.2}>
@@ -35,7 +32,7 @@ export function TouchBand() {
             method="get"
             className="rounded-2xl bg-white/5 p-4 ring-1 ring-white/10"
           >
-            <label htmlFor="newsletter-email" className="text-[10px] font-semibold uppercase tracking-wider text-white/50">
+            <label htmlFor="newsletter-email" className="text-[10px] font-normal text-muted-dark">
               Your email
             </label>
             <input
@@ -45,12 +42,12 @@ export function TouchBand() {
               required
               type="email"
               placeholder="you@somewhere.good"
-              className="mt-2 w-full rounded-full bg-white/10 px-4 py-3 text-[13px] text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-butter"
+              className="mt-2 w-full rounded-full bg-white/10 px-4 py-3 text-[13px] text-white placeholder:text-muted-dark focus:outline-none focus:ring-2 focus:ring-butter"
             />
-            <button className="mt-3 inline-flex w-full items-center justify-center gap-1 rounded-full bg-[#c9e5b8] px-4 py-3 text-[13px] font-medium text-ink transition hover:opacity-90">
+            <button className="mt-3 inline-flex w-full items-center justify-center gap-1 rounded-full bg-[#c9e5b8] px-4 py-3 text-[13px] font-normal text-ink transition hover:opacity-90">
               Send it my way <ArrowUpRight size={14} />
             </button>
-            <p className="mt-3 text-center text-[10px] text-white/40">
+            <p className="mt-3 text-center text-[10px] text-muted-dark">
               Finish subscribing on Substack. Just Tuesdays.
             </p>
           </form>
@@ -63,16 +60,16 @@ export function TouchBand() {
 
 export function Footer() {
   return (
-    <footer id="contact" className="relative overflow-hidden bg-ink px-4 pb-10 pt-14 text-paper sm:px-8 sm:pt-20">
+    <footer id="contact" className="dark-surface relative overflow-hidden bg-ink px-4 pb-10 pt-14 text-paper sm:px-8 sm:pt-20">
       <div className="relative mx-auto max-w-5xl">
         <div className="relative overflow-hidden rounded-[24px] border border-paper/10 bg-ink p-8 text-center shadow-[inset_0_1px_0_rgba(255,255,255,0.07)] sm:p-12">
           <div className="relative">
             <Reveal dir="down">
-              <h3 className="mx-auto max-w-[20ch] text-[clamp(22px,2.4vw,30px)] font-medium leading-tight tracking-tight">
-                Let&apos;s build something people <span className="font-serif italic">remember</span>.
+              <h3 className="mx-auto max-w-[20ch] text-[clamp(22px,2.4vw,30px)] font-normal leading-tight tracking-tight">
+                Let&apos;s build something people <span className="">remember</span>.
               </h3>
             </Reveal>
-            <p className="mx-auto mt-3 max-w-[38ch] text-[13px] leading-relaxed text-paper/60">
+            <p className="mx-auto mt-3 max-w-[38ch] text-[13px] leading-relaxed text-muted-dark">
               <TypeWords
                 delay={0.2}
                 step={0.035}
@@ -83,14 +80,14 @@ export function Footer() {
             <Reveal dir="down" delay={0.35}>
               <a
                 href={site.contact}
-                className="group mt-6 inline-flex items-center gap-2 rounded-full bg-sage px-6 py-3 text-[13px] font-medium text-ink transition-all hover:bg-ink hover:text-white hover:shadow-[0_18px_40px_-18px_rgba(0,0,0,0.6)]"
+                className="group mt-6 inline-flex items-center gap-2 rounded-full bg-sage px-6 py-3 text-[13px] font-normal text-ink transition-all hover:bg-ink hover:text-white hover:shadow-[0_18px_40px_-18px_rgba(0,0,0,0.6)]"
               >
                 Book a coffee
                 <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
               </a>
             </Reveal>
 
-            <nav className="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-[12.5px] font-medium text-paper/70">
+            <nav className="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-[12.5px] font-normal text-muted-dark">
               {[
                 { label: "Home", href: "/" },
                 { label: "Why Not Build?", href: site.stories },
@@ -104,7 +101,7 @@ export function Footer() {
               ))}
             </nav>
 
-            <div className="mt-6 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-[12px] text-paper/50">
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-[12px] text-muted-dark">
               {["Twitter / X", "LinkedIn", "Instagram"].map((l) => (
                 <a key={l} href="#" className="transition-colors hover:text-paper">
                   {l}
@@ -115,7 +112,7 @@ export function Footer() {
               </a>
             </div>
 
-            <div className="mt-9 border-t border-paper/10 pt-5 text-[11px] text-paper/45">
+            <div className="mt-9 border-t border-paper/10 pt-5 text-[11px] text-muted-dark">
               <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1">
                 <a href="#" className="transition-colors hover:text-paper">Privacy</a>
                 <span className="h-1 w-1 rounded-full bg-paper/20" />

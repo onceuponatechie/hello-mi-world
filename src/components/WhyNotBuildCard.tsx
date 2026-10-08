@@ -23,7 +23,12 @@ export function WhyNotBuildCard() {
     const ribbon = new Image();
     sage.src = "/assets/sage-laboratory.jpg";
     ribbon.src = "/assets/ribbon-laboratory.jpg";
-    const renderer = new WhyNotBuildRenderer(context, canvas, { sage, ribbon });
+    const styles = getComputedStyle(host);
+    const fonts = {
+      heading: styles.getPropertyValue("--font-syne").trim(),
+      body: styles.getPropertyValue("--font-jakarta").trim(),
+    };
+    const renderer = new WhyNotBuildRenderer(context, canvas, { sage, ribbon }, fonts);
     const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
     pausedRef.current = motion.matches;
     if (motion.matches) elapsedRef.current = 1900;
@@ -82,7 +87,7 @@ export function WhyNotBuildCard() {
     };
 
     // Draw even if one image fails; typography and procedural motion still work.
-    Promise.allSettled([sage.decode(), ribbon.decode()]).then(() => {
+    Promise.allSettled([sage.decode(), ribbon.decode(), document.fonts.load(`500 16px ${fonts.heading}`), document.fonts.load(`400 12px ${fonts.body}`)]).then(() => {
       if (disposed) return;
       draw();
       previous = performance.now();
@@ -107,12 +112,12 @@ export function WhyNotBuildCard() {
   };
 
   return (
-    <div ref={hostRef} className="mx-auto w-full lg:max-w-[360px] font-[Arial,Helvetica,sans-serif]">
+    <div ref={hostRef} className="dark-surface mx-auto w-full lg:max-w-[360px]">
       <div
         role="group"
         tabIndex={0}
         aria-label="Why Not Build: six territories"
-        className="relative aspect-[360/486] w-full overflow-hidden rounded-[27px] bg-[#121311] shadow-[0_17px_26px_-20px_rgba(43,57,40,.31),0_2px_3px_rgba(21,29,21,.08)] ring-1 ring-inset ring-white/[0.13] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e7efd9]"
+        className="relative aspect-[360/486] w-full overflow-hidden rounded-[27px] bg-ink shadow-[0_17px_26px_-20px_rgba(43,57,40,.31),0_2px_3px_rgba(21,29,21,.08)] ring-1 ring-inset ring-white/[0.13] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e7efd9]"
         onKeyDown={(event) => {
           if (event.key === " " && event.target === event.currentTarget) {
             event.preventDefault();

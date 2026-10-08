@@ -143,7 +143,7 @@ export function Hero() {
         </motion.div>
 
         <motion.div {...rise(0.68)} className="mt-5">
-          <span className="inline-flex items-center gap-2 rounded-full border border-black/5 bg-card px-4 py-2 text-[12px] font-medium text-ink/70 shadow-sm">
+          <span className="inline-flex items-center gap-2 rounded-full border border-black/5 bg-card px-4 py-2 text-[12px] font-normal text-muted-ink shadow-sm">
             <span className="relative grid h-2 w-2 place-items-center">
               <span className="absolute inline-flex h-2 w-2 animate-ping rounded-full bg-sage opacity-75" />
               <span className="relative h-2 w-2 rounded-full bg-sage" />
@@ -170,21 +170,21 @@ export function Hero() {
         </h1>
 
 
-        <motion.p {...rise(1.7)} className="mt-7 text-[16px] text-ink/70">
+        <motion.p {...rise(1.7)} className="mt-7 text-[16px] text-muted-ink">
           <TypeWords text="Researcher · Builder · Storyteller" delay={1.75} step={0.09} inView={false} />
         </motion.p>
 
         <motion.div {...rise(2.1)} className="mt-9 flex flex-col items-center justify-center gap-3 min-[600px]:flex-row">
           <a
             href="#projects"
-            className="group inline-flex items-center gap-2 rounded-full bg-sage px-6 py-3 text-[13px] font-medium text-ink transition-all hover:bg-ink hover:text-white hover:shadow-[0_18px_40px_-18px_rgba(0,0,0,0.6)]"
+            className="group inline-flex items-center gap-2 rounded-full bg-sage px-6 py-3 text-[13px] font-normal text-ink transition-all hover:bg-ink hover:text-white hover:shadow-[0_18px_40px_-18px_rgba(0,0,0,0.6)]"
           >
             Start here
             <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
           </a>
           <a
             href="#resources"
-            className="group inline-flex items-center gap-2 rounded-full border border-ink/15 px-6 py-3 text-[13px] font-medium text-ink transition-colors hover:bg-ink hover:text-white"
+            className="group inline-flex items-center gap-2 rounded-full border border-ink/15 px-6 py-3 text-[13px] font-normal text-ink transition-colors hover:bg-ink hover:text-white"
           >
             Grab a freebie
             <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />

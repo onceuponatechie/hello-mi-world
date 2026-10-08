@@ -1,6 +1,6 @@
 # Essy Udeme — Hello Mi World
 
-A Next.js App Router replica of `onceuponatechie/butter-canvas-dream` at source commit `eb90cfa`. The original images, Hanken Grotesk and Instrument Serif typography, responsive layouts, shadows, and motion timing are preserved.
+A Next.js App Router replica of `onceuponatechie/butter-canvas-dream` at source commit `eb90cfa`. The original images, responsive layouts, shadows, and motion timing are preserved. The design branch uses Syne 500 for headings and Plus Jakarta Sans 400 for supporting text, with a white panel on a grey surround.
 
 ## Included
 
