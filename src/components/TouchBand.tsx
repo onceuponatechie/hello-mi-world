@@ -1,6 +1,5 @@
 "use client";
 
-import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { Reveal, TypeWords } from "@/components/Reveal";
 import { site } from "@/config/site";
 
@@ -45,7 +44,7 @@ export function TouchBand() {
               className="mt-2 w-full rounded-full bg-white/10 px-4 py-3 text-[13px] text-white placeholder:text-muted-dark focus:outline-none focus:ring-2 focus:ring-butter"
             />
             <button className="mt-3 inline-flex w-full items-center justify-center gap-1 rounded-full bg-[#c9e5b8] px-4 py-3 text-[13px] font-normal text-ink transition hover:opacity-90">
-              Send it my way <ArrowUpRight size={14} />
+              Send it my way
             </button>
             <p className="mt-3 text-center text-[10px] text-muted-dark">
               Finish subscribing on Substack. Just Tuesdays.
@@ -83,7 +82,6 @@ export function Footer() {
                 className="group mt-6 inline-flex items-center gap-2 rounded-full bg-sage px-6 py-3 text-[13px] font-normal text-ink transition-all hover:bg-ink hover:text-white hover:shadow-[0_18px_40px_-18px_rgba(0,0,0,0.6)]"
               >
                 Book a coffee
-                <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
               </a>
             </Reveal>
 

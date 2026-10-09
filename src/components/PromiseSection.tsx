@@ -1,8 +1,7 @@
 "use client";
 
-import { ArrowUpRight } from "lucide-react";
 import { motion, useReducedMotion, useScroll, useSpring, useTransform, type MotionValue } from "framer-motion";
-import { useRef } from "react";
+import { useRef, type CSSProperties } from "react";
 import { Reveal, TypeWords } from "@/components/Reveal";
 const laptopDash = "/assets/essy-laptop-dash.jpg";
 const insight = "/assets/essy-insight.jpg";
@@ -60,7 +59,7 @@ export function PromiseSection() {
   const stackRef = useRef<HTMLDivElement>(null);
   // Measure the normal-flow stack, never a transformed sticky card. Smooth the
   // background scale without delaying the incoming card's native sticky position.
-  const { scrollYProgress } = useScroll({ target: stackRef, offset: ["start 72px", "end 72px"] });
+  const { scrollYProgress } = useScroll({ target: stackRef, offset: ["start start", "end end"] });
   const progress = useSpring(scrollYProgress, { stiffness: 260, damping: 40, mass: 0.25 });
   return (
     <section id="projects" className="relative px-4 py-16 sm:px-8 sm:py-24">
@@ -126,7 +125,7 @@ function ProjectCard({
   return (
     <div
       className="project-sticky mt-6 first:mt-0 md:mt-10"
-      style={{ zIndex: index + 1, top: 72 + index * 12 }}
+      style={{ zIndex: index + 1, "--project-index": index } as CSSProperties}
     >
       <motion.article
         style={{
@@ -139,7 +138,7 @@ function ProjectCard({
 
         <div className="grid h-full grid-cols-1 gap-4 md:grid-cols-2 md:gap-5">
           {/* image — fills its half of the card with equal inset on every side */}
-          <div className="relative order-1 aspect-[16/10] overflow-hidden rounded-[20px] ring-1 ring-inset ring-paper/20 md:order-2 md:aspect-auto md:rounded-[28px]">
+          <div className="project-image relative order-1 aspect-[16/10] overflow-hidden rounded-[20px] ring-1 ring-inset ring-paper/20 md:order-2 md:aspect-auto md:rounded-[28px]">
             <img
               src={img}
               alt={name}
@@ -179,9 +178,6 @@ function ProjectCard({
 
             {/* corner marks */}
             <div className="pointer-events-none absolute bottom-4 right-4 z-20 flex items-center gap-2">
-              <span className="grid h-9 w-9 place-items-center rounded-full bg-card/85 text-ink opacity-80 backdrop-blur transition-opacity duration-300 group-hover:opacity-100">
-                <ArrowUpRight size={14} />
-              </span>
               <span className="grid h-9 w-9 place-items-center rounded-full bg-ink text-[11px] font-normal text-white">
                 {String(index + 1).padStart(2, "0")}
               </span>
@@ -189,7 +185,7 @@ function ProjectCard({
           </div>
 
           {/* text */}
-          <div className="order-2 flex flex-col justify-center gap-4 p-3 pb-0 pt-1 md:order-1 md:gap-5 md:p-7">
+          <div className="project-copy order-2 flex flex-col justify-center gap-4 p-3 pb-0 pt-1 md:order-1 md:gap-5 md:p-7">
             <span className="inline-flex w-fit items-center gap-2 rounded-full border border-ink/15 px-3 py-1 text-[12px] text-muted-ink">
               <span className="h-1.5 w-1.5 rounded-full bg-sage" /> {tag}
             </span>
@@ -214,7 +210,7 @@ function ProjectCard({
                 rel="noreferrer"
                 className="inline-flex items-center gap-1 text-[12px] font-normal text-ink hover:underline"
               >
-                Go live <ArrowUpRight size={13} />
+                Go live
               </a>
             </div>
           </div>

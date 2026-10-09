@@ -1,12 +1,11 @@
 "use client";
 
-import { ArrowUpRight } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import { WhyNotBuildCard } from "@/components/WhyNotBuildCard";
 
 const resources = [
-  { id: "tools-and-templates", title: "Tools & Templates", body: "The files and checklists I actually use. Yours to put to work.", image: "/assets/essy-notes.jpg", action: "Browse the kits" },
-  { id: "research-vault", title: "Research Vault", body: "Research and teardowns worth keeping, with the thinking behind them.", image: "/assets/product-lab-icon-new.png", action: "Open the Vault" },
+  { id: "tools-and-templates", title: "Tools & Templates", body: "Files and checklists for your next idea.", image: "/assets/essy-notes.jpg", action: "Browse the kits" },
+  { id: "research-vault", title: "Research Vault", body: "Product teardowns, with the thinking behind them.", image: "/assets/product-lab-icon-new.png", action: "Open the Vault" },
 ];
 
 export function ResourceSection() {
@@ -17,7 +16,7 @@ export function ResourceSection() {
         <div className="resource-copy">
           <Reveal dir="up">
             <h2 className="text-[clamp(30px,3.4vw,46px)] leading-[1.12] tracking-tight">A few things for you.</h2>
-            <p className="mt-3 max-w-md text-[14px] leading-relaxed text-muted-ink">Things I’ve made, things I’ve learned, and things you can borrow.</p>
+            <p className="mt-3 max-w-md text-[14px] leading-relaxed text-muted-ink">A few useful things you can borrow.</p>
           </Reveal>
           <div className="resource-list">
             {resources.map((resource, i) => (
@@ -29,7 +28,6 @@ export function ResourceSection() {
                     <p>{resource.body}</p>
                     <span className="resource-link-label">{resource.action}</span>
                   </div>
-                  <ArrowUpRight className="resource-arrow" size={19} />
                 </a>
               </Reveal>
             ))}

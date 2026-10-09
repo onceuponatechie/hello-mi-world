@@ -24,7 +24,7 @@ export function Nav() {
           Essy
         </Link>
 
-        <nav className="hidden items-center gap-4 md:gap-8 min-[600px]:flex">
+        <nav aria-label="Main navigation" className="hero-navigation hidden items-center gap-4 md:gap-8 min-[600px]:flex">
           <a
             href={site.stories}
             className="text-[13px] font-normal text-ink transition-colors hover:text-ink"
@@ -32,7 +32,7 @@ export function Nav() {
             Stories
           </a>
 
-          <div className="group relative">
+          <div className="group relative flex items-center">
             <a href="#resources" className="inline-flex items-center gap-1 text-[13px] font-normal text-ink transition-colors hover:text-ink">
               Resources <ChevronDown size={13} className="transition-transform group-hover:rotate-180" />
             </a>

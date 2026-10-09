@@ -12,7 +12,7 @@ export default function Home() {
       <Preloader />
       <main className="relative mx-auto w-full max-w-[1440px] overflow-x-clip bg-backdrop">
         <div className="relative overflow-hidden">
-          <img src="/assets/hero-cover.webp" alt="" aria-hidden className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-50" />
+          <img src="/assets/hero-cover.webp" alt="" aria-hidden className="pointer-events-none absolute inset-0 h-full w-full object-cover" fetchPriority="high" />
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-backdrop" />
           <div className="relative"><Nav /><Hero /></div>
         </div>
