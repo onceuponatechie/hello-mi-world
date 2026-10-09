@@ -1,12 +1,12 @@
 # Essy Udeme — Hello Mi World
 
-A Next.js App Router replica of `onceuponatechie/butter-canvas-dream` at source commit `eb90cfa`. The original images, responsive layouts, shadows, and motion timing are preserved. The design branch uses Syne 500 for headings and Plus Jakarta Sans 400 for supporting text, with a white panel on a grey surround.
+A Next.js App Router portfolio based on `onceuponatechie/butter-canvas-dream` at source commit `eb90cfa`. The design branch uses Syne 500 for headings and Plus Jakarta Sans 400 for supporting text, with a centred collage hero on a white background. It retains the original artwork and Why Not Build canvas motion.
 
 ## Included
 
-- Header, Resources dropdown, mobile navigation, animated hero, image rotation, and loading screen.
-- Five resource cards, including the six-scene 360×486 Why Not Build canvas animation with direct scene selection, keyboard controls, and pause/play.
-- What I Do, four stacking project cards, newsletter, and footer.
+- Header, Resources dropdown, mobile navigation, floating hero collage, and loading screen.
+- Two resource links, a non-clickable experience manifesto, and the six-scene 360×486 Why Not Build canvas animation with direct scene selection and keyboard pause/play.
+- Three-step research/build/story process, four project cards with spring-smoothed scaling, newsletter, and footer. Project cards use normal flow on short screens so their content remains reachable.
 - Substack signup handoff, metadata, and a custom favicon.
 
 The personal reading grid, product practice cards, and adventure carousel are intentionally excluded. Unused Lovable tooling, TanStack/Vite routing, UI libraries, assets, and content modules are excluded.
@@ -45,4 +45,4 @@ Project detail/live links, resource destinations, social profiles, Privacy, and 
 
 ## Verification
 
-Lint, TypeScript, and the production build are required before pushes. Browser checks cover desktop, tablet, and mobile widths, mobile menu behavior, project stacking, canvas controls, image loading, internal anchors, and the Substack handoff. The tablet reference is the supplied Lovable screenshot; responsive behavior and motion come from the original source.
+Lint, TypeScript, and the production build are required before pushes. Browser checks cover desktop, tablet, and mobile widths, mobile menu behavior, project stacking, canvas controls, image loading, internal anchors, and the Substack handoff. The collage hero and resource layout adapt to the new design; the Why Not Build composition and timing come from the original source.

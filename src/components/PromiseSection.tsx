@@ -1,7 +1,7 @@
 "use client";
 
 import { ArrowUpRight } from "lucide-react";
-import { motion, useScroll, useTransform, type MotionValue } from "framer-motion";
+import { motion, useReducedMotion, useScroll, useSpring, useTransform, type MotionValue } from "framer-motion";
 import { useRef } from "react";
 import { Reveal, TypeWords } from "@/components/Reveal";
 const laptopDash = "/assets/essy-laptop-dash.jpg";
@@ -58,9 +58,10 @@ const tints = ["bg-butter-soft", "bg-sage-soft", "bg-lavender-soft", "bg-[#f6f6f
 
 export function PromiseSection() {
   const stackRef = useRef<HTMLDivElement>(null);
-  // Measure the normal-flow stack, rather than a card whose sticky position
-  // changes while scrolling. Each card still recedes by the source's 6%/24px.
-  const { scrollYProgress } = useScroll({ target: stackRef, offset: ["start start", "end start"] });
+  // Measure the normal-flow stack, never a transformed sticky card. Smooth the
+  // background scale without delaying the incoming card's native sticky position.
+  const { scrollYProgress } = useScroll({ target: stackRef, offset: ["start 72px", "end 72px"] });
+  const progress = useSpring(scrollYProgress, { stiffness: 260, damping: 40, mass: 0.25 });
   return (
     <section id="projects" className="relative px-4 py-16 sm:px-8 sm:py-24">
       <div className="mx-auto max-w-5xl text-center">
@@ -78,9 +79,9 @@ export function PromiseSection() {
         </p>
       </div>
 
-      <div ref={stackRef} className="relative mt-14">
+      <div ref={stackRef} className="project-stack relative mt-14">
         {projects.map((p, i) => (
-          <ProjectCard key={p.name} index={i} total={projects.length} progress={scrollYProgress} {...p} />
+          <ProjectCard key={p.name} index={i} total={projects.length} progress={progress} {...p} />
         ))}
       </div>
 
@@ -117,23 +118,22 @@ function ProjectCard({
   total,
   progress,
 }: ProjectProps) {
-  const scale = useTransform(progress, [index / total, (index + 1) / total], [1, 0.94]);
-  const y = useTransform(progress, [index / total, (index + 1) / total], [0, -24]);
+  const reduce = useReducedMotion();
+  const scale = useTransform(progress, [index / total, (index + 1) / total], [1, 0.96]);
   const isLast = index === total - 1;
   const dark = index % 2 === 0;
 
   return (
     <div
-      className="sticky top-16 mt-4 first:mt-0 md:mt-6"
-      style={{ zIndex: index + 1 }}
+      className="project-sticky mt-6 first:mt-0 md:mt-10"
+      style={{ zIndex: index + 1, top: 72 + index * 12 }}
     >
       <motion.article
         style={{
-          scale: isLast ? 1 : scale,
-          y: isLast ? 0 : y,
+          scale: isLast || reduce ? 1 : scale,
           transformOrigin: "top center",
         }}
-        className={`premium-card group relative mx-auto h-[540px] max-w-6xl overflow-hidden rounded-[32px] p-4 md:rounded-[36px] md:p-5 ${tints[index % tints.length]}`}
+        className={`project-card premium-card group relative mx-auto max-w-6xl overflow-hidden rounded-[28px] p-4 md:rounded-[36px] md:p-5 ${tints[index % tints.length]}`}
       >
         <a href="#projects" aria-label={name} className="absolute inset-0 z-10" />
 
@@ -201,7 +201,7 @@ function ProjectCard({
               <span className="h-1 w-1 rounded-full bg-ink/30" />
               {role}
             </div>
-            <p className="line-clamp-3 max-w-[44ch] text-[14px] leading-[1.6] text-muted-ink md:line-clamp-none md:text-[15px]">
+            <p className="max-w-[44ch] text-[14px] leading-[1.6] text-muted-ink md:text-[15px]">
               {body}
             </p>
             <div className="relative z-20 mt-1 flex flex-wrap items-center gap-4">

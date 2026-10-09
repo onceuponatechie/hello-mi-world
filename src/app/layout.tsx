@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${sans.variable} ${heading.variable}`}>
-      <body><div className="site-surround"><div className="site-panel">{children}</div></div></body>
+      <body>{children}</body>
     </html>
   );
 }
