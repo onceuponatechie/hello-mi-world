@@ -241,7 +241,7 @@ export class WhyNotBuildRenderer {
         c.beginPath();
         c.arc(325, 30, 14, 0, Math.PI * 2);
         c.stroke();
-        arrow(c, 320, 25, 10, .72);
+        this.text(c, 'Read', 315, 33, 8, '#BEC5B7');
     }
     smallMedia(c: CanvasRenderingContext2D, im: HTMLImageElement, x: number, y: number, w: number, h: number, n: number, t: number) {
         c.save();
