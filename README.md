@@ -47,4 +47,4 @@ Project detail/live links, resource destinations, social profiles, Privacy, and 
 
 Lint, TypeScript, and the production build are required before pushes. Browser checks cover desktop, tablet, and mobile widths, mobile menu behavior, project stacking, canvas controls, image loading, internal anchors, and the Substack handoff. The collage hero and resource layout adapt to the new design; the Why Not Build composition and timing come from the original source.
 
-The production build also checks that the generated homepage links CSS containing the hero, resources, process, and project styles. The portfolio stylesheet is imported directly by the root layout so Next.js tracks it independently of Tailwind's PostCSS cache.
+The production build checks the homepage's client reference manifest for CSS containing the hero, resources, process, and project styles. This works with static HTML and server-rendered deployments. The portfolio stylesheet is imported directly by the root layout so Next.js tracks it independently of Tailwind's PostCSS cache.

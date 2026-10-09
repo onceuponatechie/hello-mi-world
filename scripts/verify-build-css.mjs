@@ -1,7 +1,7 @@
-import { readFile, readdir } from "node:fs/promises";
-import { basename, resolve } from "node:path";
+import { readFile } from "node:fs/promises";
+import { resolve } from "node:path";
 
-// Check the CSS linked by the generated homepage, not orphaned build chunks.
+// Check the homepage's CSS references for both static and server-rendered builds.
 // A nested PostCSS import previously vanished from Vercel's generated CSS.
 const buildDirectory = resolve(process.argv[2] ?? ".next");
 const requiredSelectors = [
@@ -11,26 +11,20 @@ const requiredSelectors = [
 ];
 
 try {
-  const html = await readFile(resolve(buildDirectory, "server/app/index.html"), "utf8");
-  const stylesheetLinks = [...html.matchAll(/<link\b[^>]*>/g)]
-    .map(([tag]) => tag)
-    .filter(tag => /\brel="stylesheet"/.test(tag))
-    .map(tag => tag.match(/\bhref="([^"]+)"/)?.[1]);
-  if (!stylesheetLinks.length) throw new Error("The built homepage has no linked stylesheets.");
+  const manifestSource = await readFile(resolve(buildDirectory, "server/app/page_client-reference-manifest.js"), "utf8");
+  const manifestJson = manifestSource.match(/globalThis\.__RSC_MANIFEST\["\/page"\]\s*=\s*(\{[\s\S]*\})/)?.[1];
+  if (!manifestJson) throw new Error("Cannot read the homepage's client reference manifest.");
+  const manifest = JSON.parse(manifestJson);
+  const stylesheetPaths = [...new Set(Object.values(manifest.entryCSSFiles ?? {})
+    .flat().map(entry => entry.path))];
+  if (!stylesheetPaths.length) throw new Error("The built homepage has no referenced stylesheets.");
 
-  const staticDirectory = resolve(buildDirectory, "static");
-  const cssFiles = (await readdir(staticDirectory, { recursive: true }))
-    .filter(file => file.endsWith(".css"));
-  const stylesheets = await Promise.all(stylesheetLinks.map(href => {
-    if (!href?.startsWith("/_next/static/") || href.includes("..")) {
-      throw new Error(`Unexpected built stylesheet path: ${href}`);
+  const stylesheets = await Promise.all(stylesheetPaths.map(path => {
+    if (typeof path !== "string" || !path.startsWith("static/") || path.includes("..") || !path.endsWith(".css")) {
+      throw new Error(`Unexpected built stylesheet path: ${path}`);
     }
-    // Public asset URLs can have deployment queries and versioned segments.
-    // Match the linked filename to the actual emitted file on disk.
-    const filename = basename(new URL(href, "https://build.invalid").pathname);
-    const matchingFiles = cssFiles.filter(file => basename(file) === filename);
-    if (matchingFiles.length !== 1) throw new Error(`Cannot resolve built stylesheet: ${href}`);
-    return readFile(resolve(staticDirectory, matchingFiles[0]), "utf8");
+    // The manifest records emitted paths, independent of public deployment URLs.
+    return readFile(resolve(buildDirectory, path), "utf8");
   }));
   const css = stylesheets.join("\n");
   const missing = requiredSelectors.filter(selector => !css.includes(`${selector}{`));
