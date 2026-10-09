@@ -1,6 +1,6 @@
 import { Nav } from "@/components/Nav";
 import { Hero } from "@/components/Hero";
-import { BentoGrid } from "@/components/BentoGrid";
+import { ResourceSection } from "@/components/ResourceSection";
 import { AboutSection } from "@/components/AboutSection";
 import { PromiseSection } from "@/components/PromiseSection";
 import { TouchBand, Footer } from "@/components/TouchBand";
@@ -12,11 +12,11 @@ export default function Home() {
       <Preloader />
       <main className="relative mx-auto w-full max-w-[1440px] overflow-x-clip bg-backdrop">
         <div className="relative overflow-hidden">
-          <img src="/assets/hero-cover.webp" alt="" aria-hidden className="pointer-events-none absolute inset-0 h-full w-full object-cover" fetchPriority="high" />
+          <img src="/assets/hero-cover.webp" alt="" aria-hidden className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-50" />
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-backdrop" />
           <div className="relative"><Nav /><Hero /></div>
         </div>
-        <BentoGrid />
+        <ResourceSection />
         <AboutSection />
         <PromiseSection />
         <TouchBand />
