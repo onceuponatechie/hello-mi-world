@@ -1,5 +1,4 @@
 @import "tailwindcss" source(none);
-@import "./portfolio.css";
 @source "../";
 
 @theme inline {
