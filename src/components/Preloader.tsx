@@ -1,25 +1,30 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useId, useState } from "react";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 
 export function Preloader() {
   const [pct, setPct] = useState(0);
   const [done, setDone] = useState(false);
+  const id = useId().replace(/:/g, "");
+  const reduce = useReducedMotion();
   const brand = "Essy";
 
   useEffect(() => {
+    let progress = 0;
+    let finish: ReturnType<typeof setTimeout> | undefined;
     const t = setInterval(() => {
-      setPct((p) => {
-        if (p >= 100) {
-          clearInterval(t);
-          setTimeout(() => setDone(true), 400);
-          return 100;
-        }
-        return p + 2;
-      });
+      progress = Math.min(100, progress + 2);
+      setPct(progress);
+      if (progress === 100) {
+        clearInterval(t);
+        finish = setTimeout(() => setDone(true), 220);
+      }
     }, 40);
-    return () => clearInterval(t);
+    return () => {
+      clearInterval(t);
+      clearTimeout(finish);
+    };
   }, []);
 
   return (
@@ -27,17 +32,30 @@ export function Preloader() {
       {!done && (
         <motion.div
           initial={{ opacity: 1 }}
-          exit={{ opacity: 0, scale: 1.05 }}
-          transition={{ duration: 0.6, ease: "easeInOut" }}
-          className="fixed inset-0 z-[100] flex items-center justify-center"
-          style={{
-            background:
-              "radial-gradient(circle at 50% 45%, #fafafa 0%, #ececee 70%, #e4e4e4 100%)",
-          }}
+          exit={{ opacity: reduce ? 0 : 1 }}
+          transition={{ duration: reduce ? 0.18 : 1.3 }}
+          className="fixed inset-0 z-[100] flex items-center justify-center overflow-hidden"
+          aria-hidden="true"
         >
+          <svg className="absolute inset-0 h-full w-full">
+            <defs>
+              <radialGradient id={`${id}-background`}>
+                <stop offset="0%" stopColor="#fafafa" />
+                <stop offset="70%" stopColor="#ececee" />
+                <stop offset="100%" stopColor="#e4e4e4" />
+              </radialGradient>
+              <mask id={`${id}-reveal`} maskUnits="userSpaceOnUse" x="0" y="0" width="100%" height="100%">
+                <rect width="100%" height="100%" fill="white" />
+                <motion.circle cx="50%" cy="50%" fill="black" initial={{ r: "0%" }} exit={{ r: reduce ? "0%" : "100%" }} transition={{ delay: 0.2, duration: 1.1, ease: [0.76, 0, 0.24, 1] }} />
+              </mask>
+            </defs>
+            <rect width="100%" height="100%" fill={`url(#${id}-background)`} mask={`url(#${id}-reveal)`} />
+          </svg>
           <div className="relative flex flex-col items-center">
-            <div
+            <motion.div
               className="relative flex items-center justify-center"
+              exit={{ scale: reduce ? 1 : 12, opacity: 0 }}
+              transition={{ scale: { duration: 1.2, ease: [0.76, 0, 0.24, 1] }, opacity: { delay: reduce ? 0 : 0.2, duration: reduce ? 0.18 : 0.35 } }}
               style={{
                 width: "min(440px, 84vw)",
                 height: "min(440px, 84vw)",
@@ -60,7 +78,7 @@ export function Preloader() {
                   filter: "blur(10px)",
                 }}
               />
-              <div className="heading relative z-10 flex text-[52px] tracking-tight text-ink">
+              <motion.div exit={{ opacity: 0 }} transition={{ duration: 0.15 }} className="heading relative z-10 flex text-[52px] tracking-tight text-ink">
                 {brand.split("").map((ch, i) => (
                   <motion.span
                     key={i}
@@ -71,11 +89,11 @@ export function Preloader() {
                     {ch}
                   </motion.span>
                 ))}
-              </div>
-            </div>
-            <div className="mt-6 text-[15px] tabular-nums text-muted-ink">
+              </motion.div>
+            </motion.div>
+            <motion.div exit={{ opacity: 0 }} transition={{ duration: 0.15 }} className="absolute top-full mt-6 text-[15px] tabular-nums text-muted-ink">
               {pct}%
-            </div>
+            </motion.div>
           </div>
         </motion.div>
       )}

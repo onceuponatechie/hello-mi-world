@@ -9,7 +9,6 @@ import { site } from "@/config/site";
 const resourceLinks = [
   { label: "Tools & Templates", href: "#tools-and-templates" },
   { label: "Research Vault", href: "#research-vault" },
-  { label: "My approach", href: "#about" },
 ] as const;
 
 export function Nav() {

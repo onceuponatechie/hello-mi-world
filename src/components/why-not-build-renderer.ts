@@ -1,27 +1,18 @@
 /** The original Why Not Build composition, drawn in 360 x 486 coordinates. */
 type Screen = {
     category: string;
-    mode: 'abstract' | 'sage' | 'blur' | 'detail';
-    metric?: string;
     title: readonly string[];
     body: readonly string[];
-    media?: boolean;
 };
-export const SLIDES: readonly Screen[] = [
-    { category: 'Careers', mode: 'abstract', metric: '06', title: ['Six territories. One instinct.'], body: ['Understand what’s changing.', 'Build what comes next.'], media: true },
-    { category: 'Businesses', mode: 'sage', title: ['Make room for a better way.'], body: ['Small experiments. Real possibilities.', 'Build a business on your own terms.'] },
-    { category: 'Products', mode: 'abstract', metric: '01', title: ['Start with a better question.'], body: ['What could work differently?', 'Make something worth finding out.'], media: true },
-    { category: 'Systems', mode: 'blur', title: ['Change how the pieces connect.'], body: ['Look beneath the familiar.', 'Build systems that make more possible.'] },
-    { category: 'Ideas', mode: 'abstract', metric: 'What if?', title: ['Curiosity is a place to begin.'], body: ['Question the default. Test an idea.', 'Keep the part that changes something.'], media: true },
-    { category: 'A better you', mode: 'detail', title: ['You are a work in possibility.'], body: ['Learn. Make. Become.', 'Why not build something different?'] }
-];
+export const CATEGORIES = ['Careers', 'Businesses', 'Products', 'Systems', 'Ideas', 'A better you'] as const;
+export const FIRST_SCREEN: Screen = {
+    category: '6 categories',
+    title: ['Essays for curious builders.'],
+    body: ['Careers, businesses, products,', 'systems, ideas, and a better you.'],
+};
 const W = 360, H = 486;
-export const DURATION = 3800, TOTAL = DURATION * 6;
+const DURATION = 3800;
 const clamp = (n: number, a = 0, b = 1) => Math.min(b, Math.max(a, n));
-const ease = (x: number) => {
-    x = clamp(x);
-    return x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
-};
 const out = (x: number) => 1 - Math.pow(1 - clamp(x), 3);
 function round(c: CanvasRenderingContext2D, x: number, y: number, w: number, h: number, r: number) {
     c.beginPath();
@@ -107,11 +98,8 @@ export class WhyNotBuildRenderer {
         c.clearRect(0, 0, W, H);
         round(c, 0, 0, W, H, 27);
         c.clip();
-        const idx = Math.floor(t / DURATION) % 6, local = t % DURATION;
-        const trans = ease((local - 3030) / 770);
-        this.drawSlide(c, idx, local, -W * trans, t, false);
-        if (trans > 0)
-            this.drawSlide(c, (idx + 1) % 6, 0, W * (1 - trans), t, true);
+        // Keep the original entrance, then hold 06 and let its artwork move.
+        this.drawFirstScreen(c, Math.min(t, 2400), t);
         c.fillStyle = '#ffffff03';
         c.fillRect(0, 0, W, H);
         for (let i = 0; i < 6; i++) {
@@ -119,93 +107,42 @@ export class WhyNotBuildRenderer {
             c.fillStyle = 'rgba(243,245,234,.20)';
             round(c, bx, 452, 38, 2, 1);
             c.fill();
-            if (i === idx) {
+            if (i === 0) {
                 c.fillStyle = '#e7efd9';
-                round(c, bx, 452, Math.max(2, 38 * clamp(local / DURATION)), 2, 1);
+                round(c, bx, 452, Math.max(2, 38 * clamp(t / DURATION)), 2, 1);
                 c.fill();
             }
         }
         c.restore();
     }
-    drawSlide(c: CanvasRenderingContext2D, idx: number, local: number, offset: number, t: number, incoming: boolean) {
-        const s = SLIDES[idx];
+    drawFirstScreen(c: CanvasRenderingContext2D, local: number, t: number) {
+        const s = FIRST_SCREEN;
         c.save();
-        c.translate(offset, 0);
         c.beginPath();
         c.rect(0, 0, W, H);
         c.clip();
-        if (s.mode === 'abstract')
-            abstract(c, t, idx);
-        else {
-            c.fillStyle = '#20251D';
-            c.fillRect(0, 0, W, H);
-            const im = s.mode === 'blur' ? this.images.ribbon : this.images.sage;
-            c.save();
-            const blur = s.mode === 'blur' ? 3.8 + 1.2 * Math.sin(t / 2200) : s.mode === 'detail' ? 1.1 : 0;
-            c.filter = `blur(${blur}px)`;
-            imageCover(c, im, -8, -8, W + 16, H + 16, 1.08 + local / 100000, s.mode === 'detail' ? .76 : .5, s.mode === 'detail' ? .35 : .5);
-            c.restore();
-            c.globalCompositeOperation = 'color';
-            c.fillStyle = s.mode === 'sage' ? '#bcd7a4' : s.mode === 'blur' ? '#929f86' : '#aabd94';
-            c.globalAlpha = s.mode === 'sage' ? .66 : .25;
-            c.fillRect(0, 0, W, H);
-            c.globalAlpha = 1;
-            c.globalCompositeOperation = 'source-over';
-            if (s.mode === 'sage') {
-                c.fillStyle = '#b2d29530';
-                c.fillRect(0, 0, W, H);
-            }
-            const gradient = c.createLinearGradient(0, 0, 0, H);
-            gradient.addColorStop(0, '#0a120d46');
-            gradient.addColorStop(.35, '#0b100c05');
-            gradient.addColorStop(.64, '#0e120d30');
-            gradient.addColorStop(1, '#101410ed');
-            c.fillStyle = gradient;
-            c.fillRect(0, 0, W, H);
-        }
-        // Text leaves 240 ms before the screen. Entering text trails the image.
-        const leave = ease((local - 2780) / 640), enter = incoming ? 0 : out(local / 650);
-        const tx = incoming ? 30 : (1 - enter) * 30 - leave * 135, alpha = incoming ? .0 : clamp(enter * (1 - leave));
+        abstract(c, t, 0);
+        const enter = out(local / 650);
+        const tx = (1 - enter) * 30;
         c.save();
         c.translate(tx * .42, 0);
-        c.globalAlpha = incoming ? .5 : Math.max(.0, 1 - leave);
         this.header(c, s);
         c.restore();
         c.save();
         c.translate(tx, 0);
-        c.globalAlpha = alpha;
-        const isBlack = s.mode === 'abstract';
-        if (isBlack) {
-            let metric = s.metric ?? '';
-            if (idx === 0)
-                metric = String(Math.round(6 * out((local - 160) / 1420))).padStart(2, '0');
-            if (idx === 2)
-                metric = String(Math.round(out((local - 160) / 1200))).padStart(2, '0');
-            this.text(c, metric, 30, 184, idx === 4 ? 49 : 68, '#FFFFFF', true);
-            if (idx !== 4)
-                arrow(c, idx === 0 ? 121 : 119, 134, 12, .6);
-            else {
-                c.fillStyle = '#d7cde3';
-                c.beginPath();
-                c.arc(222, 171, 3.2, 0, Math.PI * 2);
-                c.fill();
-            }
-            s.title.forEach((line, i) => this.text(c, line, 30, 268 + i * 16, 12.8, '#FFFFFF', true));
-            s.body.forEach((line, i) => this.text(c, line, 30, 285 + i * 16, 12.2, '#BEC5B7'));
-            if (s.media) {
-                const mediaEnter = out((local - 250) / 700);
-                c.save();
-                c.translate(0, (1 - mediaEnter) * 9);
-                c.globalAlpha *= mediaEnter;
-                this.smallMedia(c, this.images.sage, 30, 334, 95, 47, 0, t);
-                this.smallMedia(c, this.images.ribbon, 137, 334, 95, 47, 1, t);
-                c.restore();
-            }
-        }
-        else {
-            s.title.forEach((line, i) => this.text(c, line, 30, 377 + i * 17, 12.6, '#FFFFFF', true));
-            s.body.forEach((line, i) => this.text(c, line, 30, 395 + i * 16, 12, '#BEC5B7'));
-        }
+        c.globalAlpha = enter;
+        const metric = String(Math.round(6 * out((local - 160) / 1420))).padStart(2, '0');
+        this.text(c, metric, 30, 184, 68, '#FFFFFF', true);
+        arrow(c, 121, 134, 12, .6);
+        s.title.forEach((line, i) => this.text(c, line, 30, 268 + i * 16, 12.8, '#FFFFFF', true));
+        s.body.forEach((line, i) => this.text(c, line, 30, 285 + i * 16, 12.2, '#BEC5B7'));
+        const mediaEnter = out((local - 250) / 700);
+        c.save();
+        c.translate(0, (1 - mediaEnter) * 9);
+        c.globalAlpha *= mediaEnter;
+        this.smallMedia(c, this.images.sage, 30, 334, 95, 47, 0, t);
+        this.smallMedia(c, this.images.ribbon, 137, 334, 95, 47, 1, t);
+        c.restore();
         c.restore();
         c.restore();
     }
