@@ -11,7 +11,6 @@ export const FIRST_SCREEN: Screen = {
     body: ['Careers, businesses, products,', 'systems, ideas, and a better you.'],
 };
 const W = 360, H = 486;
-const DURATION = 3800;
 const clamp = (n: number, a = 0, b = 1) => Math.min(b, Math.max(a, n));
 const out = (x: number) => 1 - Math.pow(1 - clamp(x), 3);
 function round(c: CanvasRenderingContext2D, x: number, y: number, w: number, h: number, r: number) {
@@ -102,17 +101,6 @@ export class WhyNotBuildRenderer {
         this.drawFirstScreen(c, Math.min(t, 2400), t);
         c.fillStyle = '#ffffff03';
         c.fillRect(0, 0, W, H);
-        for (let i = 0; i < 6; i++) {
-            const bx = 40 + i * 47;
-            c.fillStyle = 'rgba(243,245,234,.20)';
-            round(c, bx, 452, 38, 2, 1);
-            c.fill();
-            if (i === 0) {
-                c.fillStyle = '#e7efd9';
-                round(c, bx, 452, Math.max(2, 38 * clamp(t / DURATION)), 2, 1);
-                c.fill();
-            }
-        }
         c.restore();
     }
     drawFirstScreen(c: CanvasRenderingContext2D, local: number, t: number) {
@@ -171,14 +159,10 @@ export class WhyNotBuildRenderer {
         this.text(c, 'Why Not Build', 49, 33, 10.5, '#FFFFFF', true);
         c.font = `400 9.5px ${this.fonts.body}`;
         const pw = c.measureText(s.category).width + 26;
-        round(c, 307 - pw, 16, pw, 28, 14);
+        round(c, 337 - pw, 16, pw, 28, 14);
         c.strokeStyle = '#f5f7e23d';
         c.stroke();
-        this.text(c, s.category, 319 - pw, 33, 9.5, '#BEC5B7');
-        c.beginPath();
-        c.arc(325, 30, 14, 0, Math.PI * 2);
-        c.stroke();
-        this.text(c, 'Read', 315, 33, 8, '#BEC5B7');
+        this.text(c, s.category, 349 - pw, 33, 9.5, '#BEC5B7');
     }
     smallMedia(c: CanvasRenderingContext2D, im: HTMLImageElement, x: number, y: number, w: number, h: number, n: number, t: number) {
         c.save();

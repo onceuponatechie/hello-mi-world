@@ -2,46 +2,30 @@
 
 import { Reveal } from "@/components/Reveal";
 import { WhyNotBuildCard } from "@/components/WhyNotBuildCard";
+import Image from "next/image";
 
 const resources = [
-  { id: "tools-and-templates", title: "Tools & Templates", action: "Browse the kits", accent: "tools" },
-  { id: "research-vault", title: "Research Vault", action: "Open the Vault", accent: "research" },
+  { id: "tools-and-templates", title: "Tools & Templates", description: "Systems, files, and checklists I use — ready for your next idea.", action: "Browse the kits", image: "tools-templates.png" },
+  { id: "research-vault", title: "Research Vault", description: "Research and teardowns across products, markets, and culture.", action: "Open the Vault", image: "research-vault.png" },
 ];
-
-function ResourceAccent({ kind }: { kind: string }) {
-  return (
-    <svg className="resource-accent" viewBox="0 0 110 82" aria-hidden="true" fill="none">
-      {kind === "tools" ? <>
-        <path d="M22 24 69 15l14 49-47 10Z" stroke="currentColor" strokeWidth="1.5" />
-        <path d="M34 12h47v52H34Z" fill="#e1e6db" stroke="currentColor" strokeWidth="1.5" />
-        <path d="M43 26h27M43 34h20M43 48h10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-        <path d="m62 49 4 4 10-12" stroke="#779a5f" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-        <circle cx="29" cy="13" r="3" fill="#a8cf8e" />
-      </> : <>
-        <ellipse cx="55" cy="40" rx="38" ry="17" stroke="currentColor" strokeWidth="1.5" transform="rotate(-30 55 40)" />
-        <ellipse cx="55" cy="40" rx="38" ry="17" stroke="currentColor" strokeWidth="1.5" transform="rotate(30 55 40)" />
-        <circle cx="55" cy="40" r="22" stroke="currentColor" strokeWidth="1.5" />
-        <circle cx="55" cy="40" r="5" fill="#a8cf8e" />
-        <circle cx="84" cy="23" r="3" fill="currentColor" />
-      </>}
-    </svg>
-  );
-}
 
 export function ResourceSection() {
   return (
     <section id="resources" className="resource-section">
       <Reveal dir="up" className="resource-heading">
-        <h2>A few things you might need.</h2>
+        <h2><span>A few things</span>{" "}<span>you might need.</span></h2>
       </Reveal>
       <div className="resource-layout">
         <Reveal className="resource-laboratory" dir="up"><WhyNotBuildCard /></Reveal>
         {resources.map((resource, i) => (
           <Reveal key={resource.id} className="resource-square" dir="up" delay={i * 0.08}>
             <a id={resource.id} href={`#${resource.id}`} className="resource-row group">
-              <ResourceAccent kind={resource.accent} />
-              <h3>{resource.title}</h3>
-              <span className="resource-action">{resource.action}</span>
+              <div className="resource-copy">
+                <h3>{resource.title}</h3>
+                <p>{resource.description}</p>
+                <span className="resource-action">{resource.action}</span>
+              </div>
+              <Image className="resource-artwork" src={`/assets/${resource.image}`} alt="" aria-hidden="true" width={1024} height={1024} sizes="(max-width: 599px) 60vw, (max-width: 899px) 46vw, 230px" />
             </a>
           </Reveal>
         ))}
