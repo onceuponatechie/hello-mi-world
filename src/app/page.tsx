@@ -2,6 +2,7 @@ import { Nav } from "@/components/Nav";
 import { Hero } from "@/components/Hero";
 import { ResourceSection } from "@/components/ResourceSection";
 import { ServicesSection } from "@/components/ServicesSection";
+import { ProcessSection } from "@/components/ProcessSection";
 import { PromiseSection } from "@/components/PromiseSection";
 import { TouchBand, Footer } from "@/components/TouchBand";
 import { Preloader } from "@/components/Preloader";
@@ -21,8 +22,9 @@ export default function Home() {
         </div>
         <div className="site-depth">
           <div className="mx-auto w-full max-w-[1440px]">
-            <ServicesSection />
+            <ProcessSection />
             <PromiseSection />
+            <ServicesSection />
             <TouchBand />
             <Footer />
           </div>
