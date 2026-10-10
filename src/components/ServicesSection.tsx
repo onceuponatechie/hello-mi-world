@@ -1,11 +1,13 @@
 "use client";
 
 import { Reveal } from "@/components/Reveal";
+import { ScanSearch, PanelsTopLeft, MousePointer2 } from "lucide-react";
 
 const services = [
   {
     title: ["Research &", "Insight"],
-    description: "Understand the people, market, and problem before deciding what to make.",
+    description: <>Understand the <span>people</span>, market, and problem before deciding what to make.</>,
+    icon: ScanSearch,
     offerings: [
       "Market & competitor research",
       "Product & user research",
@@ -16,7 +18,8 @@ const services = [
   },
   {
     title: ["Decks &", "Narratives"],
-    description: "Give the work a clear story, so people can understand it and act.",
+    description: <>Give the work a clear <span>story</span>, so people can understand it and act.</>,
+    icon: PanelsTopLeft,
     offerings: [
       "Pitch & strategy decks",
       "Research presentations",
@@ -27,7 +30,8 @@ const services = [
   },
   {
     title: ["Prototypes &", "Digital Experiences"],
-    description: "Make an idea usable, with a prototype or digital experience people can test.",
+    description: <>Make an idea <span>usable</span>, with a prototype or digital experience people can test.</>,
+    icon: MousePointer2,
     offerings: [
       "High-fidelity mobile prototypes",
       "Product concepts",
@@ -43,15 +47,17 @@ export function ServicesSection() {
     <section id="services" className="services-section">
       <span id="about" className="service-anchor" aria-hidden="true" />
       <Reveal dir="up" className="services-intro">
-        <h2>Research-led product work</h2>
-        <p>I turn messy questions into clear research, stories people understand, and digital experiences you can test.</p>
+        <h2>How Can I Help You?</h2>
       </Reveal>
       <div className="services-grid">
-        {services.map(({ title, description, offerings }, index) => (
+        {services.map(({ title, description, offerings, icon: Icon }, index) => (
           <Reveal key={title.join(" ")} dir="up" delay={index * 0.08}>
-            <article className="service-card">
+            <article className="service-card dark-surface">
               <div className="service-copy">
-                <h3>{title.map((line, i) => <span key={line}>{i > 0 && " "}{line}</span>)}</h3>
+                <div className="service-title">
+                  <span className="service-icon" aria-hidden="true"><Icon size={21} strokeWidth={1.5} /></span>
+                  <h3>{title.map((line, i) => <span key={line}>{i > 0 && " "}{line}</span>)}</h3>
+                </div>
                 <p>{description}</p>
               </div>
               <ul>{offerings.map(offering => <li key={offering}>{offering}</li>)}</ul>
@@ -59,9 +65,6 @@ export function ServicesSection() {
           </Reveal>
         ))}
       </div>
-      <Reveal dir="up" className="services-principle">
-        <p>Research discovers what matters. Product thinking decides what to do about it. Storytelling makes the decision understandable. Building gives people something to use.</p>
-      </Reveal>
     </section>
   );
 }

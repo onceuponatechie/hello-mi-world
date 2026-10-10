@@ -6,7 +6,7 @@ A Next.js App Router portfolio based on `onceuponatechie/butter-canvas-dream` at
 
 - Header, Resources dropdown, mobile navigation, stationary hero collage, and a circular zoom reveal from the loading screen.
 - Two resource links with the owner's transparent artwork, brief descriptions and outline actions. Cards stack on mobile, with a non-clickable experience manifesto beneath them. Why Not Build keeps its original 360×486 counter scene and continuous motion, with a circular arrow link at the bottom right and keyboard pause/play. Its six categories share one scene without progress bars or a decorative counter arrow.
-- Three service cards under Research-led product work, four sticky project cards with spring-smoothed scaling, newsletter, and a black footer panel without a full-width black surround. Stacking offsets adapt to short screens so their content remains reachable.
+- Three sectioned black service cards under “How Can I Help You?”, with lavender-outlined title icons and a green word in each description. Four open text-and-image project rows retain sticky positioning and spring-smoothed scaling; “Explore more builds” follows closely. Newsletter and a black footer panel without a full-width black surround. Stacking offsets adapt to short screens so their content remains reachable.
 - Substack signup handoff, metadata, and a custom favicon.
 
 The personal reading grid, product practice cards, and adventure carousel are intentionally excluded. Unused Lovable tooling, TanStack/Vite routing, UI libraries, assets, and content modules are excluded.

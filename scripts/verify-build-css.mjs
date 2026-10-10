@@ -7,7 +7,7 @@ const buildDirectory = resolve(process.argv[2] ?? ".next");
 const requiredSelectors = [
   ".hero-scene", ".hero-name", ".hero-collage", ".hero-piece",
   ".site-base", ".resource-layout", ".resource-artwork", ".resource-action", ".manifesto-note",
-  ".site-depth", ".services-grid", ".service-card", ".wnb-read", ".project-sticky", ".project-card",
+  ".site-depth", ".services-grid", ".service-card", ".service-icon", ".wnb-read", ".project-sticky", ".project-card", ".project-row",
 ];
 
 try {
