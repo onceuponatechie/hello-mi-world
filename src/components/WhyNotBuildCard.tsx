@@ -1,8 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { useReducedMotion } from "framer-motion";
-import { Button } from "@/components/Button";
+import { useEffect, useId, useRef } from "react";
 import { site } from "@/config/site";
 import { CATEGORIES, FIRST_SCREEN, WhyNotBuildRenderer } from "./why-not-build-renderer";
 
@@ -12,8 +10,8 @@ export function WhyNotBuildCard() {
   const elapsedRef = useRef(0);
   const pausedRef = useRef(false);
   const manualPauseRef = useRef(false);
-  const [paused, setPaused] = useState(false);
-  const reduce = useReducedMotion();
+  const reduceRef = useRef(false);
+  const motionHintId = useId();
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -33,6 +31,7 @@ export function WhyNotBuildCard() {
     const renderer = new WhyNotBuildRenderer(context, canvas, { sage, ribbon }, fonts);
     const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
     pausedRef.current = motion.matches;
+    reduceRef.current = motion.matches;
     if (motion.matches) elapsedRef.current = 1900;
 
     let frame = 0;
@@ -62,6 +61,7 @@ export function WhyNotBuildCard() {
 
     const onVisibility = () => { previous = performance.now(); };
     const onMotion = () => {
+      reduceRef.current = motion.matches;
       pausedRef.current = motion.matches || manualPauseRef.current;
       if (motion.matches) {
         elapsedRef.current = Math.max(elapsedRef.current, 1900);
@@ -100,10 +100,9 @@ export function WhyNotBuildCard() {
   }, []);
 
   const toggleMotion = () => {
-    if (reduce) return;
+    if (reduceRef.current) return;
     pausedRef.current = !pausedRef.current;
     manualPauseRef.current = pausedRef.current;
-    setPaused(pausedRef.current);
   };
 
   return (
@@ -112,6 +111,7 @@ export function WhyNotBuildCard() {
         role="group"
         tabIndex={0}
         aria-label="Why Not Build publication: six categories"
+        aria-describedby={motionHintId}
         className="relative aspect-[360/486] w-full overflow-hidden rounded-[27px] bg-ink shadow-[0_17px_26px_-20px_rgba(43,57,40,.31),0_2px_3px_rgba(21,29,21,.08)] ring-1 ring-inset ring-white/[0.13] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e7efd9]"
         onKeyDown={(event) => {
           if (event.key === " " && event.target === event.currentTarget) {
@@ -121,11 +121,9 @@ export function WhyNotBuildCard() {
         }}
       >
         <canvas ref={canvasRef} className="block h-full w-full" aria-hidden="true" />
-        <a href={site.stories} aria-label="Read Why Not Build" className="absolute right-[5.8%] top-[3.3%] h-[8%] w-[8%] rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e7efd9]" />
-        <Button variant="ghost" onClick={toggleMotion} disabled={!!reduce} aria-pressed={paused || !!reduce} className="absolute bottom-[12%] right-[8%] rounded-full border border-white/15 bg-transparent px-2.5 py-1 text-[9px] text-muted-dark hover:bg-white/5">
-          {reduce ? "Motion paused" : paused ? "Play motion" : "Pause motion"}
-        </Button>
+        <a href={site.stories} aria-label="Read Why Not Build" className="absolute bottom-[8.5%] left-[8.3%] inline-flex items-center justify-center rounded-full bg-sage px-6 py-2.5 text-[clamp(11px,1vw,14px)] text-ink transition-colors hover:bg-[#bcdcaa] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-ink">Read</a>
         <section className="sr-only">
+          <p id={motionHintId}>Press Space while this card is focused to pause or resume the artwork.</p>
           <h3>Why Not Build</h3>
           <p>{FIRST_SCREEN.title.join(" ")}</p>
           <p>Six categories:</p>

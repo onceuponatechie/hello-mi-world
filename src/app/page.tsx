@@ -8,12 +8,12 @@ import { Preloader } from "@/components/Preloader";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-backdrop">
+    <div className="site-base min-h-screen">
       <Preloader />
-      <main className="relative mx-auto w-full max-w-[1440px] overflow-x-clip bg-backdrop">
+      <main className="relative mx-auto w-full max-w-[1440px] overflow-x-clip">
         <div className="relative overflow-hidden">
           <img src="/assets/hero-cover.webp" alt="" aria-hidden className="pointer-events-none absolute inset-0 h-full w-full object-cover" fetchPriority="high" />
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-backdrop" />
+          <div className="hero-background-fade pointer-events-none absolute inset-0" />
           <div className="relative"><Nav /><Hero /></div>
         </div>
         <ResourceSection />
