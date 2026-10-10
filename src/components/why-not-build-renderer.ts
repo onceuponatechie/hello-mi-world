@@ -32,20 +32,6 @@ function imageCover(c: CanvasRenderingContext2D, img: HTMLImageElement, x: numbe
     const f = Math.max(w / img.width, h / img.height) * scale, iw = img.width * f, ih = img.height * f;
     c.drawImage(img, x + (w - iw) * ox, y + (h - ih) * oy, iw, ih);
 }
-function arrow(c: CanvasRenderingContext2D, x: number, y: number, size = 9, alpha = .5) {
-    c.save();
-    c.globalAlpha *= alpha;
-    c.strokeStyle = '#f2f5e9';
-    c.lineWidth = 1.2;
-    c.beginPath();
-    c.moveTo(x, y + size);
-    c.lineTo(x + size, y);
-    c.moveTo(x + 1, y);
-    c.lineTo(x + size, y);
-    c.lineTo(x + size, y + size - 1);
-    c.stroke();
-    c.restore();
-}
 function abstract(c: CanvasRenderingContext2D, t: number, variant: number) {
     c.fillStyle = '#20251D';
     c.fillRect(0, 0, W, H);
@@ -121,7 +107,6 @@ export class WhyNotBuildRenderer {
         c.globalAlpha = enter;
         const metric = String(Math.round(6 * out((local - 160) / 1420))).padStart(2, '0');
         this.text(c, metric, 30, 184, 68, '#FFFFFF', true);
-        arrow(c, 121, 134, 12, .6);
         s.title.forEach((line, i) => this.text(c, line, 30, 268 + i * 16, 12.8, '#FFFFFF', true));
         s.body.forEach((line, i) => this.text(c, line, 30, 285 + i * 16, 12.2, '#BEC5B7'));
         const mediaEnter = out((local - 250) / 700);
