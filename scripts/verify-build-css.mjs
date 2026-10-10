@@ -7,7 +7,7 @@ const buildDirectory = resolve(process.argv[2] ?? ".next");
 const requiredSelectors = [
   ".hero-scene", ".hero-name", ".hero-collage", ".hero-piece",
   ".site-base", ".resource-layout", ".resource-artwork", ".resource-action", ".manifesto-note",
-  ".process-steps", ".process-icon", ".project-sticky", ".project-card",
+  ".site-depth", ".services-grid", ".service-card", ".wnb-read", ".project-sticky", ".project-card",
 ];
 
 try {
@@ -29,7 +29,7 @@ try {
   const css = stylesheets.join("\n");
   const missing = requiredSelectors.filter(selector => !css.includes(`${selector}{`));
   if (missing.length) throw new Error(`The built homepage is missing portfolio styles: ${missing.join(", ")}`);
-  console.log("Verified: the built homepage includes hero, resources, process and project styles.");
+  console.log("Verified: the built homepage includes hero, resources, services and project styles.");
 } catch (error) {
   console.error(error instanceof Error ? error.message : error);
   process.exitCode = 1;

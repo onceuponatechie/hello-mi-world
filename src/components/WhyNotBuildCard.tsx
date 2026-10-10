@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useId, useRef } from "react";
+import { ArrowUpRight } from "lucide-react";
 import { site } from "@/config/site";
 import { CATEGORIES, FIRST_SCREEN, WhyNotBuildRenderer } from "./why-not-build-renderer";
 
@@ -121,7 +122,7 @@ export function WhyNotBuildCard() {
         }}
       >
         <canvas ref={canvasRef} className="block h-full w-full" aria-hidden="true" />
-        <a href={site.stories} aria-label="Read Why Not Build" className="absolute bottom-[8.5%] left-[8.3%] inline-flex items-center justify-center rounded-full bg-sage px-6 py-2.5 text-[clamp(11px,1vw,14px)] text-ink transition-colors hover:bg-[#bcdcaa] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-ink">Read</a>
+        <a href={site.stories} aria-label="Read Why Not Build" className="wnb-read"><ArrowUpRight size={20} strokeWidth={1.5} aria-hidden="true" /></a>
         <section className="sr-only">
           <p id={motionHintId}>Press Space while this card is focused to pause or resume the artwork.</p>
           <h3>Why Not Build</h3>

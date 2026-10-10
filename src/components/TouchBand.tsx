@@ -59,9 +59,9 @@ export function TouchBand() {
 
 export function Footer() {
   return (
-    <footer id="contact" className="dark-surface relative overflow-hidden bg-ink px-4 pb-10 pt-14 text-paper sm:px-8 sm:pt-20">
+    <footer id="contact" className="dark-surface relative overflow-hidden px-4 pb-10 pt-4 text-paper sm:px-8 sm:pt-6">
       <div className="relative mx-auto max-w-5xl">
-        <div className="relative overflow-hidden rounded-[24px] border border-paper/10 bg-ink p-8 text-center shadow-[inset_0_1px_0_rgba(255,255,255,0.07)] sm:p-12">
+        <div className="footer-panel relative overflow-hidden rounded-[24px] bg-ink p-8 text-center sm:p-12">
           <div className="relative">
             <Reveal dir="down">
               <h3 className="mx-auto max-w-[20ch] text-[clamp(22px,2.4vw,30px)] font-normal leading-tight tracking-tight">
@@ -91,7 +91,7 @@ export function Footer() {
                 { label: "Why Not Build?", href: site.stories },
                 { label: "Resources", href: "#resources" },
                 { label: "Projects", href: "#projects" },
-                { label: "About", href: "#about" },
+                { label: "Services", href: "#services" },
               ].map((l) => (
                 <a key={l.label} href={l.href} className="transition-colors hover:text-paper">
                   {l.label}

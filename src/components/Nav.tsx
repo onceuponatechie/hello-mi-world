@@ -51,10 +51,10 @@ export function Nav() {
             Projects
           </a>
           <a
-            href="#about"
+            href="#services"
             className="text-[13px] font-normal text-ink transition-colors hover:text-ink"
           >
-            About
+            Services
           </a>
         </nav>
 
@@ -111,11 +111,11 @@ export function Nav() {
             Projects
           </a>
           <a
-            href="#about"
+            href="#services"
             onClick={() => setOpen(false)}
             className="rounded-2xl px-4 py-2.5 text-[13px] font-normal text-ink hover:bg-black/5"
           >
-            About
+            Services
           </a>
         </nav>
       )}
