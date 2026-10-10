@@ -4,9 +4,9 @@ A Next.js App Router portfolio based on `onceuponatechie/butter-canvas-dream` at
 
 ## Included
 
-- Header, Resources dropdown, mobile navigation, floating hero collage, and loading screen.
-- Two resource links, a non-clickable experience manifesto, and the six-scene 360×486 Why Not Build canvas animation with direct scene selection and keyboard pause/play.
-- Three-step research/build/story process, four project cards with spring-smoothed scaling, newsletter, and footer. Project cards use normal flow on short screens so their content remains reachable.
+- Header, Resources dropdown, mobile navigation, stationary hero collage, and a circular zoom reveal from the loading screen.
+- Two square resource links with custom accents, a non-clickable experience manifesto, and the original 360×486 Why Not Build counter scene with continuous artwork motion and keyboard pause/play. The publication covers six categories; the card stays on its first scene.
+- Three-step research/build/story process, four sticky project cards with spring-smoothed scaling, newsletter, and footer. Stacking offsets adapt to short screens so their content remains reachable.
 - Substack signup handoff, metadata, and a custom favicon.
 
 The personal reading grid, product practice cards, and adventure carousel are intentionally excluded. Unused Lovable tooling, TanStack/Vite routing, UI libraries, assets, and content modules are excluded.
@@ -45,6 +45,6 @@ Project detail/live links, resource destinations, social profiles, Privacy, and 
 
 ## Verification
 
-Lint, TypeScript, and the production build are required before pushes. Browser checks cover desktop, tablet, and mobile widths, mobile menu behavior, project stacking, canvas controls, image loading, internal anchors, and the Substack handoff. The collage hero and resource layout adapt to the new design; the Why Not Build composition and timing come from the original source.
+Lint, TypeScript, and the production build are required before pushes. Browser checks cover desktop, tablet, and mobile widths, mobile menu behavior, project stacking, canvas controls, image loading, internal anchors, and the Substack handoff. The resource cards share aligned outer edges and responsive square links; Why Not Build retains its original first-scene entrance, counter, background, and image motion.
 
 The production build checks the homepage's client reference manifest for CSS containing the hero, resources, process, and project styles. This works with static HTML and server-rendered deployments. The portfolio stylesheet is imported directly by the root layout so Next.js tracks it independently of Tailwind's PostCSS cache.

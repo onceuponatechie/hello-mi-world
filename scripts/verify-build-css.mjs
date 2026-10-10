@@ -6,7 +6,7 @@ import { resolve } from "node:path";
 const buildDirectory = resolve(process.argv[2] ?? ".next");
 const requiredSelectors = [
   ".hero-scene", ".hero-name", ".hero-collage", ".hero-piece",
-  ".resource-layout", ".resource-thumbnail", ".manifesto-note",
+  ".resource-layout", ".resource-accent", ".resource-action", ".manifesto-note",
   ".process-steps", ".process-icon", ".project-sticky", ".project-card",
 ];
 
