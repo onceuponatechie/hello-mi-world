@@ -1,36 +1,58 @@
 import { Reveal } from "@/components/Reveal";
-import { SectionDoodle } from "@/components/SectionDoodle";
 
 const steps = [
-  { title: "Research", description: "I look into the problem, the people, and what’s already out there." },
-  { title: "Strategy", description: "I decide what to make, who it’s for, and what to leave out." },
-  { title: "Create", description: "I make a prototype, a story, or a site we can try." },
-  { title: "Test & repeat", description: "I test with people and change what isn’t working." },
+  {
+    title: "Research",
+    question: "What do we know?",
+    description: "Understand the problem, the people affected, their needs, the market, existing solutions, and the opportunities.",
+  },
+  {
+    title: "Strategy",
+    question: "What should we do, and why?",
+    description: "Use what you’ve learned to decide what to pursue, who to serve, how to position your solution, what to prioritise, and what success looks like.",
+  },
+  {
+    title: "Create",
+    question: "How do we bring it to life?",
+    description: "Design, write, build, produce, or launch something based on those decisions.",
+  },
+  {
+    title: "Test & repeat",
+    question: "What did we learn?",
+    description: "Try it with people. Use their reactions to refine the work, revisit the questions, or change the plan.",
+  },
 ];
 
 const artworks = [
-  <g key="research" strokeLinecap="round" strokeLinejoin="round">
-    <path d="m53 50 87-7 13 101-88 11Z" fill="#ffffff80" stroke="#20251D" strokeWidth="2" />
-    <path d="m117 45 3 21 21-4" fill="none" stroke="#20251D" strokeWidth="2" />
-    <path d="M86 83c-1-16 26-20 27-4 1 12-16 10-15 25m1 12v1" fill="none" stroke="#20251D" strokeWidth="3" />
-    <path d="m38 62-9-4m13-10-4-9m117 83 10 4" fill="none" stroke="#75568D" strokeWidth="2" />
+  <g key="research">
+    <circle cx="100" cy="100" r="58" fill="#ffffff05" />
+    <circle cx="91" cy="87" r="35" fill="url(#process-surface-0)" />
+    <circle cx="91" cy="87" r="23" fill="#181918" />
+    <path d="m117 114 30 30" stroke="#f1f2ed" strokeWidth="14" strokeLinecap="round" />
+    <path d="M48 43H38v10m114-10h10v10M38 143v10h10m114-10v10h-10" fill="none" stroke="#ffffff40" strokeWidth="1.5" strokeLinecap="round" />
   </g>,
-  <g key="strategy" fill="none" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M43 135c40 8 65-11 44-36S39 67 62 51s75 5 86 35" stroke="#20251D" strokeWidth="2.5" />
-    <circle cx="43" cy="135" r="6" fill="#ffffffa0" stroke="#20251D" strokeWidth="2" />
-    <path d="m145 77 3 10-10-4" stroke="#20251D" strokeWidth="2" />
-    <path d="m145 107 4 12 12-5-7 12 12 4-12 4 6 11-12-6-4 12-4-12-11 5 6-11-12-4 12-4-6-11 12 6Z" fill="#ffffff90" stroke="#20251D" strokeWidth="1.5" />
+  <g key="strategy">
+    <rect x="42" y="49" width="96" height="114" rx="16" fill="#ffffff15" transform="rotate(-9 90 106)" />
+    <rect x="64" y="38" width="96" height="124" rx="16" fill="url(#process-surface-1)" transform="rotate(6 112 100)" />
+    <path d="M88 116V90h38V69" fill="none" stroke="#181918" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
+    <circle cx="88" cy="120" r="9" fill="#181918" />
+    <circle cx="126" cy="67" r="9" fill="#181918" />
   </g>,
-  <g key="create" strokeLinecap="round" strokeLinejoin="round">
-    <path d="m53 48 84 3-5 104-82-6Z" fill="#ffffff80" stroke="#20251D" strokeWidth="2" />
-    <path d="m70 72 30 2m-31 9 22 1M67 130c6-18 14-21 17-6s15 5 20-11" fill="none" stroke="#20251D" strokeWidth="2" />
-    <path d="m111 107 33-55 12 8-34 55-12 7Z" fill="#f5c1ab" stroke="#20251D" strokeWidth="2" />
-    <path d="m111 107 11 8m22-63 4-7c2-3 14 5 12 8l-4 7" fill="none" stroke="#20251D" strokeWidth="2" />
+  <g key="create">
+    <rect x="35" y="51" width="132" height="108" rx="16" fill="#ffffff18" transform="rotate(7 101 105)" />
+    <rect x="31" y="41" width="132" height="108" rx="16" fill="url(#process-surface-2)" />
+    <path d="M31 66h132" stroke="#18191830" />
+    <circle cx="46" cy="54" r="3" fill="#181918" /><circle cx="56" cy="54" r="3" fill="#18191860" />
+    <rect x="47" y="83" width="44" height="48" rx="7" fill="#181918" />
+    <path d="M103 90h42m-42 12h30" stroke="#181918" strokeWidth="4" strokeLinecap="round" />
+    <rect x="103" y="116" width="34" height="13" rx="6.5" fill="#181918" />
   </g>,
-  <g key="repeat" fill="none" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M40 75c30-31 85-23 82 11s-48 54-53 27 33-51 66-16c12 13 19 30 17 46m-11-12 11 13 7-17" stroke="#20251D" strokeWidth="2.5" />
-    <path d="m60 45 2 8 8 2-8 2-2 9-2-9-8-2 8-2Z" fill="#ffffff" stroke="#20251D" strokeWidth="1.5" />
-    <path d="m142 59 7-7m-1 20 10-1" stroke="#668198" strokeWidth="2" />
+  <g key="repeat">
+    <circle cx="100" cy="100" r="59" fill="#ffffff05" />
+    <path d="M61 83a42 42 0 0 1 75-13m3 47a42 42 0 0 1-75 13" fill="none" stroke="url(#process-surface-3)" strokeWidth="9" strokeLinecap="round" />
+    <path d="m119 75 27 3-4-27-23 24ZM80 125l-27-3 4 27 23-24Z" fill="#f1f2ed" />
+    <circle cx="100" cy="100" r="17" fill="url(#process-surface-3)" />
+    <path d="m93 100 5 5 9-10" fill="none" stroke="#181918" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
   </g>,
 ];
 
@@ -38,19 +60,25 @@ export function ProcessSection() {
   return (
     <section id="process" className="process-section">
       <Reveal dir="up" className="process-intro">
-        <h2><span>Here’s how</span><span>I work.</span></h2>
-        <p>I research, make a plan, build, and test with people.</p>
-        <SectionDoodle variant="loop" className="section-doodle process-doodle" />
+        <h2><span>How I get</span><span>things made.</span></h2>
+        <p>The plan can change. Sometimes I need to make something to decide what to do next.</p>
       </Reveal>
       <ol className="process-track" tabIndex={0} aria-label="Four process steps. Scroll horizontally to read each step.">
-        {steps.map(({ title, description }, index) => (
+        {steps.map(({ title, question, description }, index) => (
           <li key={title} className="process-step">
             <div className="process-art" aria-hidden="true">
               <span className="process-number">{String(index + 1).padStart(2, "0")}</span>
-              <svg viewBox="0 0 200 200" focusable="false">{artworks[index]}</svg>
+              <svg viewBox="0 0 200 200" focusable="false">
+                <defs>
+                  <linearGradient id={`process-surface-${index}`} x1="0" y1="0" x2="1" y2="1"><stop stopColor="#ffffff" /><stop offset=".55" stopColor="#e5e6e1" /><stop offset="1" stopColor="#a4a69e" /></linearGradient>
+                  <filter id={`process-depth-${index}`} x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="1" dy="5" stdDeviation="3" floodColor="#20251D" floodOpacity=".22" /></filter>
+                </defs>
+                <g filter={`url(#process-depth-${index})`}>{artworks[index]}</g>
+              </svg>
             </div>
             <div className="process-step-copy">
               <h3>{title}</h3>
+              <p className="process-question">{question}</p>
               <p className="process-description">{description}</p>
             </div>
           </li>
