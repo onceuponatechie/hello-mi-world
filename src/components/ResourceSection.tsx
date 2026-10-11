@@ -13,7 +13,7 @@ export function ResourceSection() {
   return (
     <section id="resources" className="resource-section">
       <Reveal dir="up" className="resource-heading">
-        <h2><span>A few things</span>{" "}<span>you might need.</span></h2>
+        <h2 className="section-heading"><span>A few things</span>{" "}<span>you might need.</span></h2>
       </Reveal>
       <div className="resource-layout">
         <Reveal className="resource-laboratory" dir="up"><WhyNotBuildCard /></Reveal>

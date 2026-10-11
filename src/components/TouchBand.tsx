@@ -5,33 +5,27 @@ import { site } from "@/config/site";
 
 export function TouchBand() {
   return (
-    <section id="newsletter" className="scroll-mt-10 px-4 py-10 sm:px-8 sm:py-16">
-      <Reveal dir="up" className="mx-auto max-w-5xl overflow-hidden dark-surface rounded-[28px] bg-ink p-6 text-white sm:p-10">
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:items-center">
-          <Reveal dir="left" delay={0.12} className="min-w-0">
-            <h2 className=" text-[clamp(28px,3.4vw,44px)] font-normal leading-tight tracking-tight">
-              Good things, straight
-              <br />
-              <span className="">to your inbox</span>
-            </h2>
-            <p className="mt-4 max-w-md text-[13px] leading-relaxed text-muted-dark">
-              One idea, one artifact, every Tuesday. No filler, no funnels.
-              Unsubscribe with one gentle click.
-            </p>
-            <div className="mt-6 flex items-center gap-1">
-              {"★★★★★".split("").map((s, i) => (
-                <span key={i} className="text-butter">{s}</span>
-              ))}
-              <span className="ml-2 text-[11px] text-muted-dark">Loved by 3,400+ readers</span>
+    <section id="newsletter" className="newsletter-section">
+      <Reveal dir="up" className="newsletter-surround">
+        <div className="newsletter-letter">
+          <div className="newsletter-intro">
+            <div className="newsletter-stamp" aria-hidden="true">
+              <svg viewBox="0 0 120 90" fill="none" focusable="false">
+                <path d="m9 39 88-26-32 63-19-25L9 39Z" fill="#EDE2F2" />
+                <path d="m46 51 51-38-32 63-19-25Z" fill="#C3A5DD" />
+                <path d="m46 51 51-38-42 47-9-9Z" fill="#F7F1FA" />
+                <path d="m55 60 10 16-12-5 2-11Z" fill="#AF8DC8" />
+              </svg>
             </div>
-          </Reveal>
-          <Reveal dir="right" delay={0.2}>
+            <h2 className="section-heading"><span>Subscribe to</span>{" "}<span>Why Not Build.</span></h2>
+            <p>I write about the questions behind products, and the people making them. Get new essays in your inbox.</p>
+          </div>
           <form
             action={site.newsletter}
             method="get"
-            className="rounded-2xl bg-white/5 p-4 ring-1 ring-white/10"
+            className="newsletter-form"
           >
-            <label htmlFor="newsletter-email" className="text-[10px] font-normal text-muted-dark">
+            <label htmlFor="newsletter-email" className="sr-only">
               Your email
             </label>
             <input
@@ -40,17 +34,11 @@ export function TouchBand() {
               autoComplete="email"
               required
               type="email"
-              placeholder="you@somewhere.good"
-              className="mt-2 w-full rounded-full bg-white/10 px-4 py-3 text-[13px] text-white placeholder:text-muted-dark focus:outline-none focus:ring-2 focus:ring-butter"
+              placeholder="Your email"
             />
-            <button className="mt-3 inline-flex w-full items-center justify-center gap-1 rounded-full bg-[#c9e5b8] px-4 py-3 text-[13px] font-normal text-ink transition hover:opacity-90">
-              Send it my way
-            </button>
-            <p className="mt-3 text-center text-[10px] text-muted-dark">
-              Finish subscribing on Substack. Just Tuesdays.
-            </p>
+            <button type="submit">Subscribe</button>
+            <p>Finish on Substack. Unsubscribe anytime.</p>
           </form>
-          </Reveal>
         </div>
       </Reveal>
     </section>
@@ -64,7 +52,7 @@ export function Footer() {
         <div className="footer-panel relative overflow-hidden rounded-[24px] bg-ink p-8 text-center sm:p-12">
           <div className="relative">
             <Reveal dir="down">
-              <h3 className="mx-auto max-w-[20ch] text-[clamp(22px,2.4vw,30px)] font-normal leading-tight tracking-tight">
+              <h3 className="section-heading mx-auto max-w-[20ch]">
                 Let&apos;s build something people <span className="">remember</span>.
               </h3>
             </Reveal>
