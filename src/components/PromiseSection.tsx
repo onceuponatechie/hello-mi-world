@@ -2,6 +2,8 @@
 
 import { motion, useReducedMotion, useScroll, useSpring, useTransform, type MotionValue } from "framer-motion";
 import { useRef, type CSSProperties } from "react";
+import { ArrowUpRight } from "lucide-react";
+import { SectionDoodle } from "@/components/SectionDoodle";
 import { Reveal, TypeWords } from "@/components/Reveal";
 const laptopDash = "/assets/essy-laptop-dash.jpg";
 const insight = "/assets/essy-insight.jpg";
@@ -61,7 +63,7 @@ export function PromiseSection() {
   const progress = useSpring(scrollYProgress, { stiffness: 260, damping: 40, mass: 0.25 });
   return (
     <section id="projects" className="builds-section relative px-4 py-16 sm:px-8 sm:py-24">
-      <div className="mx-auto max-w-5xl text-center">
+      <div className="builds-heading mx-auto max-w-5xl text-center">
         <Reveal dir="down" blur>
           <h2 className="text-[clamp(28px,3.6vw,44px)] leading-none tracking-tight text-ink">
             The Builds
@@ -74,6 +76,7 @@ export function PromiseSection() {
             text="A handful of the things I've made lately — for people I like, on ideas I couldn't stop thinking about."
           />
         </p>
+        <SectionDoodle variant="loop" className="section-doodle builds-doodle" />
       </div>
 
       <div ref={stackRef} className="project-stack relative mt-14">
@@ -154,7 +157,7 @@ function ProjectCard({
             </p>
             <p className="project-result"><span>{stat}</span> {statLabel}</p>
             <div className="project-links">
-              <a href="#projects" className="inline-flex items-center rounded-full bg-ink px-6 py-2.5 text-[12px] font-normal text-white transition-opacity hover:opacity-90">
+              <a href="#projects" className="hero-primary">
                 View Case Study
               </a>
               <a
@@ -163,7 +166,7 @@ function ProjectCard({
                 rel="noreferrer"
                 className="inline-flex items-center gap-1 text-[12px] font-normal text-ink hover:underline"
               >
-                Go live
+                Go live <ArrowUpRight size={14} strokeWidth={1.5} aria-hidden="true" />
               </a>
             </div>
           </div>

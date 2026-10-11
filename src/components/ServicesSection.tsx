@@ -1,6 +1,7 @@
 "use client";
 
 import { Reveal } from "@/components/Reveal";
+import { SectionDoodle } from "@/components/SectionDoodle";
 
 const services = [
   {
@@ -47,6 +48,7 @@ export function ServicesSection() {
       <span id="about" className="service-anchor" aria-hidden="true" />
       <Reveal dir="up" className="services-intro">
         <h2>How Can I Help You?</h2>
+        <SectionDoodle variant="wave" className="section-doodle services-doodle" />
       </Reveal>
       <div className="services-grid">
         {services.map(({ title, description, offerings, icon }, index) => (
