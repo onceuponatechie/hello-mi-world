@@ -3,7 +3,7 @@
 import { motion, useReducedMotion, useScroll, useSpring, useTransform, type MotionValue } from "framer-motion";
 import { useRef, type CSSProperties } from "react";
 import { ArrowUpRight } from "lucide-react";
-import { Reveal, TypeWords } from "@/components/Reveal";
+import { Reveal } from "@/components/Reveal";
 const laptopDash = "/assets/essy-laptop-dash.jpg";
 const insight = "/assets/essy-insight.jpg";
 const phone = "/assets/essy-phone.jpg";
@@ -64,17 +64,10 @@ export function PromiseSection() {
     <section id="projects" className="builds-section relative px-4 py-16 sm:px-8 sm:py-24">
       <div className="mx-auto max-w-5xl text-center">
         <Reveal dir="down" blur>
-          <h2 className="text-[clamp(28px,3.6vw,44px)] leading-none tracking-tight text-ink">
+          <h2 className="section-heading">
             The Builds
           </h2>
         </Reveal>
-        <p className="mx-auto mt-4 max-w-md text-[13px] leading-relaxed text-muted-ink">
-          <TypeWords
-            delay={0.15}
-            step={0.03}
-            text="A handful of the things I've made lately — for people I like, on ideas I couldn't stop thinking about."
-          />
-        </p>
       </div>
 
       <div ref={stackRef} className="project-stack relative mt-14">
