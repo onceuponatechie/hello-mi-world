@@ -4,12 +4,12 @@ import { motion, useReducedMotion, useScroll, useSpring, useTransform, type Moti
 import { useRef, type CSSProperties } from "react";
 import { Reveal } from "@/components/Reveal";
 import Link from "next/link";
-import { builds } from "@/content/builds";
+import type { Build } from "@/content/builds";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
-const projects = builds.slice(0, 4);
+type FeaturedBuild = Pick<Build, "slug" | "name" | "format" | "summary" | "image" | "output">;
 
-export function PromiseSection() {
+export function PromiseSection({ projects }: { projects: FeaturedBuild[] }) {
   const stackRef = useRef<HTMLDivElement>(null);
   // Measure the normal-flow stack, never a transformed sticky card. Smooth the
   // background scale without delaying the incoming card's native sticky position.
@@ -49,7 +49,7 @@ export function PromiseSection() {
   );
 }
 
-type ProjectProps = (typeof projects)[number] & { index: number; total: number; progress: MotionValue<number> };
+type ProjectProps = FeaturedBuild & { index: number; total: number; progress: MotionValue<number> };
 
 function ProjectCard({
   name,
