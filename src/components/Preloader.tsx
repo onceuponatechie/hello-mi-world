@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useId, useState } from "react";
+import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 
 export function Preloader() {
@@ -9,8 +9,30 @@ export function Preloader() {
   const id = useId().replace(/:/g, "");
   const reduce = useReducedMotion();
   const brand = "Essy";
+  const unlockScroll = useRef<(() => void) | null>(null);
+  const finishReveal = useCallback(() => {
+    unlockScroll.current?.();
+    unlockScroll.current = null;
+    document.getElementById("top")?.focus({ preventScroll: true });
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+  }, []);
 
   useEffect(() => {
+    // Hold the entry position until the circle has finished opening, including
+    // late page-load restoration and focus restored by the browser.
+    const root = document.documentElement;
+    const previousOverflow = root.style.overflow;
+    const resetScroll = () => window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    root.style.overflow = "hidden";
+    window.addEventListener("load", resetScroll);
+    window.addEventListener("pageshow", resetScroll);
+    const unlock = () => {
+      root.style.overflow = previousOverflow;
+      window.removeEventListener("load", resetScroll);
+      window.removeEventListener("pageshow", resetScroll);
+    };
+    unlockScroll.current = unlock;
+    resetScroll();
     let progress = 0;
     let finish: ReturnType<typeof setTimeout> | undefined;
     const t = setInterval(() => {
@@ -18,17 +40,21 @@ export function Preloader() {
       setPct(progress);
       if (progress === 100) {
         clearInterval(t);
-        finish = setTimeout(() => setDone(true), 220);
+        finish = setTimeout(() => {
+          window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+          setDone(true);
+        }, 220);
       }
     }, 40);
     return () => {
       clearInterval(t);
       clearTimeout(finish);
+      unlock();
     };
   }, []);
 
   return (
-    <AnimatePresence>
+    <AnimatePresence onExitComplete={finishReveal}>
       {!done && (
         <motion.div
           initial={{ opacity: 1 }}

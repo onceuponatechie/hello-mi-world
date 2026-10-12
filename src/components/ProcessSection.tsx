@@ -31,7 +31,7 @@ export function ProcessSection() {
         <h2 className="section-heading"><span>How I get</span>{" "}<span>things made.</span></h2>
         <p>The plan can change. Sometimes I need to make something to decide what to do next.</p>
       </Reveal>
-      <ol className="process-track" aria-label="My four-step process">
+      <ol className="process-track" tabIndex={0} aria-label="My four-step process. Scroll horizontally to read all four steps on smaller screens.">
         {steps.map(({ title, question, description, mark }) => (
           <li key={title} className="process-step">
             <div className="process-art" aria-hidden="true">

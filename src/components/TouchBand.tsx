@@ -1,7 +1,15 @@
 "use client";
 
-import { Reveal, TypeWords } from "@/components/Reveal";
+import { Reveal } from "@/components/Reveal";
 import { site } from "@/config/site";
+import type { MouseEvent } from "react";
+
+function returnToTop(event: MouseEvent<HTMLAnchorElement>) {
+  event.preventDefault();
+  window.history.replaceState(window.history.state, "", "#top");
+  document.getElementById("top")?.focus({ preventScroll: true });
+  window.scrollTo({ top: 0, left: 0, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
+}
 
 const tools = [
   { name: "Figma", image: "figma.svg", href: "https://www.figma.com/" },
@@ -52,66 +60,43 @@ export function TouchBand() {
 
 export function Footer() {
   return (
-    <footer id="contact" className="dark-surface relative overflow-hidden px-4 pb-10 pt-4 text-paper sm:px-8 sm:pt-6">
-      <div className="relative mx-auto max-w-5xl">
-        <div className="footer-panel relative overflow-hidden rounded-[24px] bg-ink p-8 text-center sm:p-12">
-          <div className="relative">
-            <Reveal dir="down">
-              <h3 className="section-heading mx-auto max-w-[20ch]">
-                Let&apos;s build something people <span className="">remember</span>.
-              </h3>
+    <footer id="contact" className="footer-section dark-surface">
+      <div className="footer-panel">
+        <img className="footer-backdrop" src="/assets/hero-cover.webp" alt="" aria-hidden="true" loading="lazy" />
+        <div className="footer-content">
+          <div className="footer-top">
+            <a href="#top" onClick={returnToTop} className="footer-brand">Essy</a>
+            <a href="#top" onClick={returnToTop} className="footer-to-top">
+              <span>Back to top</span>
+              <span className="footer-up" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor" focusable="false"><path d="m12 3-8 8 1.7 1.7 5.1-5.1V21h2.4V7.6l5.1 5.1L20 11l-8-8Z" /></svg></span>
+            </a>
+          </div>
+          <div className="footer-invitation">
+            <Reveal dir="up">
+              <h2 className="section-heading">Let&apos;s build something<br /><span>people remember.</span></h2>
+              <p>Tell me what you’re working on. I’d love to hear about it.</p>
+              <a href={site.contact} className="footer-contact">Book a coffee</a>
             </Reveal>
-            <p className="mx-auto mt-3 max-w-[38ch] text-[13px] leading-relaxed text-muted-dark">
-              <TypeWords
-                delay={0.2}
-                step={0.035}
-                text="Research, product, or a story that needs telling — the door is open."
-              />
-            </p>
-
-            <Reveal dir="down" delay={0.35}>
-              <a
-                href={site.contact}
-                className="group mt-6 inline-flex items-center gap-2 rounded-full bg-sage px-6 py-3 text-[13px] font-normal text-ink transition-all hover:bg-ink hover:text-white hover:shadow-[0_18px_40px_-18px_rgba(0,0,0,0.6)]"
-              >
-                Book a coffee
-              </a>
-            </Reveal>
-
-            <nav className="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-[12.5px] font-normal text-muted-dark">
+          </div>
+          <div className="footer-bottom">
+            <nav aria-label="Footer navigation" className="footer-nav">
               {[
-                { label: "Home", href: "/" },
+                { label: "Home", href: "#top" },
                 { label: "Why Not Build?", href: site.stories },
                 { label: "Resources", href: "#resources" },
                 { label: "Projects", href: "#projects" },
                 { label: "Services", href: "#services" },
-              ].map((l) => (
-                <a key={l.label} href={l.href} className="transition-colors hover:text-paper">
-                  {l.label}
-                </a>
-              ))}
+              ].map(link => <a key={link.label} href={link.href} onClick={link.href === "#top" ? returnToTop : undefined}>{link.label}</a>)}
             </nav>
-
-            <div className="mt-6 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-[12px] text-muted-dark">
-              {["Twitter / X", "LinkedIn", "Instagram"].map((l) => (
-                <a key={l} href="#" className="transition-colors hover:text-paper">
-                  {l}
-                </a>
-              ))}
-              <a href="mailto:hi@essyudeme.com" className="transition-colors hover:text-paper">
-                hi@essyudeme.com
-              </a>
-            </div>
-
-            <div className="mt-9 border-t border-paper/10 pt-5 text-[11px] text-muted-dark">
-              <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1">
-                <a href="#" className="transition-colors hover:text-paper">Privacy</a>
-                <span className="h-1 w-1 rounded-full bg-paper/20" />
-                <a href="#" className="transition-colors hover:text-paper">Colophon</a>
-                <span className="h-1 w-1 rounded-full bg-paper/20" />
-                <span>Lagos → Everywhere</span>
+            <div className="footer-meta">
+              <span>© 2026 Essy Udeme</span>
+              <div className="footer-links">
+                <a href={site.contact} className="footer-social" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3" /><path d="m4 6 8 7 8-7" /></svg></a>
+                <a href="#" className="footer-social" aria-label="X (Twitter)"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.9 2H22l-6.8 7.8L23 22h-6.3l-5-7.6L5 22H2l8.3-9.5L2 2h6.5l4.7 7.1L18.9 2Zm-1.1 18h1.7L7.4 4H5.6l12.2 16Z" /></svg></a>
+                <a href="#" className="footer-social" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5 3a2 2 0 1 0 0 4 2 2 0 0 0 0-4ZM3 9h4v12H3V9Zm7 0h4v1.6c.7-1.1 1.8-1.9 3.5-1.9 3.3 0 4.5 2 4.5 5V21h-4v-6.5c0-1.6-.3-2.7-1.8-2.7-1.7 0-2.2 1.2-2.2 2.7V21h-4V9Z" /></svg></a>
+                <a href="#" className="footer-social" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" /></svg></a>
               </div>
-              <div className="mt-3">© 2026 Essy Udeme — made with care.</div>
+              <div className="footer-legal"><a href="#">Privacy</a><a href="#">Colophon</a><span>Lagos → Everywhere</span></div>
             </div>
           </div>
         </div>

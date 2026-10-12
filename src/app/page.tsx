@@ -9,7 +9,7 @@ import { Preloader } from "@/components/Preloader";
 
 export default function Home() {
   return (
-    <div className="site-base min-h-screen">
+    <div id="top" tabIndex={-1} className="site-base min-h-screen focus:outline-none">
       <Preloader />
       <main className="relative w-full overflow-x-clip">
         <div className="site-introduction mx-auto w-full max-w-[1440px]">
@@ -26,8 +26,8 @@ export default function Home() {
             <PromiseSection />
             <ServicesSection />
             <TouchBand />
-            <Footer />
           </div>
+          <Footer />
         </div>
       </main>
     </div>
