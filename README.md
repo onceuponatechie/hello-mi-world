@@ -6,9 +6,9 @@ A Next.js App Router portfolio based on `onceuponatechie/butter-canvas-dream` at
 
 - Header, Resources dropdown, mobile navigation, stationary hero collage, and a circular zoom reveal from the loading screen.
 - Two resource links with the owner's transparent artwork, brief descriptions and outline actions. Cards stack on mobile, with a non-clickable experience manifesto beneath them. Why Not Build keeps its original 360×486 counter scene and continuous motion, with a circular arrow link at the bottom right and keyboard pause/play. Its six categories share one scene without progress bars or a decorative counter arrow.
-- A four-step process before the builds: Research, Strategy, Create, and Test & repeat. Restored white and ink icons sit on lavender, butter, peach and blue tiles sized to 75% of the earlier squares, without raised edges or white highlight gradients; steps remain horizontal and scrollable on mobile, with touch, trackpad and keyboard scrolling.
+- A four-step process before the builds: Research, Strategy, Create, and Test & repeat. Centered #F7F7F7 cards use the services' custom white geometric icon family on butter-yellow, lavender, orange and sky-blue tiles. Cards form four columns on desktop, two on tablet, and a vertical list on phones. Artwork is static and the owner's questions and descriptions are preserved.
 - Four open text-and-image project rows on #FEFEFE use the hero’s green action and a small external arrow beside Go live. Project rows retain sticky positioning and spring-smoothed scaling; “Explore more builds” follows closely. The services section follows the builds, with staggered white/off-white panels, original white geometric marks on lavender, green and butter-yellow tiles, and purple phrases in the descriptions. Section headlines share the resources heading's responsive size. Stacking offsets adapt to short screens so their content remains reachable.
-- A single pale-green newsletter card matching the experience card, with a folded-paper illustration, concise invitation and full-width email and subscription controls. No reader counts, reviews, stars or unconfirmed publishing schedule. The footer remains a black panel without a full-width black surround.
+- A black newsletter panel with benefit-oriented copy, a separate signup form and circular Figma, Notion, Codex and VS Code badges. Codex uses the OpenAI mark from the official developer site. Copy and form sit side by side on desktop and stack on smaller screens. No reader counts, reviews, stars or unconfirmed publishing schedule. The footer remains a black panel without a full-width black surround.
 - Substack signup handoff, metadata, and a custom favicon.
 
 The personal reading grid, product practice cards, and adventure carousel are intentionally excluded. Unused Lovable tooling, TanStack/Vite routing, UI libraries, assets, and content modules are excluded.
@@ -42,6 +42,8 @@ Vercel provides the production URL for social metadata. Set `NEXT_PUBLIC_SITE_UR
 ## Links and content
 
 `src/config/site.ts` contains the confirmed Substack destinations and the contact email inherited from the original site. The newsletter hands the entered email to Substack’s signup page; readers finish subscribing there. The site does not store emails or claim a subscription before it is completed.
+
+Tool artwork is stored locally in `public/assets/tools`: Figma's full-color icon comes from its [brand download](https://www.figma.com/using-the-figma-brand/), the Notion image from its [official site](https://www.notion.com/), the OpenAI mark from the [Codex developer site](https://developers.openai.com/codex/app/), and the VS Code SVG from Microsoft's [icon pack](https://code.visualstudio.com/brand). Badges identify the owner's tools and link to their official sites.
 
 Project detail/live links, resource destinations, social profiles, Privacy, and Colophon retain homepage placeholders until the owner supplies the corresponding pages. Project descriptions and statistics are copied from the original design and have not been independently verified.
 
