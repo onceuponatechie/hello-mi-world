@@ -2,57 +2,12 @@
 
 import { motion, useReducedMotion, useScroll, useSpring, useTransform, type MotionValue } from "framer-motion";
 import { useRef, type CSSProperties } from "react";
-import { ArrowUpRight } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
-const laptopDash = "/assets/essy-laptop-dash.jpg";
-const insight = "/assets/essy-insight.jpg";
-const phone = "/assets/essy-phone.jpg";
-const slide = "/assets/essy-slide.jpg";
+import Link from "next/link";
+import { builds } from "@/content/builds";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
-
-const projects = [
-  {
-    name: "Streamline Dashboard",
-    tag: "Case study",
-    year: "2026",
-    role: "Product design",
-    body: "A single canvas for revenue ops. Cut daily reporting from 2 hours to 6 minutes without adding a single new tool.",
-    img: laptopDash,
-    stat: "38%",
-    statLabel: "faster decision loop",
-  },
-  {
-    name: "Insight Studio",
-    tag: "Case study",
-    year: "2025",
-    role: "Web · Analytics",
-    body: "A calmer analytics home for a research team who lived in eight tabs at once, rebuilt around one question at a time.",
-    img: insight,
-    stat: "4×",
-    statLabel: "less tab switching",
-  },
-  {
-    name: "Pocket Coach",
-    tag: "Case study",
-    year: "2025",
-    role: "iOS · Wellness",
-    body: "A pocket-sized nudge app that helps founders keep one promise a day, with streaks that forgive a missed morning.",
-    img: phone,
-    stat: "4.8★",
-    statLabel: "App Store rating",
-  },
-  {
-    name: "Sage Deck",
-    tag: "Case study",
-    year: "2024",
-    role: "Brand · Deck system",
-    body: "A deck kit that reads like a magazine and closes like a founder brief — built once, reused across every raise.",
-    img: slide,
-    stat: "3 May",
-    statLabel: "launch day",
-  },
-];
+const projects = builds.slice(0, 4);
 
 export function PromiseSection() {
   const stackRef = useRef<HTMLDivElement>(null);
@@ -83,12 +38,12 @@ export function PromiseSection() {
         transition={{ duration: 0.6, ease: EASE }}
         className="builds-more mx-auto mt-5 flex max-w-6xl items-center justify-center"
       >
-        <a
-          href="#projects"
+        <Link
+          href="/builds"
           className="group inline-flex items-center gap-2 rounded-full border border-ink/15 px-5 py-2.5 text-[13px] font-normal text-ink transition-colors hover:bg-ink hover:text-white"
         >
           Explore more builds
-        </a>
+        </Link>
       </motion.div>
     </section>
   );
@@ -98,13 +53,11 @@ type ProjectProps = (typeof projects)[number] & { index: number; total: number; 
 
 function ProjectCard({
   name,
-  tag,
-  year,
-  role,
-  body,
-  img,
-  stat,
-  statLabel,
+  slug,
+  format,
+  summary,
+  image,
+  output,
   index,
   total,
   progress,
@@ -126,39 +79,31 @@ function ProjectCard({
         className="project-card group relative mx-auto max-w-6xl"
       >
         <div className="project-row">
-          <a href="#projects" className="project-image" aria-label={`View ${name}`}>
+          <Link href={`/builds/${slug}`} className="project-image" aria-label={`Read ${name}`}>
             <img
-              src={img}
-              alt={name}
+              src={image}
+              alt={`${name} concept cover`}
               loading="lazy"
               className="absolute inset-0 h-full w-full object-cover saturate-[1.08] contrast-[1.04] transition-transform duration-700 group-hover:scale-[1.04] group-active:scale-[1.04]"
               style={{ transitionTimingFunction: "cubic-bezier(0.22,1,0.36,1)" }}
             />
 
-          </a>
+          </Link>
 
           {/* text */}
           <div className="project-copy">
-            <p className="project-meta">{tag} · {year} · {role}</p>
+            <p className="project-meta">Concept study · {format}</p>
             <h3>
               {name}
             </h3>
             <p className="project-description">
-              {body}
+              {summary}
             </p>
-            <p className="project-result"><span>{stat}</span> {statLabel}</p>
+            <p className="project-result">{output}</p>
             <div className="project-links">
-              <a href="#projects" className="hero-primary">
-                View Case Study
-              </a>
-              <a
-                href="#projects"
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-1 text-[12px] font-normal text-ink hover:underline"
-              >
-                Go live <ArrowUpRight size={14} strokeWidth={1.5} aria-hidden="true" />
-              </a>
+              <Link href={`/builds/${slug}`} className="hero-primary">
+                See the build
+              </Link>
             </div>
           </div>
         </div>

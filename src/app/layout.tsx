@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Syne } from "next/font/google";
 import "./globals.css";
 import "./portfolio.css";
+import "./builds.css";
 
 const sans = Plus_Jakarta_Sans({ subsets: ["latin"], weight: "400", variable: "--font-jakarta", display: "swap" });
 const heading = Syne({ subsets: ["latin"], weight: "500", variable: "--font-syne", display: "swap" });
@@ -23,7 +24,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en" className={`${sans.variable} ${heading.variable}`}>
       <head>
-        <script id="homepage-scroll-start" dangerouslySetInnerHTML={{ __html: `if(location.pathname==='/'){history.scrollRestoration='manual';if(location.hash){history.replaceState(history.state,'',location.pathname+location.search);}window.scrollTo({top:0,left:0,behavior:'instant'});}` }} />
+        <script id="homepage-scroll-start" dangerouslySetInnerHTML={{ __html: `if(location.pathname==='/'&&(!location.hash||performance.getEntriesByType('navigation')[0]?.type==='reload')){history.scrollRestoration='manual';if(location.hash){history.replaceState(history.state,'',location.pathname+location.search);}document.documentElement.dataset.heroEntry='true';window.scrollTo({top:0,left:0,behavior:'instant'});}` }} />
       </head>
       <body>{children}</body>
     </html>

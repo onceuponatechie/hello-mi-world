@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { ChevronDown, Menu, X } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Button } from "@/components/Button";
 import { site } from "@/config/site";
 
@@ -13,8 +14,10 @@ const resourceLinks = [
 
 export function Nav() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+  const sectionLink = (hash: string) => pathname === "/" ? hash : `/${hash}`;
   return (
-    <header id="top" className="relative z-40 px-5 pt-6 min-[600px]:px-6 md:px-10 min-[600px]:pt-8">
+    <header className="relative z-40 px-5 pt-6 min-[600px]:px-6 md:px-10 min-[600px]:pt-8">
       <div className="flex items-center justify-between gap-4">
         <Link
           href="/"
@@ -32,39 +35,40 @@ export function Nav() {
           </a>
 
           <div className="group relative flex items-center">
-            <a href="#resources" className="inline-flex items-center gap-1 text-[13px] font-normal text-ink transition-colors hover:text-ink">
+            <Link href={sectionLink("#resources")} className="inline-flex items-center gap-1 text-[13px] font-normal text-ink transition-colors hover:text-ink">
               Resources <ChevronDown size={13} className="transition-transform group-hover:rotate-180" />
-            </a>
+            </Link>
             <div className="invisible absolute left-1/2 top-full z-50 w-52 -translate-x-1/2 pt-3 opacity-0 transition-all group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
               <div className="rounded-[18px] border border-ink/10 bg-paper p-2 shadow-[0_20px_50px_-24px_rgba(17,17,17,0.35)]">
                 {resourceLinks.map((item) => (
-                  <a key={item.label} href={item.href} className="block rounded-[12px] px-3 py-2.5 text-[12px] font-normal text-ink transition-colors hover:bg-stone hover:text-ink">{item.label}</a>
+                  <Link key={item.label} href={sectionLink(item.href)} className="block rounded-[12px] px-3 py-2.5 text-[12px] font-normal text-ink transition-colors hover:bg-stone hover:text-ink">{item.label}</Link>
                 ))}
               </div>
             </div>
           </div>
 
-          <a
-            href="#projects"
+          <Link
+            href="/builds"
+            aria-current={pathname.startsWith("/builds") ? "page" : undefined}
             className="text-[13px] font-normal text-ink transition-colors hover:text-ink"
           >
-            Projects
-          </a>
-          <a
-            href="#services"
+            Builds
+          </Link>
+          <Link
+            href={sectionLink("#services")}
             className="text-[13px] font-normal text-ink transition-colors hover:text-ink"
           >
             Services
-          </a>
+          </Link>
         </nav>
 
         <div className="flex items-center gap-2">
-          <a
+          <Link
             href="#contact"
             className="rounded-full bg-ink px-6 py-2.5 text-[12px] font-normal text-white transition-opacity hover:opacity-90"
           >
             Say hi
-          </a>
+          </Link>
           <Button
             variant="outline"
             size="icon"
@@ -89,34 +93,35 @@ export function Nav() {
             Stories
           </a>
 
-          <a
-            href="#resources"
+          <Link
+            href={sectionLink("#resources")}
             onClick={() => setOpen(false)}
             className="rounded-2xl px-4 py-2.5 text-[13px] font-normal text-ink hover:bg-black/5"
           >
             Resources
-          </a>
+          </Link>
 
           <div className="ml-3 grid border-l border-ink/10 pl-3">
             {resourceLinks.map((item) => (
-              <a key={item.label} href={item.href} onClick={() => setOpen(false)} className="rounded-xl px-3 py-2 text-[12px] text-ink hover:bg-black/5 hover:text-ink">{item.label}</a>
+              <Link key={item.label} href={sectionLink(item.href)} onClick={() => setOpen(false)} className="rounded-xl px-3 py-2 text-[12px] text-ink hover:bg-black/5 hover:text-ink">{item.label}</Link>
             ))}
           </div>
 
-          <a
-            href="#projects"
+          <Link
+            href="/builds"
+            aria-current={pathname.startsWith("/builds") ? "page" : undefined}
             onClick={() => setOpen(false)}
             className="rounded-2xl px-4 py-2.5 text-[13px] font-normal text-ink hover:bg-black/5"
           >
-            Projects
-          </a>
-          <a
-            href="#services"
+            Builds
+          </Link>
+          <Link
+            href={sectionLink("#services")}
             onClick={() => setOpen(false)}
             className="rounded-2xl px-4 py-2.5 text-[13px] font-normal text-ink hover:bg-black/5"
           >
             Services
-          </a>
+          </Link>
         </nav>
       )}
     </header>
