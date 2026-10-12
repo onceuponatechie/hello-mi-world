@@ -29,7 +29,7 @@
 .hero-photo-frame img { width: 100%; height: 100%; object-fit: cover; }
 .hero-work figcaption { padding-top: 13px; text-align: center; font-size: 11px; line-height: 1.5; color: #71756E; }
 .hero-portrait { top: 90px; right: 32px; width: 234px; aspect-ratio: 1; }
-.hero-portrait > img { width: 100%; height: 100%; object-fit: cover; object-position: 43% 40%; border-radius: 50%; }
+.hero-portrait > img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 32%; border-radius: 50%; }
 .hero-star { position: absolute; width: 95px; height: 95px; }
 .hero-star-lavender { top: -28px; right: -45px; color: #c3a5dd; transform: rotate(15deg); }
 .hero-note { left: 90px; top: 436px; width: 184px; padding: 18px 21px 23px; transform: rotate(6deg); background: #f7f2cf; box-shadow: 0 16px 38px -20px #20251d25; border-radius: 4px 4px 24px 4px; }

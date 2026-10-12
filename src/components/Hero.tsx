@@ -41,7 +41,7 @@ export function Hero() {
           <Star className="hero-star hero-star-lavender" />
         </figure>
         <figure className="hero-piece hero-portrait">
-          <img src="/assets/essy-reading.jpg" alt="" fetchPriority="high" width={1024} height={1024} />
+          <img src="/assets/essy-udeme-portrait.png" alt="" fetchPriority="high" width={830} height={1000} />
         </figure>
         <div className="hero-piece hero-note">
           <svg viewBox="0 0 80 38" fill="none"><path d="M4 27c5-23 14-26 17-6s16 14 18-1 18-19 17 0 13 7 18-13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" /></svg>

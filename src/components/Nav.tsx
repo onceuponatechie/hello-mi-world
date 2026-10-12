@@ -8,14 +8,14 @@ import { Button } from "@/components/Button";
 import { site } from "@/config/site";
 
 const resourceLinks = [
-  { label: "Tools & Templates", href: "#tools-and-templates" },
+  { label: "Tools & Templates", href: "/tools-and-templates" },
   { label: "Research Vault", href: "#research-vault" },
 ] as const;
 
 export function Nav() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
-  const sectionLink = (hash: string) => pathname === "/" ? hash : `/${hash}`;
+  const sectionLink = (href: string) => href.startsWith("/") || pathname === "/" ? href : `/${href}`;
   return (
     <header className="relative z-40 px-5 pt-6 min-[600px]:px-6 md:px-10 min-[600px]:pt-8">
       <div className="flex items-center justify-between gap-4">
