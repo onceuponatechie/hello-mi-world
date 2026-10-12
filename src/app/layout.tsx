@@ -3,6 +3,7 @@ import { Plus_Jakarta_Sans, Syne } from "next/font/google";
 import "./globals.css";
 import "./portfolio.css";
 import "./builds.css";
+import "./tools.css";
 
 const sans = Plus_Jakarta_Sans({ subsets: ["latin"], weight: "400", variable: "--font-jakarta", display: "swap" });
 const heading = Syne({ subsets: ["latin"], weight: "500", variable: "--font-syne", display: "swap" });

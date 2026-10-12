@@ -3,6 +3,7 @@
 import { Reveal } from "@/components/Reveal";
 import { WhyNotBuildCard } from "@/components/WhyNotBuildCard";
 import Image from "next/image";
+import Link from "next/link";
 
 const resources = [
   { id: "tools-and-templates", title: "Tools & Templates", description: "Systems, files, and checklists I use — ready for your next idea.", action: "Browse the kits", image: "tools-templates.png" },
@@ -19,14 +20,14 @@ export function ResourceSection() {
         <Reveal className="resource-laboratory" dir="up"><WhyNotBuildCard /></Reveal>
         {resources.map((resource, i) => (
           <Reveal key={resource.id} className="resource-square" dir="up" delay={i * 0.08}>
-            <a id={resource.id} href={`#${resource.id}`} className="resource-row group">
+            <Link id={resource.id} href={resource.id === "tools-and-templates" ? "/tools-and-templates" : `#${resource.id}`} className="resource-row group">
               <div className="resource-copy">
                 <h3>{resource.title}</h3>
                 <p>{resource.description}</p>
                 <span className="resource-action">{resource.action}</span>
               </div>
               <Image className="resource-artwork" src={`/assets/${resource.image}`} alt="" aria-hidden="true" width={1024} height={1024} sizes="(max-width: 599px) 60vw, (max-width: 899px) 46vw, 230px" />
-            </a>
+            </Link>
           </Reveal>
         ))}
         <Reveal className="resource-manifesto" dir="up" delay={0.1}>
