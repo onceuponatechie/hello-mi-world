@@ -1,32 +1,28 @@
 type ServiceMarkProps = { kind: "research" | "narrative" | "prototype" | "strategy" | "repeat" };
 
-// Original filled marks: gathered evidence, connected stories, and a made object.
+// Hand-shaped silhouettes: one ink, soft curves, and open seams.
 export function ServiceMark({ kind }: ServiceMarkProps) {
   return (
-    <svg viewBox="0 0 64 64" fill="none" focusable="false" aria-hidden="true">
+    <svg viewBox="0 0 64 64" fill="currentColor" focusable="false" aria-hidden="true">
       {kind === "research" && <>
-        <path d="M11 25a14 14 0 0 1 14-14h7v7a14 14 0 0 1-14 14h-7V25Z" fill="#FFFFFF" />
-        <path d="M39 11a14 14 0 0 1 14 14v7h-7a14 14 0 0 1-14-14v-7h7Z" fill="#FFFFFF" opacity=".85" />
-        <path d="M53 39a14 14 0 0 1-14 14h-7v-7a14 14 0 0 1 14-14h7v7Z" fill="#FFFFFF" />
-        <path d="M25 53a14 14 0 0 1-14-14v-7h7a14 14 0 0 1 14 14v7h-7Z" fill="#FFFFFF" opacity=".85" />
-      </>}
-      {kind === "narrative" && <>
-        <path d="m14 19 8-8a10 10 0 0 1 14 0l8 8a10 10 0 0 1 0 14l-8 8a10 10 0 0 1-14 0l-8-8a10 10 0 0 1 0-14Z" stroke="#FFFFFF" strokeWidth="7" opacity=".8" />
-        <path d="m20 31 8-8a10 10 0 0 1 14 0l8 8a10 10 0 0 1 0 14l-8 8a10 10 0 0 1-14 0l-8-8a10 10 0 0 1 0-14Z" stroke="#FFFFFF" strokeWidth="7" />
-      </>}
-      {kind === "prototype" && <>
-        <path d="M12 16a4 4 0 0 1 4-4h11v15H12V16Zm25-4h11a4 4 0 0 1 4 4v11H37V12ZM12 37h15v15H16a4 4 0 0 1-4-4V37Zm25 0h15v11a4 4 0 0 1-4 4H37V37Z" fill="#FFFFFF" />
-        <rect x="24" y="24" width="16" height="16" rx="4" transform="rotate(45 32 32)" fill="#FFFFFF" opacity=".8" />
+        <path fillRule="evenodd" d="M25 5C12 6 4 17 6 31c2 14 13 21 26 19 4 0 8-2 11-4 3 5 5 12 10 14 4 2 9-2 7-6-2-5-9-9-13-13 5-6 6-14 3-21-1-2-3-3-5-2l-4 2c-3 1-3 3-3 5 2 6-2 13-9 13-8 1-13-5-12-12 0-5 3-8 8-9 3-1 4-2 3-5l-1-4c0-2-1-3-2-3Z" />
+        <path d="M33 4c7 1 13 4 17 10 1 1 0 3-2 3l-7 3c-2 1-3 0-4-1l-5-3c-2 0-2-2-2-3l-1-6c0-2 2-3 4-3Z" />
       </>}
       {kind === "strategy" && <>
-        <rect x="8" y="8" width="19" height="19" rx="6" fill="#FFFFFF" opacity=".8" />
-        <rect x="37" y="8" width="19" height="19" rx="6" fill="#FFFFFF" />
-        <rect x="22" y="37" width="20" height="19" rx="6" fill="#FFFFFF" />
-        <path d="M15 28h6v3h22v-3h6v9H35v-1h-6v1H15v-9Z" fill="#FFFFFF" opacity=".85" />
+        <path d="M9 9c-5 1-6 5-3 9 4 7 13 10 17 19 3 6 1 12 3 19 1 5 5 7 9 5 2-1 2-3 2-6 0-11 0-22-7-31C24 17 17 6 9 9Z" />
+        <path d="M40 55c0 4 2 6 5 4 5-2 3-9 3-16 0-8 3-12 8-17 4-4 7-9 3-12-4-4-10-1-13 3-3 4-5 9-8 12 3 8 3 18 2 26ZM27 5c-5 0-6 4-3 8l8 10c2 3 4 2 5-1l4-9c2-6-6-8-14-8Z" />
+      </>}
+      {kind === "narrative" && <>
+        <path d="M14 7C7 7 5 11 8 17l6 9c2 3 5 4 8 3l25-7c4-1 4-4 2-7l-5-7c-2-3-6-3-10-2L14 7ZM20 33c-4 1-4 4-2 7l5 8c2 3 5 4 9 3l24-7c4-1 5-4 3-7l-5-9c-1-3-4-3-7-2l-27 7Z" />
+        <path d="M30 55c-3 1-3 3 0 5 6 4 10 3 13-2 3-6 2-8-3-6l-10 3ZM7 27C4 25 3 28 3 32L2 44c-1 7 4 11 11 10l6-2c3-1 3-3 1-5L7 27Z" />
+      </>}
+      {kind === "prototype" && <>
+        <path fillRule="evenodd" d="M13 9C5 11 3 15 4 23l2 23c1 7 5 9 11 6l17-7c6-2 8-6 7-13L39 9c0-7-4-9-10-6L13 9Zm4 8c-3 1-4 3-4 6l2 15c0 2 1 3 3 2l12-5c2-1 3-3 2-5l-1-15c0-2-1-3-3-2l-11 4Z" />
+        <path d="M45 20c0-3 2-4 5-2l7 5c5 3 6 7 5 13l-2 18c-1 7-5 9-11 6l-21-8c-3-1-3-3 0-4l7-3c2-1 3-1 5 0l8 4c3 1 4 0 4-3l1-12c0-3-1-5-4-6-3-2-5-3-4-8Z" />
       </>}
       {kind === "repeat" && <>
-        <path d="M12 31a20 20 0 0 1 32-16l6-6v19H31l7-7a12 12 0 0 0-18 10h-8Z" fill="#FFFFFF" />
-        <path d="M52 33a20 20 0 0 1-32 16l-6 6V36h19l-7 7a12 12 0 0 0 18-10h8Z" fill="#FFFFFF" opacity=".85" />
+        <path d="M8 18C16 5 33 2 46 10l6-5c4-3 7-1 7 3l-1 16c0 6-3 9-9 8l-14-2c-4 0-5-3-2-5l5-4c-7-4-14-1-18 5-3 4-6 4-9 1s-5-5-3-9Z" />
+        <path d="M56 46c-8 13-25 16-38 8l-6 5c-4 3-7 1-7-3l1-16c0-6 3-9 9-8l14 2c4 0 5 3 2 5l-5 4c7 4 14 1 18-5 3-4 6-4 9-1s5 5 3 9Z" />
       </>}
     </svg>
   );
