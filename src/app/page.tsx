@@ -6,6 +6,11 @@ import { ProcessSection } from "@/components/ProcessSection";
 import { PromiseSection } from "@/components/PromiseSection";
 import { TouchBand, Footer } from "@/components/TouchBand";
 import { Preloader } from "@/components/Preloader";
+import { builds } from "@/content/builds";
+
+// Keep the full study narratives on the server. The animated homepage stack
+// receives only the cover and summary fields it renders.
+const featuredBuilds = builds.slice(0, 4).map(({ slug, name, format, summary, image, output }) => ({ slug, name, format, summary, image, output }));
 
 export default function Home() {
   return (
@@ -23,7 +28,7 @@ export default function Home() {
         <div className="site-depth">
           <div className="mx-auto w-full max-w-[1440px]">
             <ProcessSection />
-            <PromiseSection />
+            <PromiseSection projects={featuredBuilds} />
             <ServicesSection />
             <TouchBand />
           </div>

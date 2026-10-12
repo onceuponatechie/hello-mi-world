@@ -10,7 +10,9 @@ export function Preloader() {
   const reduce = useReducedMotion();
   const brand = "Essy";
   const unlockScroll = useRef<(() => void) | null>(null);
+  const revealEntry = useRef(false);
   const finishReveal = useCallback(() => {
+    if (!revealEntry.current) return;
     unlockScroll.current?.();
     unlockScroll.current = null;
     document.getElementById("top")?.focus({ preventScroll: true });
@@ -18,6 +20,14 @@ export function Preloader() {
   }, []);
 
   useEffect(() => {
+    // Inner-page links to homepage sections should reach their destination;
+    // only a document entry or refresh starts the world-entry reveal.
+    if (document.documentElement.dataset.heroEntry !== "true" && !revealEntry.current) {
+      const skip = setTimeout(() => setDone(true), 0);
+      return () => clearTimeout(skip);
+    }
+    revealEntry.current = true;
+    delete document.documentElement.dataset.heroEntry;
     // Hold the entry position until the circle has finished opening, including
     // late page-load restoration and focus restored by the browser.
     const root = document.documentElement;
