@@ -20,7 +20,7 @@ export function ResourceSection() {
         <Reveal className="resource-laboratory" dir="up"><WhyNotBuildCard /></Reveal>
         {resources.map((resource, i) => (
           <Reveal key={resource.id} className="resource-square" dir="up" delay={i * 0.08}>
-            <Link id={resource.id} href={resource.id === "tools-and-templates" ? "/tools-and-templates" : `#${resource.id}`} className="resource-row group">
+            <Link id={resource.id} href={resource.id === "tools-and-templates" ? "/tools-and-templates" : "/research-vault"} className="resource-row group">
               <div className="resource-copy">
                 <h3>{resource.title}</h3>
                 <p>{resource.description}</p>

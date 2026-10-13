@@ -9,6 +9,7 @@ const requiredSelectors = [
   ".site-base", ".resource-layout", ".resource-artwork", ".resource-action", ".manifesto-note",
   ".site-depth", ".process-track", ".process-art", ".services-grid", ".service-card", ".service-icon", ".wnb-read", ".project-sticky", ".project-card", ".project-row",
   ".tools-masonry", ".tool-artwork", ".tools-controls",
+  ".contact-layout", ".vault-grid", ".research-layout", ".research-visual",
 ];
 
 try {
