@@ -9,7 +9,7 @@ import { site } from "@/config/site";
 
 const resourceLinks = [
   { label: "Tools & Templates", href: "/tools-and-templates" },
-  { label: "Research Vault", href: "#research-vault" },
+  { label: "Research Vault", href: "/research-vault" },
 ] as const;
 
 export function Nav() {
@@ -64,7 +64,8 @@ export function Nav() {
 
         <div className="flex items-center gap-2">
           <Link
-            href="#contact"
+            href={site.contact}
+            aria-current={pathname === site.contact ? "page" : undefined}
             className="rounded-full bg-ink px-6 py-2.5 text-[12px] font-normal text-white transition-opacity hover:opacity-90"
           >
             Say hi

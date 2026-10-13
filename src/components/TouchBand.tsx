@@ -78,13 +78,13 @@ export function Footer() {
           <div className="footer-invitation">
             <Reveal dir="up">
               <h2 className="section-heading">Let&apos;s give your idea<br /><span>a first version.</span></h2>
-              <a href={site.contact} className="footer-contact">Tell me about it</a>
+              <Link href={pathname === site.contact ? "#contact-form" : site.contact} className="footer-contact">Tell me about it</Link>
             </Reveal>
           </div>
           <div className="footer-bottom">
             <div className="footer-organized">
               <div className="footer-links" aria-label="Social and contact links">
-                <a href={site.contact} className="footer-social" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3" /><path d="m4 6 8 7 8-7" /></svg></a>
+                <a href={site.email} className="footer-social" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3" /><path d="m4 6 8 7 8-7" /></svg></a>
                 <a href="#" className="footer-social" aria-label="X (Twitter)"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.9 2H22l-6.8 7.8L23 22h-6.3l-5-7.6L5 22H2l8.3-9.5L2 2h6.5l4.7 7.1L18.9 2Zm-1.1 18h1.7L7.4 4H5.6l12.2 16Z" /></svg></a>
                 <a href="#" className="footer-social" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5 3a2 2 0 1 0 0 4 2 2 0 0 0 0-4ZM3 9h4v12H3V9Zm7 0h4v1.6c.7-1.1 1.8-1.9 3.5-1.9 3.3 0 4.5 2 4.5 5V21h-4v-6.5c0-1.6-.3-2.7-1.8-2.7-1.7 0-2.2 1.2-2.2 2.7V21h-4V9Z" /></svg></a>
                 <a href="#" className="footer-social" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" /></svg></a>
