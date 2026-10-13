@@ -2,7 +2,7 @@
 export const site = {
   newsletter: "https://whynotbuild.substack.com/subscribe",
   newsletterProfile: "https://substack.com/@sheisessy",
-  stories: "https://whynotbuild.substack.com/",
+  stories: "/stories",
   contact: "/contact",
   email: "mailto:hi@essyudeme.com",
 } as const;
