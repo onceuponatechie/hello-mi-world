@@ -5,6 +5,7 @@ import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/TouchBand";
 import { ToolArtwork } from "@/components/ToolArtwork";
 import { getProduct, readyProducts } from "@/content/products";
+import { stories } from "@/content/stories";
 
 export const dynamicParams = false;
 export function generateStaticParams() { return readyProducts.map(({slug}) => ({slug})); }
@@ -20,6 +21,7 @@ export default async function ProductPage({params}: {params: Promise<{slug: stri
   const product = getProduct(slug);
   if (!product?.download || !product.includes || !product.steps || !product.preview) notFound();
   const related = readyProducts.filter(item => item.slug !== slug).slice(0, 2);
+  const linkedStories = stories.filter(story => story.resourceSlug === slug);
   return <div id="top" tabIndex={-1} className="site-base tool-detail-page focus:outline-none">
     <div className="inner-nav"><Nav /></div>
     <main>
@@ -34,6 +36,7 @@ export default async function ProductPage({params}: {params: Promise<{slug: stri
         <section className="tool-how" aria-labelledby="tool-how-heading"><h2 id="tool-how-heading" className="section-heading">Make it yours.</h2><ol>{product.steps.map((step, i) => <li key={step.title}><span>{String(i+1).padStart(2, "0")}</span><div><h3>{step.title}</h3><p>{step.description}</p></div></li>)}</ol></section>
         <section className="tool-sample" aria-labelledby="tool-sample-heading"><h2 id="tool-sample-heading" className="section-heading">A look inside.</h2><dl>{product.preview.map(item => <div key={item.heading}><dt>{item.heading}</dt><dd>{item.body}</dd></div>)}</dl><a className="hero-primary" href={product.download.href} download>{product.download.label}</a></section>
         <section className="tool-related" aria-labelledby="tool-related-heading"><div><h2 id="tool-related-heading" className="section-heading">Useful together.</h2><Link href="/tools-and-templates" className="hero-secondary">All tools & templates</Link></div><ul>{related.map(item => <li key={item.slug}><Link href={`/tools-and-templates/${item.slug}`}><ToolArtwork {...item} /><h3>{item.name}</h3><span>{item.format}</span></Link></li>)}</ul></section>
+        {linkedStories.length > 0 && <section className="tool-story-links" aria-labelledby="tool-story-links-heading"><h2 id="tool-story-links-heading" className="section-heading">Put it to work.</h2><ul>{linkedStories.map(story => <li key={story.slug}><Link href={`/stories/${story.slug}`}>{story.title}</Link></li>)}</ul></section>}
       </div>
     </main>
     <Footer />

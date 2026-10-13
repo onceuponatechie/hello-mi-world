@@ -27,12 +27,13 @@ export function Nav() {
         </Link>
 
         <nav aria-label="Main navigation" className="hero-navigation hidden items-center gap-4 md:gap-8 min-[600px]:flex">
-          <a
+          <Link
             href={site.stories}
+            aria-current={pathname.startsWith("/stories") ? "page" : undefined}
             className="text-[13px] font-normal text-ink transition-colors hover:text-ink"
           >
             Stories
-          </a>
+          </Link>
 
           <div className="group relative flex items-center">
             <Link href={sectionLink("#resources")} className="inline-flex items-center gap-1 text-[13px] font-normal text-ink transition-colors hover:text-ink">
@@ -86,13 +87,14 @@ export function Nav() {
 
       {open && (
         <nav id="mobile-navigation" className="mt-4 grid gap-1 rounded-3xl border border-ink/10 bg-card p-3 min-[600px]:hidden">
-          <a
+          <Link
             href={site.stories}
+            aria-current={pathname.startsWith("/stories") ? "page" : undefined}
             onClick={() => setOpen(false)}
             className="rounded-2xl px-4 py-2.5 text-[13px] font-normal text-ink hover:bg-black/5"
           >
             Stories
-          </a>
+          </Link>
 
           <Link
             href={sectionLink("#resources")}
