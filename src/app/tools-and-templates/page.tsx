@@ -15,7 +15,7 @@ export default function ToolsPage() {
   return <div id="top" tabIndex={-1} className="site-base tools-page focus:outline-none">
     <div className="inner-nav"><Nav /></div>
     <main>
-      <header className="tools-page-intro"><h1>Tools &<br />Templates.</h1><p>Useful starting points for research, planning and making. Pick one and make it yours.</p><span>{products.length} products · {readyProducts.length} free downloads</span></header>
+      <header className="tools-page-intro"><h1>Tools &<br />Templates.</h1><p>Notes and tools for asking better questions and trying things out. Take what helps with the work in front of you.</p><span>{products.length} products · {readyProducts.length} free downloads</span></header>
       <ToolsFeed products={cards} />
     </main>
     <Footer />

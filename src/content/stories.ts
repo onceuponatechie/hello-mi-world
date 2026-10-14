@@ -33,7 +33,7 @@ export const stories: Story[] = [
     coverHeight: 1792,
     body: careerSkillsPost,
     resourceSlug: "what-should-i-get-good-at",
-    resourceReason: "Still deciding what deserves your time? What Should I Get Good At? helps you think through the work you want to do, what you want it to make possible and a small way to try it.",
+    resourceReason: "I put the research into this book, with questions and exercises for thinking through your own list. There’s a directory of work functions to look into, too.",
   },
   {
     slug: "what-do-product-managers-even-do",
