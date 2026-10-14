@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/TouchBand";
 import { ToolsFeed } from "@/components/ToolsFeed";
-import { products } from "@/content/products";
+import { products, readyProducts } from "@/content/products";
 
 export const metadata: Metadata = {
   title: "Tools & Templates — Essy Udeme",
-  description: "Useful templates, guides and small tools for research, planning and making. Five free downloads in an eleven-product collection.",
+  description: `Useful templates, ebooks, guides and small tools for research, planning and making. ${readyProducts.length} free downloads in a ${products.length}-product collection.`,
   alternates: { canonical: "/tools-and-templates" },
 };
 
@@ -15,7 +15,7 @@ export default function ToolsPage() {
   return <div id="top" tabIndex={-1} className="site-base tools-page focus:outline-none">
     <div className="inner-nav"><Nav /></div>
     <main>
-      <header className="tools-page-intro"><h1>Tools &<br />Templates.</h1><p>Useful starting points for research, planning and making. Pick one and make it yours.</p><span>11 products · 5 free downloads</span></header>
+      <header className="tools-page-intro"><h1>Tools &<br />Templates.</h1><p>Useful starting points for research, planning and making. Pick one and make it yours.</p><span>{products.length} products · {readyProducts.length} free downloads</span></header>
       <ToolsFeed products={cards} />
     </main>
     <Footer />

@@ -20,6 +20,30 @@ export type Product = {
 // feed contain useful downloads. Only ready products have detail routes/files.
 export const products: Product[] = [
   {
+    slug: "what-should-i-get-good-at", name: "What Should I Get Good At?", format: "EPUB ebook", category: "Plan & decide", status: "ready", cover: { src: "/assets/tools/covers/what-should-i-get-good-at.png", width: 1024, height: 1536 }, color: "#E3F0DA",
+    summary: "A guide to finding your direction in the world of work.",
+    download: { href: "/downloads/what-should-i-get-good-at-essy-udeme.epub", label: "Download the ebook", format: "EPUB · Reflowable ebook" },
+    introduction: "There are many things you can learn. Choosing which deserve your time is harder, especially when you do not yet know what you are good at. This book by Essy Udeme offers a way to think about the contribution you want to make, the life you want around your work and a small piece of that work to try.",
+    includes: [
+      { title: "You Don’t Know Yet", description: "Why having little evidence about yourself can feel like having no direction, and how trying the work gives you more to go on." },
+      { title: "The Eight Directions of Work", description: "A way to consider careers through the contribution at the centre of the work, rather than starting with a job title." },
+      { title: "What Do You Want Work to Make Possible?", description: "Consider money, mobility, independence and the life you want around the job." },
+      { title: "A Little Game", description: "Reflection questions after each chapter, followed by Go and Look: a small piece of work to try." },
+      { title: "Directory: Where Work Lives", description: "A plain-language guide to work functions, including Research & Insights, Product, Finance, Revenue Operations, Public Policy and Supply Chain." },
+    ],
+    steps: [
+      { title: "Read with one choice in mind", description: "Use a question you are facing about your work or what you want to learn next. You do not need a settled career plan." },
+      { title: "Try the reflection questions", description: "Record what you already know, what you have tried and what you still need experience to answer." },
+      { title: "Choose a small piece of work to try", description: "Use the directory to find a function you want to understand. Try a short task, then return to your notes with what you learned." },
+    ],
+    preview: [
+      { heading: "Evidence about yourself", body: "What have you been paid for? What do people ask you to help with? What are you willing to practise?" },
+      { heading: "Your core, complements and literacy", body: "Consider the direction you want at the centre of your work, the abilities that support it and the areas you need to understand enough to work with others." },
+      { heading: "The life around the work", body: "Consider what you want work to make possible: earnings, independence, travel, time or a recognised profession." },
+    ],
+    note: "Open the file in your preferred EPUB reader. The text size and page count follow your reader’s settings.",
+  },
+  {
     slug: "research-notebook", name: "Research Notebook", format: "Notion-ready template", category: "Research", status: "ready", cover: { src: "/assets/tools/covers/research-notebook.webp", width: 840, height: 1120 }, color: "#E3F0DA",
     summary: "Keep your questions, sources and findings connected.",
     download: { href: "/downloads/research-notebook.zip", label: "Download starter kit", format: "ZIP · CSV + Markdown" },
