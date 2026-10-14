@@ -1,4 +1,5 @@
 import originalPost from "./story-original.json";
+import careerSkillsPost from "./story-career-skills.json";
 import drafts from "./story-drafts.json";
 
 export const storyCategories = ["Build Better Careers", "Build Better Businesses", "Build Better Products", "Build Better Systems", "Build Better Ideas", "Build a Better You"] as const;
@@ -20,6 +21,20 @@ export type Story = {
 export type StoryCard = Omit<Story, "body" | "resourceSlug" | "resourceReason"> & { readMinutes: number };
 
 export const stories: Story[] = [
+  {
+    slug: "8-skills-im-betting-my-career-on",
+    title: "8 Skills I'm Betting My Career On",
+    subtitle: "Because apparently, knowing how to do your job isn’t enough.",
+    category: "Build Better Careers",
+    date: "2026-10-14",
+    cover: "/assets/stories/eight-skills-im-betting-my-career-on.jpg",
+    coverAlt: "A person in a sage shirt arranging eight stacks of coloured counters",
+    coverWidth: 2400,
+    coverHeight: 1792,
+    body: careerSkillsPost,
+    resourceSlug: "what-should-i-get-good-at",
+    resourceReason: "I put the research into this book, with questions and exercises for thinking through your own list. There’s a directory of work functions to look into, too.",
+  },
   {
     slug: "what-do-product-managers-even-do",
     title: "What Do Product Managers Even Do?",
@@ -56,6 +71,10 @@ const headings = new Set([
 ]);
 
 export function storyBlocks(story: Story) {
-  // The supplied post is kept verbatim, including its internal line breaks.
-  return story.body.split(/\n\s*\n/u).map((text, index) => ({ text, id: `passage-${index + 1}`, heading: headings.has(text) }));
+  // Preserve the supplied wording; give the numbered skill titles semantic headings.
+  return story.body.split(/\n\s*\n/u).flatMap((text, index) => {
+    const id = `passage-${index + 1}`;
+    const skillTitle = story.slug === "8-skills-im-betting-my-career-on" ? text.match(/^([1-8]\. [^\n]+)\n([\s\S]+)$/u) : null;
+    return skillTitle ? [{ text: skillTitle[1], id: `${id}-heading`, heading: true }, { text: skillTitle[2], id, heading: false }] : [{ text, id, heading: headings.has(text) }];
+  });
 }

@@ -20,10 +20,34 @@ export type Product = {
 // feed contain useful downloads. Only ready products have detail routes/files.
 export const products: Product[] = [
   {
+    slug: "what-should-i-get-good-at", name: "What Should I Get Good At?", format: "EPUB ebook", category: "Plan & decide", status: "ready", cover: { src: "/assets/tools/covers/what-should-i-get-good-at.png", width: 1024, height: 1536 }, color: "#E3F0DA",
+    summary: "A guide to finding your direction in the world of work.",
+    download: { href: "/downloads/what-should-i-get-good-at-essy-udeme.epub", label: "Download the ebook", format: "EPUB · Reflowable ebook" },
+    introduction: "Career advice often asks what you’re naturally good at, what people come to you for and which work you want to spend years doing. Those questions don’t always have ready answers. I started researching how we make a sensible choice with the evidence we have. The questions and exercises here are for thinking it through using your own experience.",
+    includes: [
+      { title: "You Don’t Know Yet", description: "What can the work you’ve already done tell you about what to try next? And where would a small test tell you more?" },
+      { title: "The Eight Directions of Work", description: "Looking at the contribution at the centre of the work gives us another way to compare careers, alongside job titles." },
+      { title: "What Do You Want Work to Make Possible?", description: "Questions about money, mobility, independence and the life around the job, with room for what you want work to do for you." },
+      { title: "A Little Game", description: "Questions after each chapter bring the reading back to your own choices. Go and Look then suggests a small piece of work to try." },
+      { title: "Directory: Where Work Lives", description: "Work functions to look into, including research, product work, public policy and supply chain. See what catches your interest." },
+    ],
+    steps: [
+      { title: "Bring a question", description: "Read with a question from your own working life in mind. It can be about your next role or something you want to get better at." },
+      { title: "Try the reflection questions", description: "Use the exercises to compare what your experience tells you with what you still want to find out." },
+      { title: "Test a direction", description: "Pick a function that interests you from the directory. A small piece of the work can give you something to assess before a bigger commitment." },
+    ],
+    preview: [
+      { heading: "Evidence about yourself", body: "What have you been paid for? What do people ask you to help with? What are you willing to practise?" },
+      { heading: "Your core, complements and literacy", body: "Which direction do you want at the centre of your work? Which abilities support it, and which areas do you need to understand to work with others?" },
+      { heading: "The life around the work", body: "What do you want work to make possible: earnings, independence, travel, time or a recognised profession?" },
+    ],
+    note: "Open the file in your preferred EPUB reader. The text size and page count follow your reader’s settings.",
+  },
+  {
     slug: "research-notebook", name: "Research Notebook", format: "Notion-ready template", category: "Research", status: "ready", cover: { src: "/assets/tools/covers/research-notebook.webp", width: 840, height: 1120 }, color: "#E3F0DA",
-    summary: "Keep your questions, sources and findings connected.",
+    summary: "Questions, sources and room for the next check.",
     download: { href: "/downloads/research-notebook.zip", label: "Download starter kit", format: "ZIP · CSV + Markdown" },
-    introduction: "A research notebook for the point when your notes start turning into decisions. Record the question you are trying to answer, save the source behind each observation, and keep your interpretation separate.",
+    introduction: "When a note starts informing a decision, being able to find the source again helps. This notebook keeps your question, observation and interpretation separate, with a field for what you still want to check.",
     includes: [
       { title: "Questions register", description: "A CSV with fields for the question, the decision it informs, scope, owner and status." },
       { title: "Source library", description: "A CSV for source IDs, URLs, dates, source type, notes and limits." },
@@ -48,9 +72,9 @@ export const products: Product[] = [
   },
   {
     slug: "the-better-brief", name: "The Better Brief", format: "PDF guide", category: "Plan & decide", status: "ready", cover: { src: "/assets/tools/covers/the-better-brief.webp", width: 840, height: 1120 }, color: "#F8FADF",
-    summary: "Give a project a clear question, scope and first test.",
+    summary: "Questions for thinking through a brief before making anything.",
     download: { href: "/downloads/the-better-brief.pdf", label: "Download the guide", format: "A4 PDF · 4 pages" },
-    introduction: "A short guide for turning a request into a brief people can work from. Name the person, the problem and the decision before settling on the output. The final page gives you a one-page brief to print and fill in.",
+    introduction: "Before a website, deck or tool, there’s usually a question worth getting clear on. Use these pages to think through who the work is for, what needs attention and a first test. The last page is a brief to print and fill in with your own idea.",
     includes: [
       { title: "Define the work", description: "Prompts for naming the person, their task, the problem and the decision the work needs to support." },
       { title: "Check the evidence", description: "A way to separate sourced observations, assumptions and questions you still need to answer." },
@@ -75,9 +99,9 @@ export const products: Product[] = [
   },
   {
     slug: "ask-better", name: "Ask Better", format: "Practical prompt pack", category: "Research", status: "ready", cover: { src: "/assets/tools/covers/ask-better.webp", width: 840, height: 1120 }, color: "#EDE2F2",
-    summary: "18 prompts for working through research and product decisions.",
+    summary: "18 prompts for research, decisions and a second look at your work.",
     download: { href: "/downloads/ask-better-prompts.md", label: "Download the prompts", format: "Markdown · 18 prompts" },
-    introduction: "A prompt pack for working with your own notes, briefs and drafts. Each prompt names the material it needs and the output it should produce. Use it with an AI assistant, or as questions for your own review.",
+    introduction: "A prompt gets more interesting when there’s something to work from: notes, a brief or a draft. These 18 prompts ask for that context and leave room for missing information. Try one, then use the answer to decide what deserves a closer look.",
     includes: [
       { title: "6 research prompts", description: "Frame a question, plan interviews, inspect source coverage and separate observations from interpretations." },
       { title: "6 decision prompts", description: "Compare options, check assumptions, set scope and choose the smallest useful test." },
@@ -101,9 +125,9 @@ export const products: Product[] = [
   },
   {
     slug: "what-to-build-next", name: "What to Build Next", format: "Worksheet", category: "Plan & decide", status: "ready", cover: { src: "/assets/tools/covers/what-to-build-next.webp", width: 840, height: 1120 }, color: "#C8EBF0",
-    summary: "Compare the ideas before committing to one.",
+    summary: "Compare ideas, note what you’re still guessing and choose a test.",
     download: { href: "/downloads/what-to-build-next.md", label: "Download the worksheet", format: "Editable Markdown" },
-    introduction: "A worksheet for the moment when several ideas sound worth doing. Compare the person each idea serves, the evidence behind it and the first test you can run. Finish with a decision you can explain.",
+    introduction: "Several ideas can all sound worth doing. This worksheet makes room to compare what you know about each one, note what you’re still guessing and choose a small test. Leave a review date so the decision can change as you learn.",
     includes: [
       { title: "Idea register", description: "Fields for describing each idea, the person it is for, the task it helps with and the evidence you have." },
       { title: "Comparison table", description: "Compare evidence, effort, access to users and the unknown you need to test. Keep written reasons beside the comparison." },
@@ -128,9 +152,9 @@ export const products: Product[] = [
   },
   {
     slug: "before-you-ship", name: "Before You Ship", format: "Checklist", category: "Make & share", status: "ready", cover: { src: "/assets/tools/covers/before-you-ship.webp", width: 840, height: 1120 }, color: "#F6E6C8",
-    summary: "Check the words, links and first-use experience before sharing.",
+    summary: "A small list of things to check before sharing a first version.",
     download: { href: "/downloads/before-you-ship.md", label: "Download the checklist", format: "Markdown · 20 checks" },
-    introduction: "A release checklist for a website, prototype or small digital tool. Work through the page as an unfamiliar visitor. Record the issue and the change instead of checking a box simply because the screen looks finished.",
+    introduction: "After spending a while with a first version, it helps to look again at the words, links and first visit. This checklist gives you questions to try against your own work, with room to record what needs attention. Add any checks your project needs.",
     includes: [
       { title: "Start with the person", description: "5 checks for the purpose, audience, words and next action." },
       { title: "Try the interactions", description: "5 checks for links, forms, keyboard use, errors and empty states." },

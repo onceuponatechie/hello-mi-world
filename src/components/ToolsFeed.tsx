@@ -9,6 +9,8 @@ export type ProductCardData = Pick<Product, "slug" | "name" | "format" | "catego
 const filters = ["All", "Research", "Plan & decide", "Make & share", "Ready to download"] as const;
 
 export function ToolsFeed({ products }: { products: ProductCardData[] }) {
+  const readyCount = products.filter(product => product.status === "ready").length;
+  const plannedCount = products.length - readyCount;
   const [filter, setFilter] = useState<(typeof filters)[number]>("All");
   const [query, setQuery] = useState("");
   const visible = products.filter(product =>
@@ -29,6 +31,6 @@ export function ToolsFeed({ products }: { products: ProductCardData[] }) {
         </> : <article className="tool-pin-planned"><div className="tool-pin-cover"><ToolArtwork {...product} /><span className="tool-pin-status">Planned</span></div><h3>{product.name}</h3><div className="tool-pin-meta"><span>{product.format}</span></div></article>}
       </li>)}
     </ul> : <div className="tools-empty"><h3>No match yet.</h3><p>Try a product name or a format, such as PDF or Notion.</p><button type="button" className="hero-secondary" onClick={() => { setQuery(""); setFilter("All"); }}>Show all products</button></div>}
-    <p className="tools-library-note">Five products are ready to download. The six marked Planned have no download or detail page yet.</p>
+    <p className="tools-library-note">{readyCount} products are ready to download. The {plannedCount} marked Planned have no download or detail page yet.</p>
   </section>;
 }
