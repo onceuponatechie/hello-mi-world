@@ -6,7 +6,7 @@ import "./builds.css";
 import "./tools.css";
 import "./research-contact.css";
 import "./stories.css";
-import "./personal.css";
+import "./feature-about.css";
 
 const sans = Plus_Jakarta_Sans({ subsets: ["latin"], weight: "400", variable: "--font-jakarta", display: "swap" });
 const heading = Syne({ subsets: ["latin"], weight: "500", variable: "--font-syne", display: "swap" });

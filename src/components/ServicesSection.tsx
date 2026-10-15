@@ -45,7 +45,6 @@ const services = [
 export function ServicesSection() {
   return (
     <section id="services" className="services-section">
-      <span id="about" className="service-anchor" aria-hidden="true" />
       <Reveal dir="up" className="services-intro">
         <h2 className="section-heading"><span>How Can I</span>{" "}<span>Help You?</span></h2>
       </Reveal>

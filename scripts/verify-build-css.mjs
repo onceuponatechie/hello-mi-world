@@ -11,7 +11,7 @@ const requiredSelectors = [
   ".tools-masonry", ".tool-artwork", ".tools-controls",
   ".contact-layout", ".vault-grid", ".research-layout", ".research-visual",
   ".stories-grid", ".stories-controls", ".story-body", ".story-resource",
-  ".personal-grid", ".personal-reading", ".personal-music",
+  ".featured-product", ".featured-product-details", ".about-hero", ".about-notes",
 ];
 
 try {

@@ -94,7 +94,7 @@ export function Footer() {
                   { label: "Resources", href: sectionLink("#resources") },
                   { label: "Stories", href: site.stories },
                   { label: "Builds", href: "/builds" },
-                  { label: "Services", href: sectionLink("#services") },
+                  { label: "About", href: "/about" },
                 ].map(link => <Link key={link.label} href={link.href}>{link.label}</Link>)}
               </nav>
             </div>

@@ -56,10 +56,11 @@ export function Nav() {
             Builds
           </Link>
           <Link
-            href={sectionLink("#services")}
+            href="/about"
+            aria-current={pathname === "/about" ? "page" : undefined}
             className="text-[13px] font-normal text-ink transition-colors hover:text-ink"
           >
-            Services
+            About
           </Link>
         </nav>
 
@@ -119,11 +120,12 @@ export function Nav() {
             Builds
           </Link>
           <Link
-            href={sectionLink("#services")}
+            href="/about"
+            aria-current={pathname === "/about" ? "page" : undefined}
             onClick={() => setOpen(false)}
             className="rounded-2xl px-4 py-2.5 text-[13px] font-normal text-ink hover:bg-black/5"
           >
-            Services
+            About
           </Link>
         </nav>
       )}
