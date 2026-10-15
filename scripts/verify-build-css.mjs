@@ -12,6 +12,7 @@ const requiredSelectors = [
   ".contact-layout", ".vault-grid", ".research-layout", ".research-visual",
   ".stories-grid", ".stories-controls", ".story-body", ".story-resource",
   ".featured-product", ".featured-product-details", ".about-hero", ".about-notes",
+  ".featured-product-heading", ".newsletter-art", ".newsletter-form-row", ".newsletter-tools a",
 ];
 
 try {

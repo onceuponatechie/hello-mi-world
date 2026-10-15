@@ -1,14 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-
-function Star({ className }: { className: string }) {
-  return (
-    <svg aria-hidden="true" className={className} viewBox="0 0 100 100" fill="none">
-      <path d="m50 4 9 28 26-16-16 26 27 8-27 9 16 26-26-16-9 27-8-27-26 16 16-26-28-9 28-8-16-26 26 16Z" stroke="currentColor" strokeWidth="2.5" strokeLinejoin="round" />
-    </svg>
-  );
-}
+import { DoodleStar } from "@/components/DoodleStar";
 
 export function Hero() {
   const reduce = useReducedMotion();
@@ -38,7 +31,7 @@ export function Hero() {
         <figure className="hero-piece hero-work">
           <div className="hero-photo-frame"><img src="/assets/essy-laptop-dash.jpg" alt="" fetchPriority="high" width={1024} height={1024} /></div>
           <figcaption>A little less guessing.<br />A little more making.</figcaption>
-          <Star className="hero-star hero-star-lavender" />
+          <DoodleStar className="hero-star hero-star-lavender" />
         </figure>
         <figure className="hero-piece hero-portrait">
           <img src="/assets/essy-udeme-portrait.png" alt="" fetchPriority="high" width={830} height={1000} />
@@ -51,7 +44,7 @@ export function Hero() {
         <figure className="hero-piece hero-pocket">
           <img src="/assets/essy-phone.jpg" alt="" width={1024} height={1024} />
           <figcaption>Ideas, made useful.</figcaption>
-          <Star className="hero-star hero-star-butter" />
+          <DoodleStar className="hero-star hero-star-butter" />
         </figure>
         <svg className="hero-loop" viewBox="0 0 155 100" fill="none"><path d="M6 21c49-26 85-7 80 25S33 74 57 45s67-19 86 37m-20-9 21 11 1-25" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
       </div>
