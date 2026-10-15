@@ -14,23 +14,24 @@ function returnToTop(event: MouseEvent<HTMLAnchorElement>) {
 }
 
 const tools = [
-  { name: "Figma", image: "figma.svg", href: "https://www.figma.com/" },
-  { name: "Notion", image: "notion.png", href: "https://www.notion.com/" },
-  { name: "Codex", image: "codex.png", href: "https://openai.com/codex/" },
-  { name: "VS Code", image: "vscode.svg", href: "https://code.visualstudio.com/" },
+  { name: "Figma", key: "figma", image: "figma.svg", href: "https://www.figma.com/" },
+  { name: "Notion", key: "notion", image: "notion.png", href: "https://www.notion.com/" },
+  { name: "Codex", key: "codex", image: "codex.png", href: "https://openai.com/codex/" },
+  { name: "VS Code", key: "vscode", image: "vscode.svg", href: "https://code.visualstudio.com/" },
 ];
 
 export function TouchBand() {
   return (
     <section id="newsletter" className="newsletter-section">
-      <Reveal dir="up" className="newsletter-surround dark-surface">
+      <Reveal dir="up" className="newsletter-surround">
+        <img className="newsletter-art" src="/assets/newsletter-research-art.svg" alt="" aria-hidden="true" width={757} height={606} loading="lazy" />
         <div className="newsletter-letter">
           <div className="newsletter-intro">
             <h2 className="section-heading"><span>Build with a little</span>{" "}<span>less guesswork.</span></h2>
-            <p>Get product breakdowns and practical notes to help you decide what to build next.</p>
+            <p>Get product breakdowns and practical notes to help you decide what to build next and where to start.</p>
             <div className="newsletter-toolkit">
               <ul aria-label="Tools I work with" className="newsletter-tools">
-                {tools.map(tool => <li key={tool.name}><a href={tool.href} aria-label={tool.name} target="_blank" rel="noreferrer"><img src={`/assets/tools/${tool.image}`} alt="" width={30} height={30} loading="lazy" /></a></li>)}
+                {tools.map(tool => <li key={tool.name}><a className={`newsletter-tool newsletter-tool-${tool.key}`} href={tool.href} aria-label={tool.name} target="_blank" rel="noreferrer"><img src={`/assets/tools/${tool.image}`} alt="" width={36} height={36} loading="lazy" /></a></li>)}
               </ul>
               <span>Tools I work with</span>
             </div>
@@ -43,7 +44,7 @@ export function TouchBand() {
             <label htmlFor="newsletter-email" className="sr-only">
               Your email
             </label>
-            <input
+            <div className="newsletter-form-row"><input
               id="newsletter-email"
               name="email"
               autoComplete="email"
@@ -51,7 +52,7 @@ export function TouchBand() {
               type="email"
               placeholder="Your email"
             />
-            <button type="submit">Subscribe</button>
+            <button type="submit">Subscribe</button></div>
             <p>Finish on Substack. Unsubscribe anytime.</p>
           </form>
         </div>
