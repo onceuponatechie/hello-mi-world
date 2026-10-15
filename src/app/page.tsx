@@ -7,6 +7,7 @@ import { PromiseSection } from "@/components/PromiseSection";
 import { TouchBand, Footer } from "@/components/TouchBand";
 import { Preloader } from "@/components/Preloader";
 import { builds } from "@/content/builds";
+import { PersonalSection } from "@/components/PersonalSection";
 
 // Keep the full study narratives on the server. The animated homepage stack
 // receives only the cover and summary fields it renders.
@@ -30,6 +31,7 @@ export default function Home() {
             <ProcessSection />
             <PromiseSection projects={featuredBuilds} />
             <ServicesSection />
+            <PersonalSection />
             <TouchBand />
           </div>
           <Footer />
