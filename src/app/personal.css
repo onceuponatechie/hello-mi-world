@@ -1,0 +1,102 @@
+.personal-section { max-width: 1180px; margin-inline: auto; padding: 30px 28px 66px; scroll-margin-top: 28px; }
+.personal-grid { display: grid; grid-template-columns: 1.06fr .9fr 1.04fr; grid-template-rows: 190px 212px 62px; grid-template-areas: "reading shelf music" "reading fact music" "note note music"; gap: 18px; }
+.personal-card { position: relative; min-width: 0; border-radius: 28px; overflow: hidden; }
+.personal-eyebrow { display: block; font-family: var(--font-jakarta), sans-serif; font-size: 10px; font-weight: 400; line-height: 1.5; letter-spacing: .2px; color: #6B6B68; }
+.personal-reading { grid-area: reading; display: flex; flex-direction: column; padding: 24px 24px 12px; background: radial-gradient(ellipse at 18% 0%, #FBF7FD, transparent 80%), #EDE2F2; touch-action: pan-y; }
+.personal-reading > .personal-eyebrow { text-align: center; }
+.personal-reading-stage { position: relative; flex: 1; min-height: 0; }
+.personal-reading-slide { display: flex; position: absolute; inset: 0; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+.personal-reading-slide h3 { max-width: 10ch; font-size: clamp(25px, 2.5vw, 34px); line-height: 1.08; letter-spacing: -1px; text-wrap: balance; }
+.personal-book-author { display: block; margin-top: 8px; font-size: 10px; color: #6B6B68; }
+.personal-reading-slide > img { width: auto; max-width: 72%; height: 190px; object-fit: contain; margin-top: 20px; mix-blend-mode: multiply; filter: drop-shadow(0 14px 10px #45334F18); user-select: none; }
+.personal-reading-label { font-size: 10px; color: #6B6B68; }
+.personal-reading-note { max-width: 17ch; margin-top: 22px; font-family: var(--font-syne), sans-serif; font-size: 28px; line-height: 1.3; letter-spacing: -.6px; text-wrap: balance; }
+.personal-note-credit { display: block; margin-top: 25px; font-size: 10px; color: #6B6B68; }
+.personal-reading-slide blockquote { margin-top: 22px; }
+.personal-reading-slide blockquote p { max-width: 12ch; margin-inline: auto; font-family: var(--font-syne), sans-serif; font-size: 36px; line-height: 1.2; letter-spacing: -1px; text-wrap: balance; }
+.personal-reading-slide cite { display: block; margin-top: 25px; font-size: 10px; line-height: 1.8; font-style: normal; color: #6B6B68; }
+.personal-reading-slide cite span { display: block; }
+.personal-reading-controls { display: flex; align-items: center; justify-content: center; position: relative; min-height: 40px; margin-top: 8px; }
+.personal-reading-controls > div { display: flex; align-items: center; }
+.personal-reading-controls button { display: grid; width: 30px; height: 40px; place-items: center; cursor: pointer; color: #51405B; }
+.personal-reading-controls button span { width: 5px; height: 5px; border-radius: 50%; background: #51405B40; }
+.personal-reading-controls button[aria-pressed="true"] span { width: 17px; border-radius: 10px; background: #51405B; }
+.personal-reading-controls .personal-reading-pause { position: absolute; right: -5px; width: 40px; }
+.personal-reading-pause svg { width: 14px; height: 14px; }
+.personal-reading:focus-visible, .personal-reading button:focus-visible { outline: 2px solid #897494; outline-offset: -3px; }
+.personal-reading button:focus-visible { border-radius: 10px; }
+.personal-shelf { grid-area: shelf; padding: 19px 22px 16px; background: #FEFEFE; }
+.personal-shelf > h3 { text-align: center; }
+.personal-books { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; max-width: 240px; margin: 10px auto 0; }
+.personal-books figure { min-width: 0; text-align: center; }
+.personal-books figure > div { display: grid; place-items: center; height: 100px; }
+.personal-books img { width: auto; height: 100px; max-width: 100%; max-height: 100%; object-fit: contain; mix-blend-mode: multiply; }
+.personal-books figure:first-child img { transform: rotate(-5deg); }
+.personal-books figure:last-child img { transform: rotate(5deg); }
+.personal-books figcaption { max-width: 12ch; margin: 9px auto 0; font-size: 10px; line-height: 1.35; color: #51564B; }
+.personal-music { grid-area: music; display: flex; flex-direction: column; justify-content: center; padding: 25px 20px 19px; background: radial-gradient(ellipse at 0 0, #DE8067, transparent 80%), #C95D49; color: #FFF9F3; }
+.personal-music-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 22px; }
+.personal-music .personal-eyebrow { color: #FFF1E6; }
+.personal-music h3 { margin-top: 7px; font-size: 28px; line-height: 1.1; letter-spacing: -.8px; color: inherit; }
+.personal-spotify-label { padding: 7px 10px; border: 1px solid #FFF9F340; border-radius: 100px; font-size: 10px; }
+.personal-music iframe { display: block; border: 0; width: 100%; height: 352px; flex: 0 0 352px; border-radius: 14px; background: #202020; }
+.personal-music-caption { margin-top: 12px; text-align: center; font-size: 10px; color: #FFF1E6; }
+.personal-fact { grid-area: fact; padding: 22px; background: #F8FADF; }
+.personal-fact-word { margin-top: 12px; font-family: var(--font-syne), sans-serif; font-size: 36px; line-height: 1.05; letter-spacing: -1.1px; color: #675B2E; }
+.personal-fact-copy { max-width: 21ch; margin-top: 12px; font-size: 13px; line-height: 1.7; color: #575B4D; }
+.personal-fact cite { display: block; margin-top: 10px; font-style: normal; font-size: 8px; color: #71756E; }
+.personal-one-liner { grid-area: note; display: flex; align-items: center; justify-content: center; gap: 17px; padding: 14px 22px; background: #FEFEFE; }
+.personal-one-liner p { font-family: var(--font-syne), sans-serif; font-size: 23px; line-height: 1.2; letter-spacing: -.5px; }
+.personal-one-liner > span { font-family: var(--font-syne), sans-serif; color: #C3A5DD; font-size: 32px; line-height: .6; padding-top: 10px; }
+@media (max-width: 1100px) {
+  .personal-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: 190px 202px auto 62px; grid-template-areas: "reading shelf" "reading fact" "music music" "note note"; }
+  .personal-music { padding: 24px; }
+  .personal-music-heading { margin-bottom: 18px; }
+  .personal-music iframe { height: 152px; flex-basis: 152px; }
+}
+@media (max-width: 600px) {
+  .personal-section { padding: 18px 20px 42px; }
+  .personal-grid { gap: 12px; grid-template-rows: 172px 160px auto 54px; }
+  .personal-card { border-radius: 22px; }
+  .personal-reading { padding: 17px 15px 9px; }
+  .personal-eyebrow { font-size: 9px; }
+  .personal-reading-slide h3 { font-size: 22px; letter-spacing: -.6px; }
+  .personal-book-author { font-size: 9px; margin-top: 7px; }
+  .personal-reading-slide > img { height: 130px; max-width: 92%; margin-top: 15px; }
+  .personal-reading-note { font-size: 19px; line-height: 1.35; letter-spacing: -.35px; margin-top: 14px; }
+  .personal-note-credit { max-width: 15ch; margin-top: 18px; font-size: 9px; line-height: 1.5; }
+  .personal-reading-slide blockquote { margin-top: 16px; }
+  .personal-reading-slide blockquote p { font-size: 24px; letter-spacing: -.6px; }
+  .personal-reading-slide cite { margin-top: 18px; font-size: 9px; }
+  .personal-reading-label { font-size: 9px; }
+  .personal-reading-controls { min-height: 38px; margin-top: 5px; justify-content: start; }
+  .personal-reading-controls button { width: 26px; height: 38px; }
+  .personal-reading-controls .personal-reading-pause { right: -8px; width: 36px; }
+  .personal-shelf { padding: 15px 12px 12px; }
+  .personal-books { gap: 10px; margin-top: 9px; }
+  .personal-books figure > div { height: 78px; }
+  .personal-books img { height: 78px; }
+  .personal-books figcaption { font-size: 9px; margin-top: 8px; }
+  .personal-fact { padding: 16px; }
+  .personal-fact-word { font-size: 28px; margin-top: 10px; }
+  .personal-fact-copy { font-size: 10px; line-height: 1.6; margin-top: 9px; }
+  .personal-fact cite { font-size: 7px; margin-top: 8px; }
+  .personal-music { padding: 20px 18px 16px; }
+  .personal-music-heading { margin-bottom: 16px; }
+  .personal-music h3 { font-size: 25px; }
+  .personal-music-caption { font-size: 9px; }
+  .personal-one-liner { gap: 12px; padding-inline: 14px; }
+  .personal-one-liner p { font-size: 18px; }
+  .personal-one-liner > span { font-size: 28px; }
+}
+@media (max-width: 360px) {
+  .personal-reading { padding-inline: 12px; }
+  .personal-reading-slide h3 { font-size: 20px; }
+  .personal-reading-slide > img { height: 120px; }
+  .personal-reading-note { font-size: 17px; }
+  .personal-reading-slide blockquote p { font-size: 22px; }
+  .personal-fact { padding: 14px; }
+  .personal-fact-word { font-size: 25px; }
+  .personal-fact-copy { font-size: 9px; }
+  .personal-books { gap: 7px; }
+}

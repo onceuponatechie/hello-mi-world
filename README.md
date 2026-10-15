@@ -16,10 +16,11 @@ A Next.js App Router portfolio based on `onceuponatechie/butter-canvas-dream` at
 - `/research-vault` contains four searchable, source-based studies, with individual routes under `/research-vault/[slug]`: Nigeria internet use, Notion research records, Figma variables and Paystack payment confirmation. Each page separates documented observations from interpretation, includes contents links, an original chart or diagram, methods, limits and a source library. The Figma example switches between light and dark modes. `src/content/research.ts` holds the studies; planned results, interviews and tests are never represented as completed work.
 - `public/research` holds seven World Bank/ITU internet-use observations for Nigeria (2018–2024), retrieved on 13 October 2026, plus a CSV, dated JSON snapshot and dependency-free Python calculation script. The chart uses a 0–100% scale and has an expandable data table. Data attribution and CC BY 4.0 license are retained. The website reads the saved extract at build time, so reading a study does not require a live external API.
 - A black newsletter panel with benefit-oriented copy, a separate signup form and circular Figma, Notion, Codex and VS Code badges. Codex uses the OpenAI mark from the official developer site. Copy and form sit side by side on desktop and stack on smaller screens. No reader counts, reviews, stars or unconfirmed publishing schedule.
+- An untitled, five-card personal bento sits between Services and the newsletter. The lavender current-read card cycles through a real book cover, a reading note and a short attributed line. It supports swipe, arrow keys, direct slide buttons and pause/play. Autoplay stops offscreen, in hidden tabs, on hover and with reduced motion. Previous reads, a public Spotify player, a LEGO name-origin note and a one-liner complete the grid. On tablets and phones it keeps two columns, with the native Spotify player spanning both columns. Cards do not link to inner pages.
 - A full-width footer with narrow side gutters, rounded corners and subtle dark curved rays from the original hero background. The sage-green contact button has a translucent grey rim. Social icons sit opposite page links on desktop and above them on mobile; copyright sits beneath a divider. The back-to-top control reuses the hero's looping arrow.
 - Substack signup handoff, metadata, and a custom favicon.
 
-The personal reading grid, product practice cards, and adventure carousel are intentionally excluded. Unused Lovable tooling, TanStack/Vite routing, UI libraries, assets, and content modules are excluded.
+The old personal reading grid, product practice cards, and adventure carousel remain excluded; the new personal bento follows the owner's October 2026 brief. Unused Lovable tooling, TanStack/Vite routing, UI libraries, assets, and content modules are excluded.
 
 ## Run locally
 
@@ -48,6 +49,8 @@ Import `onceuponatechie/hello-mi-world` into Vercel. Select Next.js, keep the re
 Vercel provides the production URL for social metadata. Set `NEXT_PUBLIC_SITE_URL` only when a custom canonical URL is needed.
 
 ## Links and content
+
+The owner approved sample books and music for the personal bento's first design pass. These are not confirmed reading history or a personal playlist. Replace the selections and reading note together in `src/content/personal.ts`; the current public playlist is Spotify's Chill Hits. The site's sample does not create or modify a Spotify account playlist. Cover provenance and the primary sources for the short quotation and LEGO fact are recorded in `public/assets/personal/SOURCES.md`.
 
 `src/config/site.ts` contains the confirmed Substack destinations and the contact email inherited from the original site. The newsletter hands the entered email to Substack’s signup page; readers finish subscribing there. The site does not store emails or claim a subscription before it is completed.
 
