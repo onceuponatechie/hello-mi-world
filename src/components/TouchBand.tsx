@@ -22,12 +22,12 @@ const tools = [
 
 export function TouchBand() {
   return (
-    <section id="newsletter" className="newsletter-section">
+    <section id="newsletter" className="newsletter-section" aria-labelledby="newsletter-heading">
       <Reveal dir="up" className="newsletter-surround">
-        <img className="newsletter-art" src="/assets/newsletter-research-art.svg" alt="" aria-hidden="true" width={757} height={606} loading="lazy" />
         <div className="newsletter-letter">
           <div className="newsletter-intro">
-            <h2 className="section-heading"><span>Build with a little</span>{" "}<span>less guesswork.</span></h2>
+            <span className="newsletter-label">Why Not Build · The newsletter</span>
+            <h2 id="newsletter-heading" className="section-heading"><span>Build with a little</span>{" "}<span>less guesswork.</span></h2>
             <p>Get product breakdowns and practical notes to help you decide what to build next and where to start.</p>
             <div className="newsletter-toolkit">
               <ul aria-label="Tools I work with" className="newsletter-tools">
@@ -36,6 +36,7 @@ export function TouchBand() {
               <span>Tools I work with</span>
             </div>
           </div>
+        </div>
           <form
             action={site.newsletter}
             method="get"
@@ -52,10 +53,9 @@ export function TouchBand() {
               type="email"
               placeholder="Your email"
             />
-            <button type="submit">Subscribe</button></div>
+            <button type="submit">Subscribe <svg aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="m4 10 16-6-6 16-3-7-7-3Zm7 3 9-9" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg></button></div>
             <p>Finish on Substack. Unsubscribe anytime.</p>
           </form>
-        </div>
       </Reveal>
     </section>
   );

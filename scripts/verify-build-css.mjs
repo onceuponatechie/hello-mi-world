@@ -12,7 +12,8 @@ const requiredSelectors = [
   ".contact-layout", ".vault-grid", ".research-layout", ".research-visual",
   ".stories-grid", ".stories-controls", ".story-body", ".story-resource",
   ".featured-product", ".featured-product-details", ".about-hero", ".about-notes",
-  ".featured-product-heading", ".newsletter-art", ".newsletter-form-row", ".newsletter-tools a",
+  ".featured-product-cover", ".newsletter-surround", ".newsletter-form-row", ".newsletter-tools a",
+  ".home-stories-rail", ".home-story-preview", ".faq-section", ".faq-item",
 ];
 
 try {
