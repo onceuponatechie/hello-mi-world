@@ -10,8 +10,8 @@ type Dir = "up" | "down" | "left" | "right" | "none";
 const offsets: Record<Dir, { x?: number; y?: number }> = {
   up: { y: 28 },
   down: { y: -28 },
-  left: { x: -40 },
-  right: { x: 40 },
+  left: { x: -32 },
+  right: { x: 32 },
   none: {},
 };
 
@@ -34,14 +34,15 @@ export function Reveal({
   once?: boolean;
 }) {
   const reduce = useReducedMotion();
-  if (reduce) return <div className={className}>{children}</div>;
+  const classes = ["scroll-reveal", className].filter(Boolean).join(" ");
+  if (reduce) return <div className={classes}>{children}</div>;
 
   return (
     <motion.div
-      className={className}
+      className={classes}
       initial={{ opacity: 0, ...offsets[dir], ...(blur ? { filter: "blur(8px)" } : {}) }}
       whileInView={{ opacity: 1, x: 0, y: 0, ...(blur ? { filter: "blur(0px)" } : {}) }}
-      viewport={{ once, margin: "-12% 0px -12% 0px" }}
+      viewport={{ once, margin: "0px 0px -7% 0px" }}
       transition={{ duration, ease: EASE, delay }}
     >
       {children}

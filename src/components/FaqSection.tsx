@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Reveal } from "@/components/Reveal";
 
 const questions = [
   { question: "What can we work on together?", answer: <>Research, product prototypes, websites, decks and the story behind the work. The <Link href="/#services">services section</Link> gives you a closer look at what that can involve.</> },
@@ -10,7 +11,7 @@ const questions = [
 
 export function FaqSection() {
   return <section id="faq" className="faq-section" aria-labelledby="faq-heading">
-    <h2 id="faq-heading" className="section-heading"><span>You may want</span>{" "}<span>to ask these.</span></h2>
+    <Reveal><h2 id="faq-heading" className="section-heading"><span>You may want</span>{" "}<span>to ask these.</span></h2></Reveal>
     <div className="faq-list">{questions.map((item, index) => <details key={item.question} name="homepage-questions" className="faq-item">
       <summary><span className="faq-number" aria-hidden="true">0{index + 1}</span><h3>{item.question}</h3><span className="faq-toggle" aria-hidden="true" /></summary>
       <div className="faq-answer"><p>{item.answer}</p></div>

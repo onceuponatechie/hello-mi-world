@@ -46,11 +46,11 @@ export function ServicesSection() {
   return (
     <section id="services" className="services-section">
       <Reveal dir="up" className="services-intro">
-        <h2 className="section-heading"><span>How Can I</span>{" "}<span>Help You?</span></h2>
+        <h2 className="section-heading"><span>How can I</span>{" "}<span>help you?</span></h2>
       </Reveal>
       <div className="services-grid">
         {services.map(({ title, description, offerings, icon }, index) => (
-          <Reveal key={title.join(" ")} dir="up" delay={index * 0.08} className="service-placement">
+          <Reveal key={title.join(" ")} dir={index === 0 ? "left" : index === 2 ? "right" : "up"} delay={index * 0.06} className="service-placement">
             <article className="service-card">
               <div className="service-copy">
                 <div className="service-title">

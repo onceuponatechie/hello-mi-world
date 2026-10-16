@@ -18,9 +18,9 @@ export function PromiseSection({ projects }: { projects: FeaturedBuild[] }) {
   return (
     <section id="projects" className="builds-section relative px-4 py-16 sm:px-8 sm:py-24">
       <div className="mx-auto max-w-5xl text-center">
-        <Reveal dir="down" blur>
+        <Reveal dir="up">
           <h2 className="section-heading">
-            The Builds
+            <span>Builds I&apos;m</span>{" "}<span>proud of</span>
           </h2>
         </Reveal>
       </div>
@@ -40,7 +40,7 @@ export function PromiseSection({ projects }: { projects: FeaturedBuild[] }) {
       >
         <Link
           href="/builds"
-          className="group inline-flex items-center gap-2 rounded-full border border-ink/15 px-5 py-2.5 text-[13px] font-normal text-ink transition-colors hover:bg-ink hover:text-white"
+          className="collection-more-link"
         >
           Explore more builds
         </Link>
@@ -80,18 +80,18 @@ function ProjectCard({
       >
         <div className="project-row">
           <Link href={`/builds/${slug}`} className="project-image" aria-label={`Read ${name}`}>
-            <img
+            <Reveal dir="right" className="project-image-reveal"><img
               src={image}
               alt={`${name} concept cover`}
               loading="lazy"
               className="absolute inset-0 h-full w-full object-cover saturate-[1.08] contrast-[1.04] transition-transform duration-700 group-hover:scale-[1.04] group-active:scale-[1.04]"
               style={{ transitionTimingFunction: "cubic-bezier(0.22,1,0.36,1)" }}
-            />
+            /></Reveal>
 
           </Link>
 
           {/* text */}
-          <div className="project-copy">
+          <Reveal dir="left" className="project-copy">
             <p className="project-meta">Concept study · {format}</p>
             <h3>
               {name}
@@ -105,7 +105,7 @@ function ProjectCard({
                 See the build
               </Link>
             </div>
-          </div>
+          </Reveal>
         </div>
       </motion.article>
     </div>
