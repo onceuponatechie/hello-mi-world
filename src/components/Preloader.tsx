@@ -17,6 +17,8 @@ export function Preloader() {
     unlockScroll.current = null;
     document.getElementById("top")?.focus({ preventScroll: true });
     window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    document.documentElement.dataset.entryState = "ready";
+    window.dispatchEvent(new Event("portfolio:entry-ready"));
   }, []);
 
   useEffect(() => {
@@ -31,6 +33,11 @@ export function Preloader() {
     // Hold the entry position until the circle has finished opening, including
     // late page-load restoration and focus restored by the browser.
     const root = document.documentElement;
+    root.dataset.entryState = "loading";
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      const frame = requestAnimationFrame(() => setDone(true));
+      return () => cancelAnimationFrame(frame);
+    }
     const previousOverflow = root.style.overflow;
     const resetScroll = () => window.scrollTo({ top: 0, left: 0, behavior: "instant" });
     root.style.overflow = "hidden";

@@ -2,7 +2,8 @@
 
 import { Reveal } from "@/components/Reveal";
 import { site } from "@/config/site";
-import type { MouseEvent } from "react";
+import { useRef, type MouseEvent } from "react";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -10,11 +11,12 @@ function returnToTop(event: MouseEvent<HTMLAnchorElement>) {
   event.preventDefault();
   window.history.replaceState(window.history.state, "", "#top");
   document.getElementById("top")?.focus({ preventScroll: true });
-  window.scrollTo({ top: 0, left: 0, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
+  // Lenis handles this anchor after the focus/hash update; native scroll is the fallback.
+  if (!document.documentElement.classList.contains("lenis")) window.scrollTo({ top: 0, left: 0, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
 }
 
 const tools = [
-  { name: "Figma", key: "figma", image: "figma.svg", href: "https://www.figma.com/" },
+  { name: "ClickUp", key: "clickup", image: "clickup.svg", href: "https://clickup.com/" },
   { name: "Notion", key: "notion", image: "notion.png", href: "https://www.notion.com/" },
   { name: "Codex", key: "codex", image: "codex.png", href: "https://openai.com/codex/" },
   { name: "VS Code", key: "vscode", image: "vscode.svg", href: "https://code.visualstudio.com/" },
@@ -63,9 +65,18 @@ export function TouchBand() {
 
 export function Footer() {
   const pathname = usePathname();
+  const footerRef = useRef<HTMLElement>(null);
+  const reduce = useReducedMotion();
+  const { scrollYProgress } = useScroll({ target: footerRef, offset: ["start end", "end end"] });
+  // Keep opacity and travel on one JS timeline, including native hash jumps.
+  const progress = useTransform(scrollYProgress, value => value);
+  const drop = useTransform(progress, [0.18, 0.95], [-260, 0]);
+  const reveal = useTransform(progress, [0.18, 0.42], [0, 1]);
+  const lowerDrop = useTransform(progress, [0.15, 0.9], [-38, 0]);
+  const lowerReveal = useTransform(progress, [0.3, 0.75], [0, 1]);
   const sectionLink = (hash: string) => pathname === "/" ? hash : `/${hash}`;
   return (
-    <footer id="contact" className="footer-section dark-surface">
+    <footer ref={footerRef} id="contact" className="footer-section dark-surface">
       <div className="footer-panel">
         <img className="footer-backdrop" src="/assets/hero-cover.webp" alt="" aria-hidden="true" loading="lazy" />
         <div className="footer-content">
@@ -77,12 +88,12 @@ export function Footer() {
             </a>
           </div>
           <div className="footer-invitation">
-            <Reveal dir="up">
+            <motion.div className="footer-drop" style={{ y: reduce ? 0 : drop, opacity: reduce ? 1 : reveal }}>
               <h2 className="section-heading">Let&apos;s give your idea<br /><span>a first version.</span></h2>
               <Link href={pathname === site.contact ? "#contact-form" : site.contact} className="footer-contact">Tell me about it</Link>
-            </Reveal>
+            </motion.div>
           </div>
-          <div className="footer-bottom">
+          <motion.div className="footer-bottom" style={{ y: reduce ? 0 : lowerDrop, opacity: reduce ? 1 : lowerReveal }}>
             <div className="footer-organized">
               <div className="footer-links" aria-label="Social and contact links">
                 <a href={site.email} className="footer-social" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3" /><path d="m4 6 8 7 8-7" /></svg></a>
@@ -100,7 +111,7 @@ export function Footer() {
               </nav>
             </div>
             <div className="footer-meta"><span>© 2026 Essy Udeme</span></div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </footer>

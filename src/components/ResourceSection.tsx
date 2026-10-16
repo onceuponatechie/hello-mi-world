@@ -17,9 +17,9 @@ export function ResourceSection() {
         <h2 className="section-heading"><span>A few things</span>{" "}<span>you might need.</span></h2>
       </Reveal>
       <div className="resource-layout">
-        <Reveal className="resource-laboratory" dir="up"><WhyNotBuildCard /></Reveal>
+        <Reveal className="resource-laboratory" dir="left"><WhyNotBuildCard /></Reveal>
         {resources.map((resource, i) => (
-          <Reveal key={resource.id} className="resource-square" dir="up" delay={i * 0.08}>
+          <Reveal key={resource.id} className="resource-square" dir={i === 0 ? "up" : "right"} delay={i * 0.08}>
             <Link id={resource.id} href={resource.id === "tools-and-templates" ? "/tools-and-templates" : "/research-vault"} className="resource-row group">
               <div className="resource-copy">
                 <h3>{resource.title}</h3>

@@ -13,6 +13,7 @@ const requiredSelectors = [
   ".stories-grid", ".stories-controls", ".story-body", ".story-resource",
   ".featured-product", ".featured-product-details", ".about-hero", ".about-notes",
   ".featured-product-cover", ".newsletter-surround", ".newsletter-form-row", ".newsletter-tools a",
+  ".collection-more-link", ".footer-drop", ".project-image-reveal",
   ".home-stories-rail", ".home-story-preview", ".faq-section", ".faq-item",
 ];
 
@@ -33,7 +34,11 @@ try {
     return readFile(resolve(buildDirectory, path), "utf8");
   }));
   const css = stylesheets.join("\n");
-  const missing = requiredSelectors.filter(selector => !css.includes(`${selector}{`));
+  // The CSS optimizer can combine identical rules into a comma-separated list.
+  const missing = requiredSelectors.filter(selector => {
+    const escaped = selector.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    return !new RegExp(`${escaped}\\s*(?:,|\\{)`).test(css);
+  });
   if (missing.length) throw new Error(`The built homepage is missing portfolio styles: ${missing.join(", ")}`);
   console.log("Verified: the built site includes portfolio and tools collection styles.");
 } catch (error) {
