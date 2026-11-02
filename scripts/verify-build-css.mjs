@@ -13,7 +13,8 @@ const requiredSelectors = [
   ".stories-grid", ".stories-controls", ".story-body", ".story-resource",
   ".featured-product", ".featured-product-details", ".about-hero", ".about-notes",
   ".featured-product-cover", ".newsletter-surround", ".newsletter-form-row", ".newsletter-tools a",
-  ".collection-more-link", ".footer-drop", ".project-image-reveal",
+  ".collection-more-link", ".footer-drop", ".project-image-reveal", ".project-deliverable",
+  ".missing-page", ".missing-main", ".missing-links",
   ".home-stories-rail", ".home-story-preview", ".faq-section", ".faq-item",
 ];
 

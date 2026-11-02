@@ -50,7 +50,8 @@ html.lenis { scroll-behavior: auto; }
 .hero-navigation > a, .hero-navigation > div > a { display: inline-flex; align-items: center; height: 36px; line-height: 20px; }
 
 .resource-section { max-width: 1180px; margin-inline: auto; padding: 44px 28px 90px; }
-.resource-heading { margin-bottom: 34px; }
+.resource-heading { margin-bottom: 34px; text-align: center; }
+.resource-heading h2 > span { display: block; }
 .resource-layout { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: auto minmax(0, 1fr); gap: 20px; align-items: stretch; }
 .resource-laboratory { grid-column: 1; grid-row: 1 / 3; }
 .resource-square { aspect-ratio: 1; min-width: 0; }
@@ -152,11 +153,15 @@ html.lenis { scroll-behavior: auto; }
 .project-row { display: grid; height: 100%; grid-template-columns: .9fr 1.15fr; gap: clamp(28px, 4vw, 64px); }
 .project-image { position: relative; order: 2; display: block; overflow: hidden; border-radius: 32px; }
 .project-image-reveal { position: relative; width: 100%; height: 100%; }
-.project-copy { order: 1; display: flex; flex-direction: column; justify-content: center; gap: 22px; padding-block: 24px; }
+.project-copy { order: 1; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 22px; max-width: 440px; padding-block: 24px; }
+.project-heading { display: grid; gap: 12px; }
+.project-deliverable { width: 100%; max-width: 38ch; padding-top: 18px; border-top: 1px solid #20251D1A; }
+.project-deliverable > span { display: block; margin-bottom: 7px; font-size: 10px; letter-spacing: .09em; text-transform: uppercase; color: #71756E; }
+.project-status { order: 2; font-size: 11px; color: #71756E; }
 .project-copy h3 { font-size: clamp(28px, 3.1vw, 44px); line-height: 1.1; letter-spacing: -1.1px; }
 .project-meta { font-size: 12px; line-height: 1.7; color: #71756E; }
-.project-description { max-width: 44ch; font-size: 14px; line-height: 1.8; color: #71756E; }
-.project-result { font-size: 12px; line-height: 1.6; color: #71756E; }
+.project-description { max-width: 38ch; font-size: 14px; line-height: 1.75; color: #71756E; }
+.project-result { max-width: 38ch; font-size: 12px; line-height: 1.6; color: #71756E; }
 .project-result span { color: #20251D; }
 .project-links { display: flex; flex-wrap: wrap; align-items: center; gap: 18px; }
 .project-image:focus-visible, .project-links a:focus-visible, .builds-more a:focus-visible { outline: 2px solid #779a5f; outline-offset: 5px; }
@@ -226,8 +231,8 @@ html.lenis { scroll-behavior: auto; }
 @media (600px <= width < 900px) {
   .resource-layout { grid-template-rows: auto auto auto; }
   .resource-square { grid-column: 1 / -1; aspect-ratio: auto; min-height: 260px; }
-  .resource-square:nth-child(2) { grid-row: 1; }
-  .resource-square:nth-child(3) { grid-row: 2; }
+  .resource-tools-and-templates { grid-row: 1; }
+  .resource-research-vault { grid-row: 2; }
   .resource-laboratory, .resource-manifesto { grid-row: 3; }
   .resource-copy { width: 60%; max-width: 320px; }
   .resource-artwork { width: 46%; max-width: 275px; right: 4px; }
@@ -306,4 +311,21 @@ html.lenis { scroll-behavior: auto; }
   html { scroll-behavior: auto; }
   .resource-row, .resource-action, .wnb-read, .footer-contact { transition: none; }
   .project-card { transform: none !important; }
+}
+
+@media (width >= 1100px) {
+  .resource-section { container-type: inline-size; }
+  .resource-layout { height: calc((100cqw - 40px) * .45); grid-template-rows: minmax(0, 1fr) 213px; }
+  .resource-square { aspect-ratio: auto; }
+  .resource-tools-and-templates { grid-column: 2; grid-row: 1; }
+  .resource-research-vault { grid-column: 3; grid-row: 1; }
+  .resource-row { padding: clamp(20px, 1.8vw, 26px); }
+  .resource-copy { gap: 10px; width: 65%; }
+  .resource-row h3 { font-size: clamp(24px, 2.1vw, 29px); }
+  .resource-copy p { font-size: 12px; line-height: 1.65; }
+  .resource-artwork { width: 44%; right: -8px; }
+  .resource-action { padding: 9px 14px; font-size: 11px; }
+  .manifesto-note { padding: 32px; gap: 36px; }
+  .manifesto-note h3 { font-size: 30px; line-height: 1.2; }
+  .manifesto-note p { font-size: 13px; line-height: 1.8; }
 }
