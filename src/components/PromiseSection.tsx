@@ -92,15 +92,16 @@ function ProjectCard({
 
           {/* text */}
           <Reveal dir="left" className="project-copy">
-            <p className="project-meta">Concept study · {format}</p>
-            <h3>
-              {name}
-            </h3>
+            <div className="project-heading">
+              <p className="project-meta">{format}</p>
+              <h3>{name}</h3>
+            </div>
             <p className="project-description">
               {summary}
             </p>
-            <p className="project-result">{output}</p>
+            <div className="project-deliverable"><span>Proposed output</span><p className="project-result">{output}</p></div>
             <div className="project-links">
+              <span className="project-status">Concept study</span>
               <Link href={`/builds/${slug}`} className="hero-primary">
                 See the build
               </Link>

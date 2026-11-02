@@ -16,3 +16,6 @@
 - Never rewrite published Git history.
 - Before pushing changes, run lint, typecheck, and the production build.
 - Homepage headings read Builds I'm proud of (two lines) and How can I help you? Blend the Builds-to-Services boundary with asymmetric soft washes. Read more stories shares the Builds collection button style. Homepage story previews omit the date/read-time row; collection and article pages keep their dates and calculated read times. ClickUp replaces Figma in the newsletter, using the unchanged official symbol.
+
+- Resource headings are centered on two lines at every size. On desktop the green experience note is 213px high (twice its former height); the two resource cards above it are shorter within the original publication-card height. Tools & Templates and Research Vault precede Why Not Build in reading and mobile visual order. Homepage Build copy groups the format and title, separates the proposed output with a label, and keeps concept status visible beside its action.
+- The custom 404 uses the shared navigation and hero background, a typographic 404, a clear home action and direct links to Builds, Stories and Tools & Templates. Keep a real HTTP 404 for unknown routes.

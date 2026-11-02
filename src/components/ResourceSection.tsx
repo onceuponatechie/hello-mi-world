@@ -12,14 +12,13 @@ const resources = [
 
 export function ResourceSection() {
   return (
-    <section id="resources" className="resource-section">
+    <section id="resources" className="resource-section" aria-labelledby="resources-heading">
       <Reveal dir="up" className="resource-heading">
-        <h2 className="section-heading"><span>A few things</span>{" "}<span>you might need.</span></h2>
+        <h2 id="resources-heading" className="section-heading"><span>A few things</span>{" "}<span>you might need.</span></h2>
       </Reveal>
       <div className="resource-layout">
-        <Reveal className="resource-laboratory" dir="left"><WhyNotBuildCard /></Reveal>
         {resources.map((resource, i) => (
-          <Reveal key={resource.id} className="resource-square" dir={i === 0 ? "up" : "right"} delay={i * 0.08}>
+          <Reveal key={resource.id} className={`resource-square resource-${resource.id}`} dir={i === 0 ? "up" : "right"} delay={i * 0.08}>
             <Link id={resource.id} href={resource.id === "tools-and-templates" ? "/tools-and-templates" : "/research-vault"} className="resource-row group">
               <div className="resource-copy">
                 <h3>{resource.title}</h3>
@@ -30,6 +29,7 @@ export function ResourceSection() {
             </Link>
           </Reveal>
         ))}
+        <Reveal className="resource-laboratory" dir="left"><WhyNotBuildCard /></Reveal>
         <Reveal className="resource-manifesto" dir="up" delay={0.1}>
           <article id="manifesto" className="manifesto-note">
             <h3>4 years of experience.<br /><span>Still asking why.</span></h3>

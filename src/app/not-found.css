@@ -1,0 +1,38 @@
+.missing-page { position: relative; isolation: isolate; min-height: 100svh; overflow-x: clip; background: #FEFEFE; }
+.missing-page::before { position: absolute; inset: 0 0 auto; z-index: -1; height: 700px; background: url('/assets/hero-cover.webp') center top / cover; opacity: .5; mask-image: linear-gradient(#000, transparent); content: ""; pointer-events: none; }
+.missing-main { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 50px 80px; max-width: 1180px; margin: 46px auto 0; padding: 30px 28px 64px; }
+.missing-copy { grid-column: 1; grid-row: 1; max-width: 430px; }
+.missing-label { width: fit-content; margin-bottom: 24px; padding: 8px 13px; border: 1px solid #20251D1A; border-radius: 100px; background: #FFFFFFA6; font-size: 11px; color: #71756E; }
+.missing-copy h1 { font-size: clamp(44px, 5.1vw, 68px); line-height: 1.08; letter-spacing: -2.5px; }
+.missing-copy > p:not(.missing-label) { max-width: 37ch; margin-top: 24px; color: #71756E; font-size: 14px; line-height: 1.8; }
+.missing-copy > a { margin-top: 30px; gap: 25px; }
+.missing-art { position: relative; display: flex; align-items: center; justify-content: center; gap: 8px; grid-column: 2; grid-row: 1; min-height: 370px; padding-bottom: 30px; font-family: var(--font-syne), sans-serif; font-size: clamp(120px, 15vw, 210px); letter-spacing: -12px; line-height: 1; color: #20251D; }
+.missing-zero { position: relative; display: grid; place-items: center; width: .66em; height: .82em; flex-shrink: 0; border: 1px solid #B5CBA6; border-radius: 48%; background: linear-gradient(135deg, #E3F0DA, #C9DEA9); box-shadow: inset 0 2px 3px #FFFFFFAA, 0 18px 35px -24px #36512670; transform: rotate(-9deg); }
+.missing-zero > span { width: 47%; height: 60%; border-radius: 48%; background: #FEFEFE; box-shadow: inset 0 2px 6px #36512614; }
+.missing-art-note { position: absolute; left: 0; right: 0; bottom: 24px; font-family: var(--font-jakarta), sans-serif; font-size: 11px; line-height: 1.5; letter-spacing: 0; text-align: center; color: #71756E; }
+.missing-destinations { grid-column: 1 / -1; margin-top: 16px; padding-top: 30px; border-top: 1px solid #20251D1A; }
+.missing-destinations h2 { margin-bottom: 20px; font-size: 14px; letter-spacing: -.2px; }
+.missing-links { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 26px; }
+.missing-links > a { display: flex; gap: 15px; align-items: baseline; padding-block: 12px; border-bottom: 1px solid #20251D1A; transition: border-color .2s; }
+.missing-links > a:hover { border-color: #779A5F; }
+.missing-link-number { font-size: 10px; color: #779A5F; }
+.missing-link-title { display: block; font-family: var(--font-syne), sans-serif; font-size: 19px; letter-spacing: -.5px; }
+.missing-link-description { display: block; margin-top: 9px; font-size: 11px; line-height: 1.6; color: #71756E; }
+.missing-link-arrow { margin-left: auto; font-size: 17px; color: #71756E; }
+.missing-links > a:focus-visible, .missing-copy > a:focus-visible { outline: 2px solid #779A5F; outline-offset: 5px; border-radius: 4px; }
+.missing-footnote { display: flex; justify-content: space-between; gap: 20px; max-width: 1180px; margin: 0 auto; padding: 0 28px 28px; font-size: 10px; line-height: 1.6; color: #71756E; }
+@media (width < 768px) {
+  .missing-main { grid-template-columns: 1fr; gap: 30px; margin-top: 0; padding: 10px 24px 42px; }
+  .missing-art { grid-column: 1; grid-row: 1; min-height: 230px; padding-bottom: 24px; font-size: clamp(120px, 29vw, 180px); letter-spacing: -8px; }
+  .missing-art-note { bottom: 0; }
+  .missing-copy { grid-column: 1; grid-row: 2; text-align: center; margin-inline: auto; }
+  .missing-label { margin: 0 auto 18px; }
+  .missing-copy h1 { font-size: 44px; letter-spacing: -1.7px; }
+  .missing-copy > p:not(.missing-label) { margin: 20px auto 0; font-size: 13px; }
+  .missing-copy > a { margin-top: 24px; }
+  .missing-destinations { margin-top: 6px; padding-top: 24px; }
+  .missing-links { grid-template-columns: 1fr; gap: 8px; }
+  .missing-links > a { padding-block: 15px; }
+  .missing-footnote { flex-direction: column; gap: 6px; padding-inline: 24px; }
+}
+@media (prefers-reduced-motion: reduce) { .missing-links > a { transition: none; } }
