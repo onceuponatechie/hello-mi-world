@@ -22,7 +22,7 @@ export const products: Product[] = [
   {
     slug: "what-should-i-get-good-at", name: "What Should I Get Good At?", format: "EPUB ebook", category: "Plan & decide", status: "ready", cover: { src: "/assets/tools/covers/what-should-i-get-good-at.png", width: 1024, height: 1536 }, color: "#E3F0DA",
     summary: "A guide to finding your direction in the world of work.",
-    download: { href: "/downloads/what-should-i-get-good-at-essy-udeme.epub", label: "Download the ebook", format: "EPUB · Reflowable ebook" },
+    download: { href: "/downloads/what-should-i-get-good-at-essy-udeme.epub?v=2fd94aa06d1d", label: "Download the ebook", format: "EPUB · Reflowable ebook" },
     introduction: "Career advice often asks what you’re naturally good at, what people come to you for and which work you want to spend years doing. Those questions don’t always have ready answers. I started researching how we make a sensible choice with the evidence we have. The questions and exercises here are for thinking it through using your own experience.",
     includes: [
       { title: "You Don’t Know Yet", description: "What can the work you’ve already done tell you about what to try next? And where would a small test tell you more?" },

@@ -153,30 +153,24 @@ html.lenis { scroll-behavior: auto; }
 .project-row { display: grid; height: 100%; grid-template-columns: .9fr 1.15fr; gap: clamp(28px, 4vw, 64px); }
 .project-image { position: relative; order: 2; display: block; overflow: hidden; border-radius: 32px; }
 .project-image-reveal { position: relative; width: 100%; height: 100%; }
-.project-copy { order: 1; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 22px; max-width: 440px; padding-block: 24px; }
-.project-heading { display: grid; gap: 12px; }
-.project-deliverable { width: 100%; max-width: 38ch; padding-top: 18px; border-top: 1px solid #20251D1A; }
-.project-deliverable > span { display: block; margin-bottom: 7px; font-size: 10px; letter-spacing: .09em; text-transform: uppercase; color: #71756E; }
-.project-status { order: 2; font-size: 11px; color: #71756E; }
-.project-copy h3 { font-size: clamp(28px, 3.1vw, 44px); line-height: 1.1; letter-spacing: -1.1px; }
-.project-meta { font-size: 12px; line-height: 1.7; color: #71756E; }
-.project-description { max-width: 38ch; font-size: 14px; line-height: 1.75; color: #71756E; }
-.project-result { max-width: 38ch; font-size: 12px; line-height: 1.6; color: #71756E; }
-.project-result span { color: #20251D; }
-.project-links { display: flex; flex-wrap: wrap; align-items: center; gap: 18px; }
+.project-copy { order: 1; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 0; max-width: 440px; padding-block: 24px; }
+.project-copy h3 { max-width: 13ch; text-wrap: balance; font-size: clamp(28px, 3.1vw, 44px); line-height: 1.1; letter-spacing: -1.1px; }
+.project-meta { margin-top: 12px; font-size: 11px; line-height: 1.6; color: #71756E; }
+.project-description { max-width: 34ch; margin-top: 18px; font-size: 14px; line-height: 1.75; color: #71756E; }
+.project-links { margin-top: 28px; display: flex; flex-wrap: wrap; align-items: center; gap: 18px; }
 .project-image:focus-visible, .project-links a:focus-visible, .builds-more a:focus-visible { outline: 2px solid #779a5f; outline-offset: 5px; }
 @media (width < 768px) {
   .project-card { height: auto; }
   .project-row { height: auto; grid-template-columns: minmax(0, 1fr); gap: 24px; }
   .project-image { order: 1; aspect-ratio: 16 / 11; border-radius: 24px; }
-  .project-copy { order: 2; gap: 16px; padding: 0 0 20px; }
+  .project-copy { order: 2; padding: 0 0 20px; }
   .project-copy h3 { font-size: 30px; }
 }
 @media (height < 720px) {
   /* Keep stacking on laptops too, with content sized to the available height. */
   .project-card { max-height: calc(100svh - var(--project-top) - 64px); overflow-y: auto; scrollbar-width: thin; }
   .project-row { gap: 24px; }
-  .project-copy { gap: 12px; padding-block: 12px; }
+  .project-copy { padding-block: 12px; }
   .project-copy h3 { font-size: 26px; }
   .project-description { font-size: 13px; line-height: 1.6; }
   .project-image { aspect-ratio: 2 / 1; }

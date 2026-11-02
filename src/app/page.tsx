@@ -13,7 +13,7 @@ import { FaqSection } from "@/components/FaqSection";
 
 // Keep the full study narratives on the server. The animated homepage stack
 // receives only the cover and summary fields it renders.
-const featuredBuilds = builds.slice(0, 4).map(({ slug, name, format, summary, image, output }) => ({ slug, name, format, summary, image, output }));
+const featuredBuilds = builds.slice(0, 4).map(({ slug, name, format, summary, image }) => ({ slug, name, format, summary, image }));
 
 export default function Home() {
   return (
