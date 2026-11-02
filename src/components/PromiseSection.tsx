@@ -7,7 +7,7 @@ import Link from "next/link";
 import type { Build } from "@/content/builds";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
-type FeaturedBuild = Pick<Build, "slug" | "name" | "format" | "summary" | "image" | "output">;
+type FeaturedBuild = Pick<Build, "slug" | "name" | "format" | "summary" | "image">;
 
 export function PromiseSection({ projects }: { projects: FeaturedBuild[] }) {
   const stackRef = useRef<HTMLDivElement>(null);
@@ -57,7 +57,6 @@ function ProjectCard({
   format,
   summary,
   image,
-  output,
   index,
   total,
   progress,
@@ -92,16 +91,10 @@ function ProjectCard({
 
           {/* text */}
           <Reveal dir="left" className="project-copy">
-            <div className="project-heading">
-              <p className="project-meta">{format}</p>
-              <h3>{name}</h3>
-            </div>
-            <p className="project-description">
-              {summary}
-            </p>
-            <div className="project-deliverable"><span>Proposed output</span><p className="project-result">{output}</p></div>
+            <h3>{name}</h3>
+            <p className="project-description">{summary}</p>
+            <p className="project-meta">Concept study · {format.replace(/ concept$/, "")}</p>
             <div className="project-links">
-              <span className="project-status">Concept study</span>
               <Link href={`/builds/${slug}`} className="hero-primary">
                 See the build
               </Link>
